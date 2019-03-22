@@ -13,7 +13,7 @@ public class Sys {
 
     public static void warn(String sender, String msg) {
         String content = String.format("[%s] Warning: %s", sender, msg);
-        if (isDevEnv()) {
+        if (isDevEnv() || isCmdEnv()) {
             System.out.println(content);
         } else {
             log(content);
@@ -26,7 +26,7 @@ public class Sys {
 
     public static void err(String sender, String msg) {
         String content = String.format("[%s] Error: %s", sender, msg);
-        if (isDevEnv()) {
+        if (isDevEnv() || isCmdEnv()) {
             System.out.println(content);
         } else {
             log(content);
@@ -37,9 +37,20 @@ public class Sys {
         err(sender, new Formatter().format(format, args).toString());
     }
 
+    public static void info(String sender, String msg) {
+        String content = String.format("[%s] DEV: %s", sender, msg);
+        if (isDevEnv() || isCmdEnv()) {
+            System.out.println(content);
+        }
+    }
+
+    public static void infoF(String sender, String format, Object ... args) {
+        DevInfo(sender, new Formatter().format(format, args).toString());
+    }
+
     public static void DevInfo(String sender, String msg) {
         String content = String.format("[%s] DEV: %s", sender, msg);
-        if (isDevEnv()) {
+        if (isDevEnv() || isCmdEnv()) {
             System.out.println(content);
         }
     }
@@ -50,9 +61,15 @@ public class Sys {
 
     // To decide if this is development environment.
     public static boolean isDevEnv() {
-        if (glob == null) return true;
-        return (boolean) glob.getConfig("DEV_MODE");
-        //return true;
+        return Global.DEV_MODE;
+    }
+
+    public static boolean isCmdEnv() {
+        return !Global.GUI_MODE;
+    }
+
+    public static boolean isGuiEnv() {
+        return Global.GUI_MODE;
     }
 
     // Exit the system.
@@ -84,15 +101,15 @@ public class Sys {
                 return (Config) savedObj;
             } else {
                 err("Config Loader", "Invalid conf file!");
-                exit(-6);
+                exit(6);
             }
         } catch(IOException i) {
             err("Config Loader", "Unable to open conf file for reading!");
             i.printStackTrace();
-            exit(-4);
+            exit(4);
         } catch(ClassNotFoundException c) {
             err("Config Loader", "Unexpected Error: Unable to load Class!");
-            exit(-5);
+            exit(5);
         }
         return null;
     }
@@ -112,7 +129,7 @@ public class Sys {
         } catch(IOException i) {
             err("Config Saver", "Unable to open conf file for saving!");
             i.printStackTrace();
-            exit(-3);
+            exit(3);
         }
     }
 }

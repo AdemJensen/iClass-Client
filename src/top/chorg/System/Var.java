@@ -26,7 +26,7 @@ public class Var {
     public Object getVar(String key) {
         if (!variables.containsKey(key)) {
             Sys.errF("Global", "Global '%s' not exist.", key);
-            Sys.exit(-1);
+            Sys.exit(1);
         }
         return variables.get(key);
     }
@@ -38,7 +38,7 @@ public class Var {
                 Sys.DevInfoF("Config", "Config '%s' have been added to the set.", key);
             } else {
                 Sys.errF("Config", "Invalid config key '%s'.", key);
-                Sys.exit(-2);
+                Sys.exit(2);
             }
         } else {
             configs.replace(key, value);
@@ -48,7 +48,7 @@ public class Var {
     public Serializable getConfig(String key) {
         if (!configs.containsKey(key)) {
             Sys.errF("Config", "Invalid config key '%s'.", key);
-            Sys.exit(-2);
+            Sys.exit(2);
         }
         return configs.get(key);
     }
@@ -59,5 +59,12 @@ public class Var {
 
     public Config getConfObj() {
         return configs;
+    }
+
+    public void clearConfig() {
+        if (!Sys.isDevEnv()) {
+            Sys.err("System", "Unauthorized operation (clear config)!");
+            Sys.exit(201);
+        }
     }
 }
