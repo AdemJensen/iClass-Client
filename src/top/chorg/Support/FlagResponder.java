@@ -13,7 +13,7 @@ public abstract class FlagResponder {
      * @return The return value of your responder. Return 0 if it's working fine.
      * If not working properly, please return a value ranged 1 ~ 99. Try to void code collisions.
      */
-    public abstract int execute();
+    public abstract int response();
 
     /**
      * To get this flag's usage manual.
@@ -31,12 +31,12 @@ public abstract class FlagResponder {
      */
     protected String getArg() {
         try {
-            FlagProcessor.provideArg();
+            return FlagProcessor.provideArg();
         } catch (IllegalArgumentException e) {
             Sys.errF(
                     "Flags",
-                    "Too few arguments for flag %s\n The usages are:\n\t%s",
-                    e.toString(), getManual()
+                    "Too few arguments for flag '%s'\nThe usages are:\n\t%s",
+                    FlagProcessor.getCurFlag(), getManual()
             );
             Sys.exit(100);
         }

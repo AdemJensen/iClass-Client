@@ -9,10 +9,6 @@ public class Var {
     private HashMap<String, Object> variables = new HashMap<>();
     private Config configs = Sys.loadConfig();
 
-    public Var() {
-
-    }
-
     public void setVar(String key, Object value) {
         if (variables.containsKey(key)) {
             String ori = variables.get(key).toString();
@@ -66,5 +62,6 @@ public class Var {
             Sys.err("System", "Unauthorized operation (clear config)!");
             Sys.exit(201);
         }
+        configs = new Config();
     }
 }

@@ -24,12 +24,12 @@ public class FlagProcessor {
                 continue;
             }
             curFlag = flags[curNum];
-            int returnValue = records.get(curFlag).execute();
+            int returnValue = records.get(curFlag).response();
             if (returnValue != 0) {
                 Sys.errF(
                     "Flags",
-                    "Invalid flag (%d: '%s').",
-                    curNum + 1, flags[curNum]
+                    "Flag responder error (%d: '%s', returned value %d).",
+                    curNum + 1, flags[curNum], 100 + returnValue
                 );
                 Sys.exit(100 + returnValue);
             }
@@ -79,13 +79,15 @@ public class FlagProcessor {
      * @throws IllegalArgumentException Thrown when too few args were provided for the flag.
      */
     protected static String provideArg() throws IllegalArgumentException {
-        if (isFlag(flags[curNum])) {
+        if (isFlag(flags[++curNum])) {
             throw new IllegalArgumentException(curFlag);
         }
-        return flags[curNum++];
+        return flags[curNum];
     }
 
     public static void displayAllManual() {
 
     }
+
+    public static String getCurFlag() { return curFlag; }
 }

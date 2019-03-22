@@ -77,7 +77,7 @@ public class Sys {
         if (isDevEnv()) {
             System.exit(returnValue);
         } else {
-            System.out.println("EXIT ERROR!");
+            System.out.printf("EXIT ERROR!(%d)\n", returnValue);
         }
     }
 
@@ -87,7 +87,7 @@ public class Sys {
     }
 
     public static void log(String msg) {
-        System.out.println("LOG INCOMPLETE!");
+        System.out.printf("LOG INCOMPLETE!(%s)\n", msg);
     }
 
     public static Config loadConfig() {
@@ -131,5 +131,9 @@ public class Sys {
             i.printStackTrace();
             exit(3);
         }
+    }
+
+    public static void clearConfig() {
+        glob.clearConfig();
     }
 }

@@ -7,7 +7,7 @@ import top.chorg.System.Sys;
 public class GuiModeResponder extends FlagResponder {
 
     @Override
-    public int execute() {
+    public int response() {
         if (Global.GUI_MODE_MODIFIED) {
             Sys.warn(
                     "Flags",

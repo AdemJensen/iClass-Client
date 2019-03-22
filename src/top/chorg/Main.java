@@ -9,14 +9,11 @@ import static top.chorg.System.Global.glob;
 public class Main {
 
     public static void main(String[] args) {
+
         Initializer.execute(args);
 
         System.out.println(Sys.isCmdEnv());
         System.out.println(Sys.isDevEnv());
-//        glob.setConfig("DEV_MODE", true);
-//        sys.saveConfig();
-//        Sys.reloadConfig();
-//        System.out.println(glob.getConfig("DEV_MODE"));
 
     }
 }
