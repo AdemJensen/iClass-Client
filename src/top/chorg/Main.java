@@ -1,10 +1,9 @@
 package top.chorg;
 
+import top.chorg.CmdLine.CmdLineAdapter;
 import top.chorg.System.Global;
 import top.chorg.System.Initializer;
 import top.chorg.System.Sys;
-
-import static top.chorg.System.Global.glob;
 
 public class Main {
 
@@ -12,8 +11,11 @@ public class Main {
 
         Initializer.execute(args);
 
-        System.out.println(Sys.isCmdEnv());
-        System.out.println(Sys.isDevEnv());
+        if (Sys.isCmdEnv()) {
+            CmdLineAdapter.start();
+        } else {
+            System.out.println("NOT YET USABLE");
+        }
 
     }
 }

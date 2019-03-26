@@ -12,9 +12,15 @@ public class Connector {
         int failure = 0;
         while (failure < 3) {
             try {
-                Global.socket = new Socket(host, port);
-                Global.printWriter = new PrintWriter(new OutputStreamWriter(Global.socket.getOutputStream()));
-                Global.bufferedReader = new BufferedReader(new InputStreamReader(Global.socket.getInputStream()));
+                Global.setVar("socket", new Socket(host, port));
+                Global.setVar(
+                        "printWriter",
+                        new PrintWriter(new OutputStreamWriter(((Socket) Global.getVar("socket")).getOutputStream()))
+                );
+                Global.setVar(
+                        "bufferedReader",
+                        new BufferedReader(new InputStreamReader(((Socket) Global.getVar("socket")).getInputStream()))
+                );
             } catch (IOException e) {
                 failure++;
                 Sys.warnF(
@@ -42,31 +48,32 @@ public class Connector {
     }
 
     public static void disconnect() {
-        if (Global.socket == null) {
-            Sys.err(
+        if (!Global.varExists("socket") || !((Socket) Global.getVar("socket")).isConnected()) {
+            Sys.warn(
                     "Net",
                     "Connection was already lost or never established!"
             );
-            Sys.exit(11);
+            clearSocket();
+            return;
         }
         try {
-            Global.socket.close();
+            ((Socket) Global.getVar("socket")).close();
         } catch (IOException e) {
             Sys.err(
                     "Net",
-                    "Unable to close socket connection!"
+                    "Error while closing socket connection!"
             );
-            Sys.exit(12);
         }
         Sys.info(
                 "Net",
                 "Remote host connection terminated."
         );
+        clearSocket();
     }
 
     public static void clearSocket() {
-        Global.socket = null;
-        Global.printWriter = null;
-        Global.bufferedReader = null;
+        Global.dropVar("socket");
+        Global.dropVar("printWriter");
+        Global.dropVar("bufferedReader");
     }
 }

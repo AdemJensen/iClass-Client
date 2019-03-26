@@ -2,39 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="882d09f4-95f1-4c9f-b53c-686c8dd5233b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/StdInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/UserAuth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/CmdResponders/HelpResponder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdResponder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetResponder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Gui/Adapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/top/chorg/CmdLine/CmdLineAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/NetManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/ExitResponder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/LoginResponder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/HelpResponder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/passwordResponder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/usernameResponder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.conf" beforeDir="false" afterPath="$PROJECT_DIR$/config.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/CmdProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/CmdProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/CmdLine/StdInput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/CmdLine/UserAuth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/CmdResponders/HelpResponder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/CmdProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/CmdResponder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/Connector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/Connector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/NetReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/NetReceiver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/NetResponder.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/FlagProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/FlagProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/FlagResponder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/FlagResponder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/CmdModeResponder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/CmdModeResponder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/DevModeResponder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/DevModeResponder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/GuiModeResponder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/GuiModeResponder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/Config$Element.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/FlagProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/FlagResponder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/CmdModeResponder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/DevModeResponder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/GuiModeResponder.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Global.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Global.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Initializer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Sys.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Sys.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Var.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Var.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Var.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/StdInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/CmdLine/StdInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/UserAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/CmdLine/UserAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/CmdResponders/HelpResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/HelpResponder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdResponder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/NetResponder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/top/chorg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Support/FlagProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Support/FlagProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Support/FlagResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Support/FlagResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/CmdModeResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/CmdModeResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/DevModeResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/DevModeResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/GuiModeResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/GuiModeResponder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Support/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Support/SerializableMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Support/FlagProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/FlagManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/Support/FlagResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/FlagResponder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/CmdModeResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/CmdModeResponder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/DevModeResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/DevModeResponder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/GuiModeResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/GuiModeResponder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/top/chorg/System/Global.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/Global.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/top/chorg/System/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/Initializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/top/chorg/System/Sys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/Sys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/Var.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/Var.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,125 +62,120 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Initializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/Support/FlagResponder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Sys.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="79" column="62" selection-start-line="79" selection-start-column="62" selection-end-line="79" selection-end-column="62" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1974#1975#0" expanded="true" />
-                <element signature="e#2012#2013#0" expanded="true" />
-                <element signature="e#2545#2546#0" expanded="true" />
-                <element signature="e#2598#2599#0" expanded="true" />
-                <element signature="e#4155#4156#0" expanded="true" />
-                <element signature="e#4176#4177#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdProcessor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#355#356#0" expanded="true" />
-                <element signature="e#394#395#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdResponder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-              <folding>
-                <element signature="e#277#278#0" expanded="true" />
-                <element signature="e#300#301#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/Support/FlagProcessor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-252">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/System/FlagResponders/DevModeResponder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/UserAuth.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/HelpResponder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/CmdModeResponder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/passwordResponder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/usernameResponder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+              <folding>
+                <element signature="e#187#188#0" expanded="true" />
+                <element signature="e#211#212#0" expanded="true" />
+                <element signature="e#258#259#0" expanded="true" />
+                <element signature="e#285#286#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdResponder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1005">
+              <caret line="69" column="70" selection-start-line="69" selection-start-column="70" selection-end-line="69" selection-end-column="70" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/HelpResponder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="960">
+              <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4860#4861#0" expanded="true" />
+                <element signature="e#4884#4885#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/LoginResponder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+              <folding>
+                <element signature="e#182#183#0" expanded="true" />
+                <element signature="e#206#207#0" expanded="true" />
+                <element signature="e#256#257#0" expanded="true" />
+                <element signature="e#280#281#0" expanded="true" />
+                <element signature="e#327#328#0" expanded="true" />
+                <element signature="e#354#355#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="915">
+              <caret line="72" column="5" selection-start-line="70" selection-start-column="4" selection-end-line="72" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Managers/FlagManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1530">
+              <caret line="116" column="31" selection-start-line="116" selection-start-column="31" selection-end-line="116" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -185,6 +197,9 @@
       <find>isDevEnv</find>
       <find>exit</find>
       <find>printStack</find>
+      <find>glob</find>
+      <find>copy</find>
+      <find>Sys.exit</find>
     </findStrings>
     <replaceStrings>
       <replace>Serializable</replace>
@@ -196,12 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/top/chorg/Initializor.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/Initializer.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/Global.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/System.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/System/System.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/System/JarLoader.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/Support/Config.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/Support/JarLoader.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/System/Utilities/Config.java" />
@@ -222,18 +231,37 @@
         <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetResponder.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetSender.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdProcessor.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/System/Global.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetReceiver.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdResponder.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/System/Var.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/System/Sys.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/Main.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/System/Initializer.java" />
-        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/UserAuth.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/DevModeResponder.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/Support/FlagResponder.java" />
         <option value="$PROJECT_DIR$/src/top/chorg/Support/FlagProcessor.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/Bases/FlagResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Support/SerializableMap.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/System/Var.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Message.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Main.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/FlagResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/NetResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/NetManager.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/GuiModeResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/CmdModeResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetReceiver.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/System/Sys.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/ExitResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/System/Global.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/CmdLine/CmdLineAdapter.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/DevModeResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdManager.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/LoginResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/passwordResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/usernameResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/System/Initializer.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/HelpResponder.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/FlagManager.java" />
+        <option value="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/HelpResponder.java" />
       </list>
     </option>
   </component>
@@ -271,14 +299,6 @@
               <item name="iClass" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="chorg" type="462c0819:PsiDirectoryNode" />
-              <item name="Kernel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iClass" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iClass" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="chorg" type="462c0819:PsiDirectoryNode" />
-              <item name="Kernel" type="462c0819:PsiDirectoryNode" />
               <item name="CmdLine" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -287,7 +307,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="chorg" type="462c0819:PsiDirectoryNode" />
               <item name="Kernel" type="462c0819:PsiDirectoryNode" />
-              <item name="CmdResponders" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iClass" type="b2602c69:ProjectViewProjectNode" />
@@ -296,6 +315,48 @@
               <item name="chorg" type="462c0819:PsiDirectoryNode" />
               <item name="Kernel" type="462c0819:PsiDirectoryNode" />
               <item name="Communication" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="chorg" type="462c0819:PsiDirectoryNode" />
+              <item name="Kernel" type="462c0819:PsiDirectoryNode" />
+              <item name="Gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="chorg" type="462c0819:PsiDirectoryNode" />
+              <item name="Kernel" type="462c0819:PsiDirectoryNode" />
+              <item name="Managers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="chorg" type="462c0819:PsiDirectoryNode" />
+              <item name="Kernel" type="462c0819:PsiDirectoryNode" />
+              <item name="Responders" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="chorg" type="462c0819:PsiDirectoryNode" />
+              <item name="Kernel" type="462c0819:PsiDirectoryNode" />
+              <item name="Responders" type="462c0819:PsiDirectoryNode" />
+              <item name="Cmd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="chorg" type="462c0819:PsiDirectoryNode" />
+              <item name="Kernel" type="462c0819:PsiDirectoryNode" />
+              <item name="Responders" type="462c0819:PsiDirectoryNode" />
+              <item name="Flag" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iClass" type="b2602c69:ProjectViewProjectNode" />
@@ -311,14 +372,6 @@
               <item name="chorg" type="462c0819:PsiDirectoryNode" />
               <item name="System" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="iClass" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iClass" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="chorg" type="462c0819:PsiDirectoryNode" />
-              <item name="System" type="462c0819:PsiDirectoryNode" />
-              <item name="FlagResponders" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -330,11 +383,17 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553256509627" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553619548968" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="top.chorg.Kernel.Responders" />
+      <recent name="top.chorg.Kernel.Gui" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="top.chorg.Kernel.Responders.Flag" />
+      <recent name="top.chorg.Kernel.Responders.Cmd" />
       <recent name="top.chorg.System.FlagResponders" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -357,7 +416,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="top.chorg.Main" />
       <module name="iClass" />
-      <option name="PROGRAM_PARAMETERS" value=" -Dev &quot;123456&quot; -Cmd" />
+      <option name="PROGRAM_PARAMETERS" value=" -Dev &quot;Theresa Apocalypse&quot; -Cmd -h" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
@@ -387,17 +446,21 @@
       <workItem from="1553163762548" duration="12496000" />
       <workItem from="1553176432226" duration="798000" />
       <workItem from="1553177259539" duration="1107000" />
-      <workItem from="1553232019435" duration="14629000" />
+      <workItem from="1553232019435" duration="15587000" />
+      <workItem from="1553517092667" duration="14750000" />
+      <workItem from="1553591848566" duration="24877000" />
+      <workItem from="1553619588322" duration="254000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44853000" />
+    <option name="totallyTimeSpent" value="85692000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="21" y="28" width="1400" height="798" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27540502" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28645065" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -406,7 +469,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -502,16 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Support/JarLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Socket.java" />
     <entry file="uml://JavaScript-modules-diagram//Users/jensen/Documents/Projects/IdeaProjects/iClass/src/top/chorg/Kernel/Communication">
       <provider selected="true" editor-type-id="UmlEditorProvider">
@@ -541,39 +594,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Enums/ExecutionMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Authentication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/System/FlagResponders/CmdModeResponder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/System/FlagResponders/GuiModeResponder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#247#248#0" expanded="true" />
-            <element signature="e#274#275#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Enums/ExecutionMode.java" />
     <entry file="uml://JAVA/top.chorg.System">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -668,14 +689,14 @@
               <point x="0.0" y="70.0" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="0.5761316872427984" x="-118.39999999999998" y="876.5714285714286" />
+          <settings layout="Hierarchic Group" zoom="0.5761316872427984" x="-118.0" y="877.0" />
           <SelectedNodes />
           <Categories>
+            <Category>Fields</Category>
             <Category>Constructors</Category>
             <Category>Methods</Category>
             <Category>Properties</Category>
             <Category>Inner Classes</Category>
-            <Category>Fields</Category>
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
@@ -707,7 +728,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.5718343268541791" x="690.389061822556" y="347.2392337047495" />
+          <settings layout="Hierarchic Group" zoom="0.5718343268541791" x="690.0" y="347.0" />
           <SelectedNodes />
           <Categories>
             <Category>Fields</Category>
@@ -718,88 +739,6 @@
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/SenderThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetResponder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/StdInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/CmdResponders/HelpResponder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/ReceiverThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="9" selection-start-line="17" selection-start-column="8" selection-end-line="29" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Global.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Support/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -817,10 +756,166 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Var.java">
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/CmdLine/UserAuth.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Var.java" />
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Support/SerializableMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Support/JarLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1018">
+          <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/CmdLine/StdInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="49" lean-forward="true" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Managers/FlagResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Managers/NetResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Managers/NetManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/GuiModeResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="70" column="22" lean-forward="true" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/SenderThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/ReceiverThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Authentication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/ExitResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/CmdLine/CmdLineAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -829,101 +924,127 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Sys.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="79" column="62" selection-start-line="79" selection-start-column="62" selection-end-line="79" selection-end-column="62" />
+        <state relative-caret-position="817">
+          <caret line="125" column="30" lean-forward="true" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Global.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1974#1975#0" expanded="true" />
-            <element signature="e#2012#2013#0" expanded="true" />
-            <element signature="e#2545#2546#0" expanded="true" />
-            <element signature="e#2598#2599#0" expanded="true" />
-            <element signature="e#4155#4156#0" expanded="true" />
-            <element signature="e#4176#4177#0" expanded="true" />
+            <element signature="e#3598#3599#0" expanded="true" />
+            <element signature="e#3648#3649#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdProcessor.java">
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/DevModeResponder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="270">
+          <caret line="18" column="72" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/UserAuth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/System/FlagResponders/DevModeResponder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Support/FlagResponder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdResponder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding>
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#300#301#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Support/FlagProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#1077#1078#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Initializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        <state relative-caret-position="45">
+          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/CmdModeResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/passwordResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/usernameResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="e#187#188#0" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#258#259#0" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="69" column="70" selection-start-line="69" selection-start-column="70" selection-end-line="69" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/HelpResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4860#4861#0" expanded="true" />
+            <element signature="e#4884#4885#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/LoginResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding>
+            <element signature="e#182#183#0" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#327#328#0" expanded="true" />
+            <element signature="e#354#355#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="72" column="5" selection-start-line="70" selection-start-column="4" selection-end-line="72" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Managers/FlagManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="116" column="31" selection-start-line="116" selection-start-column="31" selection-end-line="116" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/HelpResponder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
