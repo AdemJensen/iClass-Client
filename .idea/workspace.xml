@@ -1,58 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="882d09f4-95f1-4c9f-b53c-686c8dd5233b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/CmdLine/CmdLineAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/NetManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/ExitResponder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/LoginResponder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/HelpResponder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/passwordResponder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/usernameResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.conf" beforeDir="false" afterPath="$PROJECT_DIR$/config.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/CmdLine/StdInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/CmdLine/UserAuth.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/CmdResponders/HelpResponder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/CmdProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/CmdResponder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/Connector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/Connector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/NetReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/NetReceiver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Kernel/Communication/NetResponder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/Config$Element.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/FlagProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/Support/FlagResponder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/CmdModeResponder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/DevModeResponder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/FlagResponders/GuiModeResponder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Global.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Global.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Initializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Sys.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Sys.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/iClass/top/chorg/System/Var.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/StdInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/CmdLine/StdInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/CmdLine/UserAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/CmdLine/UserAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/CmdResponders/HelpResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Cmd/HelpResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/CmdResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/CmdResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/Connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Kernel/Communication/NetResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/NetResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Support/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Support/SerializableMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Support/FlagProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/FlagManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/Support/FlagResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Managers/FlagResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/CmdModeResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/CmdModeResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/DevModeResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/DevModeResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/FlagResponders/GuiModeResponder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/GuiModeResponder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/Global.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/Global.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/Sys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chorg/System/Sys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chorg/System/Var.java" beforeDir="false" />
-    </list>
+    <list default="true" id="882d09f4-95f1-4c9f-b53c-686c8dd5233b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,23 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/System/Initializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/HelpResponder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+            <state relative-caret-position="690">
+              <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,10 +24,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/CmdModeResponder.java">
+        <entry file="file://$PROJECT_DIR$/src/top/chorg/CmdLine/CmdLineAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            <state relative-caret-position="261">
+              <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -449,18 +389,17 @@
       <workItem from="1553232019435" duration="15587000" />
       <workItem from="1553517092667" duration="14750000" />
       <workItem from="1553591848566" duration="24877000" />
-      <workItem from="1553619588322" duration="254000" />
+      <workItem from="1553619588322" duration="525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85692000" />
+    <option name="totallyTimeSpent" value="85963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="21" y="28" width="1400" height="798" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28645065" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28645065" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -481,7 +420,7 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3286119" />
       <window_info anchor="bottom" id="Duplicate detector" order="13" weight="0.3286119" />
-      <window_info anchor="bottom" id="Statistic" order="14" weight="0.3286119" />
+      <window_info anchor="bottom" id="Statistic" order="14" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Sequence" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -795,13 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/CmdLine/StdInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/top/chorg/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -906,16 +838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chorg/CmdLine/CmdLineAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1043,11 +965,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/top/chorg/Kernel/Responders/Flag/HelpResponder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        <state relative-caret-position="690">
+          <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/CmdLine/CmdLineAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chorg/CmdLine/StdInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
         </state>
       </provider>
     </entry>
