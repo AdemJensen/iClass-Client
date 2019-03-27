@@ -2,6 +2,10 @@ package top.chorg.System;
 
 import java.util.Formatter;
 
+/**
+ * Contains all the system utilities.
+ * Fully static, no need to make instance.
+ */
 public class Sys {
 
     /**
