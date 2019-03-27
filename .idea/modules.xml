@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/iClass.iml" filepath="$PROJECT_DIR$/iClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iClass Client.iml" filepath="$PROJECT_DIR$/iClass Client.iml" />
     </modules>
   </component>
 </project>
