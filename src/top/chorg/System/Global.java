@@ -173,15 +173,15 @@ public class Global {
         return true;
     }
 
-    public static void saveDefaultConfig() {
-        saveConfig((String) getVar("DEFAULT_CONF_FILE"));
+    public static boolean saveDefaultConfig() {
+        return saveConfigToFile((String) getVar("DEFAULT_CONF_FILE"));
     }
 
-    public static void saveFileConfig() {
-        saveConfig((String) getVar("CONF_FILE"));
+    public static boolean saveFileConfig() {
+        return saveConfigToFile((String) getVar("CONF_FILE"));
     }
 
-    public static void saveConfig(String confFileName) {
+    public static boolean saveConfigToFile(String confFileName) {
         try {
             FileOutputStream fileOut = new FileOutputStream(getVar("CONF_ROUTE") + "/" + confFileName);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -191,8 +191,8 @@ public class Global {
             DevInfoF("SerializableMap Saver", "Serialized data is saved in '%s'.", confFileName);
         } catch(IOException i) {
             errF("SerializableMap Saver", "Unable to open conf file for saving (%s)!", confFileName);
-            i.printStackTrace();
-            exit(3);
+            return false;
         }
+        return true;
     }
 }
