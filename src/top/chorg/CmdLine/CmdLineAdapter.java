@@ -1,8 +1,8 @@
 package top.chorg.CmdLine;
 
 import top.chorg.Kernel.Communication.Message;
-import top.chorg.Kernel.Managers.CmdManager;
-import top.chorg.Kernel.Managers.CmdResponder;
+import top.chorg.Kernel.Cmd.CmdManager;
+import top.chorg.Kernel.Cmd.CmdResponder;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
 
@@ -32,12 +32,12 @@ public class CmdLineAdapter {
             CmdResponder responderObj = CmdManager.execute(msg);
 
             if (responderObj == null) {
-                Sys.err("Cmd Line", "Responder error: Unable to create responder instance.");
+                Sys.err("Responders Line", "Responder error: Unable to create responder instance.");
                 Sys.exit(14);
             } else {
                 while (!responderObj.isDone());
             }
         }
-        Sys.info("Cmd Line", "Command line is closing now.");
+        Sys.info("Responders Line", "Command line is closing now.");
     }
 }

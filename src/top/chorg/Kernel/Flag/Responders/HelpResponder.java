@@ -1,7 +1,7 @@
-package top.chorg.Kernel.Responders.Flag;
+package top.chorg.Kernel.Flag.Responders;
 
-import top.chorg.Kernel.Managers.FlagManager;
-import top.chorg.Kernel.Managers.FlagResponder;
+import top.chorg.Kernel.Flag.FlagManager;
+import top.chorg.Kernel.Flag.FlagResponder;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
 

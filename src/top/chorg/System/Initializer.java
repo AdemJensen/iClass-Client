@@ -1,7 +1,8 @@
 package top.chorg.System;
 
-import top.chorg.Kernel.Managers.CmdManager;
-import top.chorg.Kernel.Managers.FlagManager;
+import top.chorg.Kernel.Cmd.CmdManager;
+import top.chorg.Kernel.Flag.FlagManager;
+import top.chorg.Kernel.Flag.Responders.*;
 
 /**
  * Master initializer, register all the global variables and responders.
@@ -68,25 +69,25 @@ public class Initializer {
      * Register all the flag responders.
      */
     private static void registerFlagResponders() {
-        FlagManager.register("-dev", new top.chorg.Kernel.Responders.Flag.DevModeResponder());
-        FlagManager.register("-Dev", new top.chorg.Kernel.Responders.Flag.DevModeResponder());
-        FlagManager.register("-DEV", new top.chorg.Kernel.Responders.Flag.DevModeResponder());
+        FlagManager.register("-dev", new DevModeResponder());
+        FlagManager.register("-Dev", new DevModeResponder());
+        FlagManager.register("-DEV", new DevModeResponder());
 
-        FlagManager.register("-cmd", new top.chorg.Kernel.Responders.Flag.CmdModeResponder());
-        FlagManager.register("-Cmd", new top.chorg.Kernel.Responders.Flag.CmdModeResponder());
-        FlagManager.register("-CMD", new top.chorg.Kernel.Responders.Flag.CmdModeResponder());
+        FlagManager.register("-cmd", new CmdModeResponder());
+        FlagManager.register("-Responders", new CmdModeResponder());
+        FlagManager.register("-CMD", new CmdModeResponder());
 
-        FlagManager.register("-gui", new top.chorg.Kernel.Responders.Flag.GuiModeResponder());
-        FlagManager.register("-Gui", new top.chorg.Kernel.Responders.Flag.GuiModeResponder());
-        FlagManager.register("-GUI", new top.chorg.Kernel.Responders.Flag.GuiModeResponder());
+        FlagManager.register("-gui", new GuiModeResponder());
+        FlagManager.register("-Gui", new GuiModeResponder());
+        FlagManager.register("-GUI", new GuiModeResponder());
 
-        FlagManager.register("-u", new top.chorg.Kernel.Responders.Flag.usernameResponder());
-        FlagManager.register("--user", new top.chorg.Kernel.Responders.Flag.usernameResponder());
-        FlagManager.register("-p", new top.chorg.Kernel.Responders.Flag.passwordResponder());
-        FlagManager.register("--password", new top.chorg.Kernel.Responders.Flag.passwordResponder());
+        FlagManager.register("-u", new usernameResponder());
+        FlagManager.register("--user", new usernameResponder());
+        FlagManager.register("-p", new passwordResponder());
+        FlagManager.register("--password", new passwordResponder());
 
-        FlagManager.register("-h", new top.chorg.Kernel.Responders.Flag.HelpResponder());
-        FlagManager.register("--help", new top.chorg.Kernel.Responders.Flag.HelpResponder());
+        FlagManager.register("-h", new HelpResponder());
+        FlagManager.register("--help", new HelpResponder());
     }
 
     /**
@@ -94,14 +95,14 @@ public class Initializer {
      * Register all the command responders.
      */
     private static void registerCommands() {
-        CmdManager.register("exit", top.chorg.Kernel.Responders.Cmd.ExitResponder.class);
-        CmdManager.register("stop", top.chorg.Kernel.Responders.Cmd.ExitResponder.class);
+        CmdManager.register("exit", top.chorg.Kernel.Cmd.Responders.ExitResponder.class);
+        CmdManager.register("stop", top.chorg.Kernel.Cmd.Responders.ExitResponder.class);
 
-        CmdManager.register("help", top.chorg.Kernel.Responders.Cmd.HelpResponder.class);
-        CmdManager.register("man", top.chorg.Kernel.Responders.Cmd.HelpResponder.class);
+        CmdManager.register("help", top.chorg.Kernel.Cmd.Responders.HelpResponder.class);
+        CmdManager.register("man", top.chorg.Kernel.Cmd.Responders.HelpResponder.class);
 
-        CmdManager.register("login", top.chorg.Kernel.Responders.Cmd.LoginResponder.class);
-        CmdManager.register("logon", top.chorg.Kernel.Responders.Cmd.LoginResponder.class);
+        CmdManager.register("login", top.chorg.Kernel.Cmd.Responders.LoginResponder.class);
+        CmdManager.register("logon", top.chorg.Kernel.Cmd.Responders.LoginResponder.class);
     }
 
 }

@@ -1,5 +1,6 @@
-package top.chorg.Kernel.Communication;
+package top.chorg.Kernel.Communication.Net;
 
+import top.chorg.Kernel.Communication.Connector;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
 

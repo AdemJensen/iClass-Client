@@ -1,6 +1,6 @@
-package top.chorg.Kernel.Responders.Cmd;
+package top.chorg.Kernel.Cmd.Responders;
 
-import top.chorg.Kernel.Managers.CmdResponder;
+import top.chorg.Kernel.Cmd.CmdResponder;
 import top.chorg.System.Sys;
 
 public class ExitResponder extends CmdResponder {

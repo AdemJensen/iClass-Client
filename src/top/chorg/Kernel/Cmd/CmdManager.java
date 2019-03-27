@@ -1,4 +1,4 @@
-package top.chorg.Kernel.Managers;
+package top.chorg.Kernel.Cmd;
 
 import top.chorg.Kernel.Communication.Message;
 import top.chorg.System.Sys;

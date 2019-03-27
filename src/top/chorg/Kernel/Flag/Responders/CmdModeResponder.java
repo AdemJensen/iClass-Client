@@ -1,10 +1,10 @@
-package top.chorg.Kernel.Responders.Flag;
+package top.chorg.Kernel.Flag.Responders;
 
-import top.chorg.Kernel.Managers.FlagResponder;
+import top.chorg.Kernel.Flag.FlagResponder;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
 
-public class GuiModeResponder extends FlagResponder {
+public class CmdModeResponder extends FlagResponder {
 
     @Override
     public int response() {
@@ -14,14 +14,14 @@ public class GuiModeResponder extends FlagResponder {
                     "The display mode have been set once! Rewriting old configuration."
             );
         }
-        Global.setVar("GUI_MODE", true);
+        Global.setVar("GUI_MODE", false);
         Global.setVar("GUI_MODE_MODIFIED", true);
         return 0;
     }
 
     @Override
     public String getManual() {
-        return "Include this flag to enable the GUI mode.";
+        return "Include this flag to enable the cmd mode.";
     }
 
     @Override

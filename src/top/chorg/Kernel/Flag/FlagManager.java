@@ -1,10 +1,9 @@
-package top.chorg.Kernel.Managers;
+package top.chorg.Kernel.Flag;
 
 import top.chorg.System.Sys;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Queue;
 import java.util.Set;
 
 public class FlagManager {

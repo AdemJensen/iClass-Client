@@ -8,7 +8,7 @@ import java.net.Socket;
 
 public class Connector {
 
-    public static void connect(String host, int port) {
+    public static boolean connect(String host, int port) {
         int failure = 0;
         while (failure < 3) {
             try {
@@ -38,17 +38,18 @@ public class Connector {
                     "Net",
                     "Connection failure for too many times, host might offline or client offline."
             );
-            Sys.exit(202);
+            return false;
         } else {
             Sys.info(
                     "Net",
                     "Successfully handshake from remote host."
             );
+            return true;
         }
     }
 
     public static void disconnect() {
-        if (!Global.varExists("socket") || !((Socket) Global.getVar("socket")).isConnected()) {
+        if (!isConnected()) {
             Sys.warn(
                     "Net",
                     "Connection was already lost or never established!"
@@ -69,6 +70,10 @@ public class Connector {
                 "Remote host connection terminated."
         );
         clearSocket();
+    }
+
+    public static boolean isConnected() {
+        return Global.varExists("socket") && ((Socket) Global.getVar("socket")).isConnected();
     }
 
     public static void clearSocket() {

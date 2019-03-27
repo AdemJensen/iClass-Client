@@ -1,4 +1,4 @@
-package top.chorg.Kernel.Managers;
+package top.chorg.Kernel.Flag;
 
 import top.chorg.System.Sys;
 

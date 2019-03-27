@@ -1,7 +1,7 @@
-package top.chorg.Kernel.Responders.Cmd;
+package top.chorg.Kernel.Cmd.Responders;
 
-import top.chorg.Kernel.Managers.CmdManager;
-import top.chorg.Kernel.Managers.CmdResponder;
+import top.chorg.Kernel.Cmd.CmdManager;
+import top.chorg.Kernel.Cmd.CmdResponder;
 import top.chorg.System.Sys;
 
 import java.lang.reflect.InvocationTargetException;
