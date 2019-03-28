@@ -3,9 +3,9 @@ package top.chorg.Support;
 /**
  * To set up a timer and invoke the lambda method later.
  * Usage:
- * Timer timer = new Timer([time], (Object[] args) -> {
+ * {@code Timer timer = new Timer([time], (Object[] args) -> {
  *     // Do something
- * }, [arg1], [arg2], ...);
+ * }, [arg1], [arg2], ...);}
  */
 public class Timer {
 

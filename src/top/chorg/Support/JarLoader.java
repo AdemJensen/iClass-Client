@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- Extracted from
- @link https://blog.csdn.net/jianggujin/article/details/80536019
+ * Jar module loader utilities.
+ * Extracted from <a href="http://commons.apache.org/proper/commons-lang/">CSDN</a>
  */
 
 public class JarLoader extends URLClassLoader {

@@ -9,11 +9,16 @@ import static top.chorg.System.Sys.*;
 
 /**
  * Contains all the global variables and configuration variables.
- * Fully static, no need to make instance.
- * Attention: Method reloadConfig() or assignConfig(SerializableMap) must be run at lease once to enable the
- * configuration system.
- * If you want to read configurations from the conf file, just use reloadConfig().
- * If you want to make a new config variable container, use assignConfig(new SerializableMap()).
+ *
+ * <p>Fully static, no need to make instance.
+ *
+ * <p><strong>Attention: Method {@code reloadConfig()} or {@code assignConfig(SerializableMap)} must be run at lease
+ * once to enable the configuration system.</strong>
+ *
+ * <ul>
+ * <li>If you want to read configurations from the conf file, just use {@code reloadConfig()}.</li>
+ * <li>If you want to make a new config variable container, use {@code assignConfig(new SerializableMap())}.</li>
+ * </ul>
  */
 public class Global {
     private static HashMap<String, Object> variables = new HashMap<>();     // Contains global variables.
@@ -135,6 +140,7 @@ public class Global {
     /**
      * Read config object from conf file.
      *
+     * @param confFileName Full name of config file.
      * @return The config obj read from file.
      */
     public static SerializableMap readConfig(String confFileName) {
