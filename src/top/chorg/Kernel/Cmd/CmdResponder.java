@@ -15,14 +15,11 @@ import java.io.Serializable;
  *      onReceiveNetMsg()           Net response method (2#). If no need, just keep it void and return 0.
  *      getManual()                 To provide this command's usage manual.
  *                                  Will be used when invoking 'help' command.
- *  - Methods can be used in two major response methods:
- *      sendNetMsg()                To send something to the NetSender and let the message sent to the remote host.
  *  - Variables can be used in two major response methods:
  *      args                        Arguments passed through assignArgs(Serializable).
  */
 public abstract class CmdResponder extends Thread {
     protected Serializable args;        // Arguments passed through assignArgs(Serializable).
-    protected boolean complete = false; // Used to check if current thread is still running.
     protected boolean responseMode = true; // To judge if the run() method should use response() or onReceiveNetMsg().
     private int returnVal = (int) Global.getVar("inProcessReturnValue");
     // Return code after response. If in process, the value will be the same as Global.getVar("inProcessReturnValue")
@@ -62,25 +59,6 @@ public abstract class CmdResponder extends Thread {
     public abstract String getManual();
 
     /**
-     * To send something to the NetSender and let the message sent to the remote host.
-     * Invoked from two execution functions.
-     *
-     * @param args Information to be sent.
-     */
-    protected final void sendNetMsg(Serializable args) {
-        // TODO: Insert the NetSender methods.
-    }
-
-    /**
-     * To judge if the thread is done.
-     *
-     * @return if the thread is over, this method will return true.
-     */
-    public boolean isDone() {
-        return !this.isAlive();
-    }
-
-    /**
      * Assign execution mode to decide which execution method to use.
      *
      * @param responseMode If true, the run() method will use response() method to response.
@@ -99,7 +77,6 @@ public abstract class CmdResponder extends Thread {
         } else {
             returnVal = this.onReceiveNetMsg();
         }
-        this.complete = true;
     }
 
     /**

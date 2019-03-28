@@ -1,6 +1,7 @@
 package top.chorg.System;
 
 import top.chorg.Kernel.Cmd.CmdManager;
+import top.chorg.Kernel.Cmd.PublicResponders.NormalLoginResponder;
 import top.chorg.Kernel.Flag.FlagManager;
 import top.chorg.Kernel.Flag.Responders.*;
 
@@ -11,8 +12,8 @@ import top.chorg.Kernel.Flag.Responders.*;
 public class Initializer {
     private static void DEV_PRE_OPERATIONS() {  // Development operations
         Global.clearConfig();
-        Global.setConfig("Socket_Host", "127.0.0.1");
-        Global.setConfig("Socket_Port", 9999);
+        Global.setConfig("Cmd_Server_Host", "127.0.0.1");
+        Global.setConfig("Cmd_Server_Port", 9999);
         Global.saveFileConfig();
         Global.loadFileConfig();
     }
@@ -35,6 +36,7 @@ public class Initializer {
         }
 
         registerFlagResponders();
+        registerPrivateCommands();
         registerCommands();
 
         FlagManager.execute(flagList);  // Start flag option processor.
@@ -94,11 +96,20 @@ public class Initializer {
     }
 
     /**
-     * Command Responder register.
+     * Private command Responder register.
+     * Register all the command responders.
+     */
+    private static void registerPrivateCommands() {
+        CmdManager privateMan = (CmdManager) Global.getVar("CMD_MAN_PRIVATE");
+        privateMan.register("login", top.chorg.Kernel.Cmd.PrivateResponders.LoginResponder.class);
+    }
+
+    /**
+     * Public command Responder register.
      * Register all the command responders.
      */
     private static void registerCommands() {
-        CmdManager privateMan = (CmdManager) Global.getVar("CMD_MAN_PRIVATE");
+
         CmdManager publicMan = (CmdManager) Global.getVar("CMD_MAN_PUBLIC");
 
         publicMan.register("exit", top.chorg.Kernel.Cmd.PublicResponders.ExitResponder.class);
@@ -107,8 +118,8 @@ public class Initializer {
         publicMan.register("help", top.chorg.Kernel.Cmd.PublicResponders.HelpResponder.class);
         publicMan.register("man", top.chorg.Kernel.Cmd.PublicResponders.HelpResponder.class);
 
-        publicMan.register("login", top.chorg.Kernel.Cmd.PublicResponders.LoginResponder.class);
-        publicMan.register("logon", top.chorg.Kernel.Cmd.PublicResponders.LoginResponder.class);
+        publicMan.register("login", NormalLoginResponder.class);
+        publicMan.register("logon", NormalLoginResponder.class);
     }
 
 }

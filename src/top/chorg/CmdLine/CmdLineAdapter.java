@@ -35,7 +35,7 @@ public class CmdLineAdapter {
                 Sys.err("Responders Line", "Responder error: Unable to create responder instance.");
                 Sys.exit(14);
             } else {
-                while (!responderObj.isDone());
+                while (responderObj.isAlive());
             }
         }
         Sys.info("Responders Line", "Command line is closing now.");

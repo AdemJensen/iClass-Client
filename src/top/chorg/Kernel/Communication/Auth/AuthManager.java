@@ -1,4 +1,4 @@
-package top.chorg.Kernel.Auth;
+package top.chorg.Kernel.Communication.Auth;
 
 import top.chorg.Kernel.Communication.HostManager;
 import top.chorg.System.Global;

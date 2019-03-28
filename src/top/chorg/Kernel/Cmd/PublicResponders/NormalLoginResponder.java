@@ -9,9 +9,9 @@ import top.chorg.System.Sys;
 
 import java.io.Serializable;
 
-public class LoginResponder extends CmdResponder {
+public class NormalLoginResponder extends CmdResponder {
 
-    public LoginResponder(Serializable args) {
+    public NormalLoginResponder(Serializable args) {
         super(args);
     }
 
@@ -27,16 +27,16 @@ public class LoginResponder extends CmdResponder {
             Sys.info("Auth", "For more help, please type 'help login' for more help.");
             return 203;
         }
-        System.out.println("Normal");
         CmdManager privateMan = ((CmdManager) Global.getVar("CMD_MAN_PRIVATE"));
-        top.chorg.Kernel.Cmd.CmdResponder resp =  privateMan.execute(new Message(
-                "normal",
+        CmdResponder resp =  privateMan.execute(new Message(
+                "login",
                 new SerializableMap(
-                        "username", var[0],
-                        "password", var[1]
+                        "method", "normal",
+                        "u", var[0],
+                        "p", var[1]
                 )
         ));
-        while (!resp.isDone());
+        while (resp.isAlive());
         return resp.getReturnVal();
     }
 

@@ -1,34 +1,54 @@
 package top.chorg.Kernel.Communication.Net;
 
-import top.chorg.System.Global;
+import top.chorg.Kernel.Communication.HostManager;
+import top.chorg.Kernel.Communication.Message;
+import top.chorg.Support.SerializeUtils;
 import top.chorg.System.Sys;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.Socket;
 
 /**
  * To process the messages coming from server side.
  */
 public class NetReceiver extends Thread {
+    String identifier;
+    BufferedReader bufferedReader;
+
+    public NetReceiver(String identifier) {
+        this.identifier = identifier;
+        this.bufferedReader = HostManager.getBufferedReader(identifier);
+    }
+
     public void run() {
+
         try {
             while (true) {
-                String msg = ((BufferedReader) Global.getVar("bufferedReader")).readLine();
+                String msg = bufferedReader.readLine();
                 if (msg == null) {
-                    ((Socket) Global.getVar("socket")).close();
-                    Sys.warn(
+                    HostManager.disconnect(identifier);
+                    Sys.warnF(
                             "Net",
-                            "Server connection lost."
+                            "Host (%s) connection lost.",
+                            identifier
                     );
                     break;
                 }
-                System.out.println(msg);
+                try {
+                    NetManager.execute((Message) SerializeUtils.deserialize(msg));
+                } catch (ClassNotFoundException e) {
+                    Sys.warnF(
+                            "Net",
+                            "Connection (%s) has been closed.",
+                            identifier
+                    );
+                }
             }
         } catch (IOException e) {
-            Sys.warn(
+            Sys.warnF(
                     "Net",
-                    "The connection has been closed."
+                    "The connection (%s) has been closed.",
+                    identifier
             );
         }
     }

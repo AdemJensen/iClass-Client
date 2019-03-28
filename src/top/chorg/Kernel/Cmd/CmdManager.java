@@ -18,7 +18,7 @@ public class CmdManager {
         if (!records.containsKey(msg.msgType)) {
             Sys.warnF(
                     "CMD",
-                    "Command '%s' not exist! Use 'help' to display all the possible commands.",
+                    "Command '%s' doesn't exist! Use 'help' to display all the possible commands.",
                     msg.msgType
             );
             return null;

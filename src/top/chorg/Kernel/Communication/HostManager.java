@@ -13,7 +13,7 @@ public class HostManager {
     private static HashMap<String, BufferedReader> brObjs = new HashMap<>();       // Socket bufferedReader storage
 
     /**
-     * Make a connection to the remote host.
+     * Make a connection to the remote host and store them into an HashMap.
      *
      * @param identifier Defines how you want to invoke this connection.
      * @param host The server address.

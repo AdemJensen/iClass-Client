@@ -29,8 +29,8 @@ public class LoginResponder extends CmdResponder {
         Sys.info("Login", "Attempting to login.");
         HostManager.connect(
                 "CmdHost",
-                (String) Global.getConfig("Socket_Host"),
-                (int) Global.getConfig("Socket_Port")
+                (String) Global.getConfig("Cmd_Server_Host"),
+                (int) Global.getConfig("Cmd_Server_Port")
         );
         if (!HostManager.isConnected("CmdHost")) {
             Sys.err("Login", "Unable to login, connection unable to establish (204).");
@@ -43,14 +43,15 @@ public class LoginResponder extends CmdResponder {
             Objects.requireNonNull(cmdPw).println(SerializeUtils.serialize(
                     new Message(
                             "login",
-                            new SerializableMap(
-                                    "method", ((Message) args).msgType,
-                                    "u", ((SerializableMap) ((Message) args).content).get("username"),
-                                    "p", ((SerializableMap) ((Message) args).content).get("password")
-                            )
+                            (SerializableMap) args
                     )
             ));
             String res = Objects.requireNonNull(cmdBr).readLine();
+            if (res == null) {
+                Sys.err("Login", "Remote server refused authentication (207).");
+                HostManager.disconnect("CmdHost");
+                return 207;
+            }
             Message resObj = (Message) SerializeUtils.deserialize(res);
             SerializableMap resContent = (SerializableMap) resObj.content;
             if (resObj.msgType.equals("accessGranted")) {
@@ -59,6 +60,7 @@ public class LoginResponder extends CmdResponder {
                         (String) resContent.get("a"),
                         (int) resContent.get("p")
                 );
+
                 // TODO: Add User object.
                 if (!HostManager.isConnected("FileHost")) {
                     Sys.err("Login", "Unable to login, connection unable to establish (207).");
