@@ -3,16 +3,15 @@ package top.chorg.Kernel.Cmd.PrivateResponders;
 import top.chorg.Kernel.Cmd.CmdResponder;
 import top.chorg.Kernel.Communication.HostManager;
 import top.chorg.Kernel.Communication.Message;
+import top.chorg.Kernel.Communication.Auth.AuthManager;
+import top.chorg.Kernel.Communication.Net.NetReceiver;
+import top.chorg.Kernel.Communication.Net.NetSender;
 import top.chorg.Support.SerializableMap;
-import top.chorg.Support.SerializeUtils;
+import top.chorg.Support.Timer;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Serializable;
-import java.util.Objects;
 
 public class LoginResponder extends CmdResponder {
 
@@ -22,9 +21,13 @@ public class LoginResponder extends CmdResponder {
 
     @Override
     public int response() {
-        if (HostManager.isConnected("CmdHost") && HostManager.isConnected("FileHost")) {
-            Sys.err("Auth", "User already online, please log off first.");
+        if (Global.varExists("AUTH_TIMER")) {
+            Sys.err("Login", "Ongoing Authentication action in process, please retry later.");
             return 208;
+        }
+        if (HostManager.isConnected("CmdHost") && HostManager.isConnected("FileHost")) {
+            Sys.err("Login", "User already online, please log off first.");
+            return 205;
         }
         Sys.info("Login", "Attempting to login.");
         HostManager.connect(
@@ -32,60 +35,28 @@ public class LoginResponder extends CmdResponder {
                 (String) Global.getConfig("Cmd_Server_Host"),
                 (int) Global.getConfig("Cmd_Server_Port")
         );
-        if (!HostManager.isConnected("CmdHost")) {
-            Sys.err("Login", "Unable to login, connection unable to establish (204).");
+        NetSender cmdSender = new NetSender("CmdHost");
+        NetReceiver cmdReceiver = new NetReceiver("CmdHost");
+        Global.setVar("NET_CMD_SENDER", cmdSender);
+        Global.setVar("NET_CMD_RECEIVER", cmdReceiver);
+        cmdReceiver.start();
+        if (!cmdSender.send(new Message("login", (SerializableMap) args))) {    // Send auth info
+            Sys.err("Login", "Unable to send authentication info (206).");
             HostManager.disconnect("CmdHost");
-            return 204;
-        }
-        PrintWriter cmdPw = HostManager.getPrintWriter("CmdHost");
-        BufferedReader cmdBr = HostManager.getBufferedReader("CmdHost");
-        try {
-            Objects.requireNonNull(cmdPw).println(SerializeUtils.serialize(
-                    new Message(
-                            "login",
-                            (SerializableMap) args
-                    )
-            ));
-            String res = Objects.requireNonNull(cmdBr).readLine();
-            if (res == null) {
-                Sys.err("Login", "Remote server refused authentication (207).");
-                HostManager.disconnect("CmdHost");
-                return 207;
-            }
-            Message resObj = (Message) SerializeUtils.deserialize(res);
-            SerializableMap resContent = (SerializableMap) resObj.content;
-            if (resObj.msgType.equals("accessGranted")) {
-                HostManager.connect(
-                        "FileHost",
-                        (String) resContent.get("a"),
-                        (int) resContent.get("p")
-                );
-
-                // TODO: Add User object.
-                if (!HostManager.isConnected("FileHost")) {
-                    Sys.err("Login", "Unable to login, connection unable to establish (207).");
-                    HostManager.disconnect("CmdHost");
-                    HostManager.disconnect("FileHost");
-                    return 207;
-                }
-            } else {
-                Sys.err("Login", "Remote server connection broken (208).");
-                HostManager.disconnect("CmdHost");
-                HostManager.disconnect("FileHost");
-                return 208;
-            }
-        } catch (IOException e) {
-            Sys.err("Login", "Error while authenticating (205).");
-            HostManager.disconnect("CmdHost");
-            HostManager.disconnect("FileHost");
-            return 205;
-        } catch (ClassNotFoundException e) {
-            Sys.err("Login", "Error while authenticating (206).");
-            HostManager.disconnect("CmdHost");
-            HostManager.disconnect("FileHost");
             return 206;
         }
-        Sys.info("Login", "You are now online.");
+        Global.setVar("AUTH_STEP", 1);
+        Global.setVar("AUTH_TIMER", new Timer(5000, (Object[] args) -> {
+            if (AuthManager.isOnline()) return 0;
+            else {
+                Global.dropVar("AUTH_STEP");
+                Global.dropVar("AUTH_TIMER");
+                HostManager.disconnect("CmdHost");
+                HostManager.disconnect("FileHost");
+                Sys.err("Login", "Unable to send authentication info (207).");
+                return 207;
+            }
+        }));
         return 0;
     }
 

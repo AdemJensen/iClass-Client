@@ -21,8 +21,8 @@ import java.io.Serializable;
 public abstract class CmdResponder extends Thread {
     protected Serializable args;        // Arguments passed through assignArgs(Serializable).
     protected boolean responseMode = true; // To judge if the run() method should use response() or onReceiveNetMsg().
-    private int returnVal = (int) Global.getVar("inProcessReturnValue");
-    // Return code after response. If in process, the value will be the same as Global.getVar("inProcessReturnValue")
+    private int returnVal = (int) Global.getVar("PROCESS_RETURN");
+    // Return code after response. If in process, the value will be the same as Global.getVar("PROCESS_RETURN")
 
     /**
      * Assign the arg list for two execution function to provide args.
@@ -81,7 +81,7 @@ public abstract class CmdResponder extends Thread {
 
     /**
      * Get the return value of either execution method.
-     * If thread still running, the return value will return Global.getVar("inProcessReturnValue") instead.
+     * If thread still running, the return value will return Global.getVar("PROCESS_RETURN") instead.
      *
      * @return The return value of either execution method.
      */

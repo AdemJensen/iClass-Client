@@ -8,6 +8,7 @@ import top.chorg.System.Global;
 import top.chorg.System.Sys;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class NormalLoginResponder extends CmdResponder {
 
@@ -28,7 +29,7 @@ public class NormalLoginResponder extends CmdResponder {
             return 203;
         }
         CmdManager privateMan = ((CmdManager) Global.getVar("CMD_MAN_PRIVATE"));
-        CmdResponder resp =  privateMan.execute(new Message(
+        CmdResponder resp =  Objects.requireNonNull(privateMan).execute(new Message(
                 "login",
                 new SerializableMap(
                         "method", "normal",

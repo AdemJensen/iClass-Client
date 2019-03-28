@@ -43,9 +43,7 @@ public class Global {
      */
     public static Object getVar(String key) {
         if (!variables.containsKey(key)) {
-            System.out.println(key);
-            Sys.errF("Global", "Global '%s' not exist.", key);
-            exit(1);
+            return null;
         }
         return variables.get(key);
     }

@@ -1,4 +1,7 @@
 package top.chorg.Kernel.Communication.Auth;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+
 }

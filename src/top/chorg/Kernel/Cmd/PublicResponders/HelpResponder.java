@@ -36,7 +36,7 @@ public class HelpResponder extends CmdResponder {
             for (Object var : vars) {
                 if (!outFirst) outFirst = true;
                 else System.out.println();
-                ArrayList<String> keyList = new ArrayList<>(cmdMan.getKeySet());
+                ArrayList<String> keyList = new ArrayList<>(Objects.requireNonNull(cmdMan).getKeySet());
                 String cmd = (String) var;
                 if (keyList.contains(cmd)) {
                     Class<?> cls = cmdMan.getResponder(cmd);
@@ -75,7 +75,7 @@ public class HelpResponder extends CmdResponder {
             }
         } else {
             ArrayList<String> keyList =
-                    new ArrayList<>(cmdMan.getKeySet());
+                    new ArrayList<>(Objects.requireNonNull(cmdMan).getKeySet());
             while (!keyList.isEmpty()) {
                 if (!outFirst) outFirst = true;
                 else System.out.println();
