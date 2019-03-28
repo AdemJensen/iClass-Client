@@ -58,8 +58,8 @@ public class Initializer {
         Global.setVar("GUI_MODE", true);        // To determine current display mode.
         Global.setVar("DEV_MODE", false);       // To determine whether this is development mode or not.
 
-        Global.setVar("LOG_ROUTE", "./logs");    // Route of log files.
-        Global.setVar("CONF_ROUTE", ".");        // Route of route files.
+        Global.setVar("LOG_ROUTE", "./logs");   // Route of log files.
+        Global.setVar("CONF_ROUTE", ".");       // Route of route files.
         Global.setVar("CONF_FILE", "config.conf");                      // Config file name.
         Global.setVar("DEFAULT_CONF_FILE", "config.default.conf");      // Default config file name.
 

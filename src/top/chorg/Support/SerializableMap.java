@@ -17,6 +17,16 @@ public class SerializableMap implements Serializable {
     private int size;
     private int used;
 
+    public SerializableMap(Serializable...args) {
+        if (args.length % 2 != 0) throw new IllegalArgumentException("Invalid initialization arguments.");
+        while (size < args.length) size *= 2;
+        data = new Element[size];
+        used = 0;
+        for (int i = 0; i < args.length; i += 2) {
+            put((String) args[i], args[i + 1]);
+        }
+    }
+
     public SerializableMap() {
         used = 0;
         size = 32;

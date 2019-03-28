@@ -1,7 +1,9 @@
 package top.chorg.Kernel.Cmd.PublicResponders;
 
-import top.chorg.Kernel.Communication.Connector;
+import top.chorg.Kernel.Cmd.CmdManager;
 import top.chorg.Kernel.Cmd.CmdResponder;
+import top.chorg.Kernel.Communication.Message;
+import top.chorg.Support.SerializableMap;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
 
@@ -25,13 +27,17 @@ public class LoginResponder extends CmdResponder {
             Sys.info("Auth", "For more help, please type 'help login' for more help.");
             return 203;
         }
-        boolean connectionResult = Connector.connect(
-                (String) Global.getConfig("Socket_Host"),
-                (int) Global.getConfig("Socket_Port")
-        );
-        if (!connectionResult) return 204;
-
-        return 0;
+        System.out.println("Normal");
+        CmdManager privateMan = ((CmdManager) Global.getVar("CMD_MAN_PRIVATE"));
+        top.chorg.Kernel.Cmd.CmdResponder resp =  privateMan.execute(new Message(
+                "normal",
+                new SerializableMap(
+                        "username", var[0],
+                        "password", var[1]
+                )
+        ));
+        while (!resp.isDone());
+        return resp.getReturnVal();
     }
 
     @Override

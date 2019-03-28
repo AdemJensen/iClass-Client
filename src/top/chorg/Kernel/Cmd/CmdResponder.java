@@ -7,15 +7,18 @@ import java.io.Serializable;
 /**
  * Basement responder for CmdManager to expand functions.
  * Method overview:
+ *  - Constructors must be override:
+ *      CmdResponder(Serializable)  Assign the arg list for two execution function to provide args.
+ *                                  You can also make some pre-dos to the arg variable.
  *  - Methods must be inherited:
- *      response()              Master response method (1#).
- *      onReceiveNetMsg()       Net response method (2#). If no need, just keep it void and return 0.
- *      getManual()             To provide this command's usage manual.
- *                              Will be used when invoking 'help' command.
+ *      response()                  Master response method (1#).
+ *      onReceiveNetMsg()           Net response method (2#). If no need, just keep it void and return 0.
+ *      getManual()                 To provide this command's usage manual.
+ *                                  Will be used when invoking 'help' command.
  *  - Methods can be used in two major response methods:
- *      sendNetMsg()            To send something to the NetSender and let the message sent to the remote host.
+ *      sendNetMsg()                To send something to the NetSender and let the message sent to the remote host.
  *  - Variables can be used in two major response methods:
- *      args                    Arguments passed through assignArgs(Serializable).
+ *      args                        Arguments passed through assignArgs(Serializable).
  */
 public abstract class CmdResponder extends Thread {
     protected Serializable args;        // Arguments passed through assignArgs(Serializable).

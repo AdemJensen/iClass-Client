@@ -1,6 +1,5 @@
 package top.chorg.Kernel.Communication.Net;
 
-import top.chorg.Kernel.Communication.Connector;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
 
@@ -32,11 +31,5 @@ public class NetReceiver extends Thread {
                     "The connection has been closed."
             );
         }
-        Sys.info(
-                "Net",
-                "Attempting to reconnect to remote host..."
-        );
-        Connector.clearSocket();
-        Connector.connect((String) Global.getConfig("Socket_Host"), (int) Global.getConfig("Socket_Port"));
     }
 }

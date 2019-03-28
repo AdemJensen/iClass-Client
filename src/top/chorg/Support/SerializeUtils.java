@@ -15,7 +15,7 @@ public class SerializeUtils {
         byteArrayOutputStream.close();
         return string;
     }
-    public static Object serializeToObject(String str) throws IOException, ClassNotFoundException {
+    public static Object deserialize(String str) throws IOException, ClassNotFoundException {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(str.getBytes(StandardCharsets.ISO_8859_1));
         ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
         Object object = objectInputStream.readObject();
