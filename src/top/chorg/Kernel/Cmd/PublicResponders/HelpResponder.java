@@ -1,9 +1,12 @@
-package top.chorg.Kernel.Cmd.Responders;
+package top.chorg.Kernel.Cmd.PublicResponders;
 
 import top.chorg.Kernel.Cmd.CmdManager;
 import top.chorg.Kernel.Cmd.CmdResponder;
+import top.chorg.Kernel.Communication.Message;
+import top.chorg.System.Global;
 import top.chorg.System.Sys;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -19,29 +22,40 @@ import java.util.Objects;
  * CAUTION: DO NOT return a void string! If you have nothing to say, please return null in the getManual().
  */
 public class HelpResponder extends CmdResponder {
+
+    public HelpResponder(Serializable args) {
+        super(args);
+    }
+
     @Override
     public int response() {
         Object[] vars = (Object[]) args;
         boolean outFirst = false;
+        CmdManager cmdMan = (CmdManager) Global.getVar("CMD_MAN_PUBLIC");
         if (vars.length > 0) {
             for (Object var : vars) {
                 if (!outFirst) outFirst = true;
                 else System.out.println();
-                ArrayList<String> keyList = new ArrayList<>(CmdManager.getKeySet());
+                ArrayList<String> keyList = new ArrayList<>(cmdMan.getKeySet());
                 String cmd = (String) var;
                 if (keyList.contains(cmd)) {
-                    Class<?> cls = CmdManager.getResponder(cmd);
+                    Class<?> cls = cmdMan.getResponder(cmd);
                     try {
-                        CmdResponder responder = (CmdResponder) cls.getDeclaredConstructor().newInstance();
+                        CmdResponder responder = (CmdResponder) cls.getDeclaredConstructor(Serializable.class)
+                                .newInstance(new Message());
                         String man = responder.getManual();
-                        System.out.printf("- %s -\n\t%s\n", cmd, man == null ? "(This command doesn't have a manual)" : man);
+                        System.out.printf(
+                                "- %s -\n\t%s\n",
+                                cmd, man == null ? "(This command doesn't have a manual)" : man
+                        );
                         if (man == null) return 0;
                         keyList.remove(cmd);
                         boolean haveSame = false;
                         for (String sub : keyList) {
-                            Class<?> clsSub = CmdManager.getResponder(sub);
-                            CmdResponder responderSub = (CmdResponder) clsSub.getDeclaredConstructor().newInstance();
-                            if (Objects.equals(responderSub.getManual(), man)) {
+                            Class<?> clsSub = cmdMan.getResponder(sub);
+                            responder = (CmdResponder) clsSub.getDeclaredConstructor(Serializable.class)
+                                    .newInstance(new Message());
+                            if (Objects.equals(responder.getManual(), man)) {
                                 if (!haveSame) {
                                     haveSame = true;
                                     System.out.print("Command(s) with same effect:");
@@ -50,7 +64,8 @@ public class HelpResponder extends CmdResponder {
                             }
                         }
                         if (haveSame) System.out.println();
-                    } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                    } catch (NoSuchMethodException | InstantiationException |
+                            IllegalAccessException | InvocationTargetException e) {
                         Sys.errF("Help", "Unable to make instance of cmd '%s'.", cmd);
                         Sys.exit(6);
                     }
@@ -59,22 +74,25 @@ public class HelpResponder extends CmdResponder {
                 }
             }
         } else {
-            ArrayList<String> keyList = new ArrayList<>(CmdManager.getKeySet());
+            ArrayList<String> keyList =
+                    new ArrayList<>(cmdMan.getKeySet());
             while (!keyList.isEmpty()) {
                 if (!outFirst) outFirst = true;
                 else System.out.println();
                 String cur = keyList.get(0);
-                Class<?> cls = CmdManager.getResponder(cur);
+                Class<?> cls = cmdMan.getResponder(cur);
                 try {
-                    CmdResponder responder = (CmdResponder) cls.getDeclaredConstructor().newInstance();
+                    CmdResponder responder = (CmdResponder) cls.getDeclaredConstructor(Serializable.class)
+                            .newInstance(new Message());
                     System.out.print("- " + cur);
                     keyList.remove(cur);
                     String man = responder.getManual();
                     for (int i = 0; i < keyList.size(); i++) {
                         String sub = keyList.get(i);
-                        Class<?> clsSub = CmdManager.getResponder(sub);
-                        CmdResponder responderSub = (CmdResponder) clsSub.getDeclaredConstructor().newInstance();
-                        if (Objects.equals(man, responderSub.getManual())) {
+                        Class<?> clsSub = cmdMan.getResponder(sub);
+                        responder = (CmdResponder) clsSub.getDeclaredConstructor(Serializable.class)
+                                .newInstance(new Message());
+                        if (Objects.equals(man, responder.getManual())) {
                             System.out.print(" | " + sub);
                             keyList.remove(sub);
                             i = -1;
@@ -82,7 +100,8 @@ public class HelpResponder extends CmdResponder {
                     }
                     if (man == null) man = "(These commands doesn't have a manual)";
                     System.out.println(" -\n\t" + man);
-                } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                } catch (NoSuchMethodException | InstantiationException |
+                        IllegalAccessException | InvocationTargetException e) {
                     Sys.errF("Help", "Unable to make instance of cmd '%s'.", cur);
                     Sys.exit(5);
                 }
@@ -98,7 +117,7 @@ public class HelpResponder extends CmdResponder {
 
     @Override
     public String getManual() {
-        return "If no parameter, this will list all the commands. Else, use 'help [cmd] or man [cmd]' " +
+        return "If no parameter, this will list all the commands and manual. Else, use 'help [cmd] or man [cmd]' " +
                 "to show the cmd manual.";
     }
 }

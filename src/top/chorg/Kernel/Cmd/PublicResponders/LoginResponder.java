@@ -1,14 +1,24 @@
-package top.chorg.Kernel.Cmd.Responders;
+package top.chorg.Kernel.Cmd.PublicResponders;
 
 import top.chorg.Kernel.Communication.Connector;
 import top.chorg.Kernel.Cmd.CmdResponder;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
 
+import java.io.Serializable;
+
 public class LoginResponder extends CmdResponder {
+
+    public LoginResponder(Serializable args) {
+        super(args);
+    }
 
     @Override
     public int response() {
+        if (args == null) {
+            Sys.err("Auth", "Arguments not assigned.");
+            return 204;
+        }
         String[] var = (String[]) args;
         if (var.length < 2) {
             Sys.warn("Auth", "Arguments for login are too few. Needed two parameters.");

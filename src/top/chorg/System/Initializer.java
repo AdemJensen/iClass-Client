@@ -62,6 +62,9 @@ public class Initializer {
         Global.setVar("CONF_ROUTE", ".");        // Route of route files.
         Global.setVar("CONF_FILE", "config.conf");                      // Config file name.
         Global.setVar("DEFAULT_CONF_FILE", "config.default.conf");      // Default config file name.
+
+        Global.setVar("CMD_MAN_PUBLIC", new CmdManager());
+        Global.setVar("CMD_MAN_PRIVATE", new CmdManager());
     }
 
     /**
@@ -74,7 +77,7 @@ public class Initializer {
         FlagManager.register("-DEV", new DevModeResponder());
 
         FlagManager.register("-cmd", new CmdModeResponder());
-        FlagManager.register("-Responders", new CmdModeResponder());
+        FlagManager.register("-Cmd", new CmdModeResponder());
         FlagManager.register("-CMD", new CmdModeResponder());
 
         FlagManager.register("-gui", new GuiModeResponder());
@@ -95,14 +98,17 @@ public class Initializer {
      * Register all the command responders.
      */
     private static void registerCommands() {
-        CmdManager.register("exit", top.chorg.Kernel.Cmd.Responders.ExitResponder.class);
-        CmdManager.register("stop", top.chorg.Kernel.Cmd.Responders.ExitResponder.class);
+        CmdManager privateMan = (CmdManager) Global.getVar("CMD_MAN_PRIVATE");
+        CmdManager publicMan = (CmdManager) Global.getVar("CMD_MAN_PUBLIC");
 
-        CmdManager.register("help", top.chorg.Kernel.Cmd.Responders.HelpResponder.class);
-        CmdManager.register("man", top.chorg.Kernel.Cmd.Responders.HelpResponder.class);
+        publicMan.register("exit", top.chorg.Kernel.Cmd.PublicResponders.ExitResponder.class);
+        publicMan.register("stop", top.chorg.Kernel.Cmd.PublicResponders.ExitResponder.class);
 
-        CmdManager.register("login", top.chorg.Kernel.Cmd.Responders.LoginResponder.class);
-        CmdManager.register("logon", top.chorg.Kernel.Cmd.Responders.LoginResponder.class);
+        publicMan.register("help", top.chorg.Kernel.Cmd.PublicResponders.HelpResponder.class);
+        publicMan.register("man", top.chorg.Kernel.Cmd.PublicResponders.HelpResponder.class);
+
+        publicMan.register("login", top.chorg.Kernel.Cmd.PublicResponders.LoginResponder.class);
+        publicMan.register("logon", top.chorg.Kernel.Cmd.PublicResponders.LoginResponder.class);
     }
 
 }

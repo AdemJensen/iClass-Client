@@ -3,6 +3,7 @@ package top.chorg.Kernel.Cmd;
 import top.chorg.Kernel.Communication.Message;
 import top.chorg.System.Sys;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Set;
@@ -11,9 +12,9 @@ import java.util.Set;
  * Master processor used to process the commands from the client side.
  */
 public class CmdManager {
-    private static HashMap<String, Class<?>> records = new HashMap<>();
+    private HashMap<String, Class<?>> records = new HashMap<>();
 
-    public static CmdResponder execute(Message msg) {
+    public CmdResponder execute(Message msg) {
         if (!records.containsKey(msg.msgType)) {
             Sys.warnF(
                     "CMD",
@@ -24,8 +25,8 @@ public class CmdManager {
         }
         Class<?> responderClass = records.get(msg.msgType);
         try {
-            CmdResponder responderObj = (CmdResponder) responderClass.getDeclaredConstructor().newInstance();
-            responderObj.assignArgs(msg.content);
+            CmdResponder responderObj =
+                    (CmdResponder) (responderClass.getDeclaredConstructor(Serializable.class).newInstance(msg.content));
             responderObj.start();
             return responderObj;
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
@@ -39,11 +40,11 @@ public class CmdManager {
         return null;
     }
 
-    public static boolean cmdExists(String key) {
+    public boolean cmdExists(String key) {
         return records.containsKey(key);
     }
 
-    public static void register(String cmd, Class<?> response) {
+    public void register(String cmd, Class<?> response) {
         if (response.getSuperclass().equals(CmdResponder.class)) {
             if (records.containsKey(cmd)) {
                 Sys.errF(
@@ -64,11 +65,11 @@ public class CmdManager {
         }
     }
 
-    public static Set<String> getKeySet() {
+    public Set<String> getKeySet() {
         return records.keySet();
     }
 
-    public static Class<?> getResponder(String key) {
+    public Class<?> getResponder(String key) {
         return records.get(key);
     }
 

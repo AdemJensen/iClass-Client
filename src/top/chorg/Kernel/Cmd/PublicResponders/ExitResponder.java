@@ -1,9 +1,16 @@
-package top.chorg.Kernel.Cmd.Responders;
+package top.chorg.Kernel.Cmd.PublicResponders;
 
 import top.chorg.Kernel.Cmd.CmdResponder;
 import top.chorg.System.Sys;
 
+import java.io.Serializable;
+
 public class ExitResponder extends CmdResponder {
+
+    public ExitResponder(Serializable args) {
+        super(args);
+    }
+
     @Override
     public int response() {
         Sys.exit(0);

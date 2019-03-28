@@ -1,7 +1,7 @@
 package top.chorg.CmdLine;
 
-import top.chorg.Kernel.Communication.Message;
 import top.chorg.Kernel.Cmd.CmdManager;
+import top.chorg.Kernel.Communication.Message;
 import top.chorg.Kernel.Cmd.CmdResponder;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
@@ -19,7 +19,7 @@ public class CmdLineAdapter {
             if (cmd.equals("exit")) break;
 
             String[] args = cmd.split(" ");
-            if (!CmdManager.cmdExists(args[0])) {
+            if (!((CmdManager) Global.getVar("CMD_MAN_PUBLIC")).cmdExists(args[0])) {
                 Sys.errF("CMD", "Command '%s' not found.", args[0]);
                 continue;
             }
@@ -29,7 +29,7 @@ public class CmdLineAdapter {
             String[] content = new String[args.length - 1];
             System.arraycopy(args, 1, content, 0, args.length - 1);
             msg.content = content;
-            CmdResponder responderObj = CmdManager.execute(msg);
+            CmdResponder responderObj = ((CmdManager) Global.getVar("CMD_MAN_PUBLIC")).execute(msg);
 
             if (responderObj == null) {
                 Sys.err("Responders Line", "Responder error: Unable to create responder instance.");

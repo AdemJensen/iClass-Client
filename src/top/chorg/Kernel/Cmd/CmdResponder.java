@@ -25,6 +25,17 @@ public abstract class CmdResponder extends Thread {
     // Return code after response. If in process, the value will be the same as Global.getVar("inProcessReturnValue")
 
     /**
+     * Assign the arg list for two execution function to provide args.
+     * Invoked only by managers.
+     * WARNING: MUST BE OVERRIDE IN SUB CLASS!
+     *
+     * @param args Arguments to be provided.
+     */
+    public CmdResponder(Serializable args) {
+        this.args = args;
+    }
+
+    /**
      * Master response method (1#).
      * Will be invoked at CmdManager when assigned.
      *
@@ -64,16 +75,6 @@ public abstract class CmdResponder extends Thread {
      */
     public boolean isDone() {
         return !this.isAlive();
-    }
-
-    /**
-     * Assign the arg list for two execution function to provide args.
-     * Invoked only by managers.
-     *
-     * @param args Arguments to be provided.
-     */
-    public final void assignArgs(Serializable args) {
-        this.args = args;
     }
 
     /**
