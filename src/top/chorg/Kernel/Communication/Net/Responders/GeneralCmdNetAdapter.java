@@ -1,11 +1,8 @@
 package top.chorg.Kernel.Communication.Net.Responders;
 
 import top.chorg.Kernel.Cmd.CmdResponder;
-import top.chorg.Kernel.Communication.Auth.AuthManager;
 import top.chorg.Kernel.Communication.HostManager;
 import top.chorg.Kernel.Communication.Message;
-import top.chorg.Kernel.Communication.Net.NetManager;
-import top.chorg.Kernel.Communication.Net.NetReceiver;
 import top.chorg.Kernel.Communication.Net.NetResponder;
 import top.chorg.System.Sys;
 
@@ -24,7 +21,11 @@ public class GeneralCmdNetAdapter extends NetResponder {
 
     @Override
     public int response() {
-
+        try {
+            execute((Message) args);
+        } catch (ClassCastException e) {
+            HostManager.onInvalidTransmission("Invalid response.");
+        }
         return 0;
     }
 

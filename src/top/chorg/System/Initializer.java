@@ -4,6 +4,7 @@ import top.chorg.Kernel.Cmd.CmdManager;
 import top.chorg.Kernel.Cmd.PublicResponders.NormalLoginResponder;
 import top.chorg.Kernel.Communication.Net.NetManager;
 import top.chorg.Kernel.Communication.Net.Responders.Auth.ContinueLogin;
+import top.chorg.Kernel.Communication.Net.Responders.GeneralCmdNetAdapter;
 import top.chorg.Kernel.Flag.FlagManager;
 import top.chorg.Kernel.Flag.Responders.*;
 
@@ -99,10 +100,7 @@ public class Initializer {
     }
 
     private static void registerNetResponders() {
-        NetManager.register(
-                "continueLogin",
-                ContinueLogin.class
-        );
+        NetManager.register("respond", GeneralCmdNetAdapter.class);
     }
 
     /**
@@ -114,6 +112,11 @@ public class Initializer {
         if (privateMan == null) Sys.exit(255);
         assert privateMan != null;
         privateMan.register("login", top.chorg.Kernel.Cmd.PrivateResponders.LoginResponder.class);
+        GeneralCmdNetAdapter.register(
+                "continueLogin",
+                top.chorg.Kernel.Cmd.PrivateResponders.LoginResponder.class
+        );
+
     }
 
     /**
