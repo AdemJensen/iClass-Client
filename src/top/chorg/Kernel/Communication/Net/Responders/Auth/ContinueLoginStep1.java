@@ -20,27 +20,18 @@ public class ContinueLoginStep1 extends NetResponder {
     @Override
     public int response() {
         if (!Global.varExists("AUTH_STEP") || ((int) Global.getVar("AUTH_STEP")) != 1) {
-            Sys.warn(
-                    "Auth",
-                    "Received invalid response, ignoring."
-            );
+            HostManager.onInvalidTransmission("Auth step mismatch");
             return 1;
         }
         SerializableMap resContent;
         try {
             resContent = (SerializableMap) args;
         } catch(ClassCastException e) {
-            Sys.warn(
-                    "Auth",
-                    "Received invalid response, ignoring."
-            );
+            HostManager.onInvalidTransmission("Invalid message content");
             return 1;
         }
         if (!resContent.containsKey("a") || !resContent.containsKey("p")) {
-            Sys.warn(
-                    "Auth",
-                    "Received invalid response, ignoring."
-            );
+            HostManager.onInvalidTransmission("Invalid message content");
             return 1;
         }
         HostManager.connect(

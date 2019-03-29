@@ -38,6 +38,7 @@ public class Initializer {
 
         registerFlagResponders();
         registerPrivateCommands();
+        registerNetResponders();
         registerCommands();
 
         FlagManager.execute(flagList);  // Start flag option processor.
@@ -113,6 +114,8 @@ public class Initializer {
      */
     private static void registerPrivateCommands() {
         CmdManager privateMan = (CmdManager) Global.getVar("CMD_MAN_PRIVATE");
+        if (privateMan == null) Sys.exit(255);
+        assert privateMan != null;
         privateMan.register("login", top.chorg.Kernel.Cmd.PrivateResponders.LoginResponder.class);
     }
 
@@ -123,7 +126,8 @@ public class Initializer {
     private static void registerCommands() {
 
         CmdManager publicMan = (CmdManager) Global.getVar("CMD_MAN_PUBLIC");
-
+        if (publicMan == null) Sys.exit(255);
+        assert publicMan != null;
         publicMan.register("exit", top.chorg.Kernel.Cmd.PublicResponders.ExitResponder.class);
         publicMan.register("stop", top.chorg.Kernel.Cmd.PublicResponders.ExitResponder.class);
 

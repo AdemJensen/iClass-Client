@@ -46,7 +46,7 @@ public class LoginResponder extends CmdResponder {
             return 206;
         }
         Global.setVar("AUTH_STEP", 1);
-        Global.setVar("AUTH_TIMER", new Timer(5000, (Object[] args) -> {
+        Global.setVar("AUTH_TIMER", new Timer(10000, (Object[] args) -> {
             if (AuthManager.isOnline()) return 0;
             else {
                 Global.dropVar("AUTH_STEP");

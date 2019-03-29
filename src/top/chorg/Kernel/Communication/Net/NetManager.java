@@ -28,7 +28,7 @@ public class NetManager {
             return responderObj;
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             Sys.errF(
-                    "CMD",
+                    "Net",
                     "Invalid responder (%s), unable to make response.",
                     msg.msgType
             );
@@ -45,8 +45,8 @@ public class NetManager {
         if (response.getSuperclass().equals(NetResponder.class)) {
             if (records.containsKey(cmd)) {
                 Sys.errF(
-                        "CMD",
-                        "CMD '%s' already exists!",
+                        "Net",
+                        "Net '%s' already exists!",
                         cmd
                 );
                 Sys.exit(17);
@@ -54,12 +54,16 @@ public class NetManager {
             records.put(cmd, response);
         } else {
             Sys.errF(
-                    "CMD",
-                    "Responder '%s' is not a CmdResponder!",
+                    "Net",
+                    "Responder '%s' is not a NetResponder!",
                     response
             );
             Sys.exit(18);
         }
+    }
+
+    public static void onConnectionLost(String identifier) {
+
     }
 
     public static Set<String> getKeySet() {

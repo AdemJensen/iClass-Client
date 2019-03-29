@@ -118,4 +118,12 @@ public class HostManager {
         return null;
     }
 
+    public static void onInvalidTransmission(String identifier) {
+        Sys.warnF(
+                "Net",
+                "Received invalid response (%s).",
+                identifier
+        );
+    }
+
 }
