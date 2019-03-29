@@ -1,5 +1,5 @@
 package top.chorg.Kernel.Communication.Net.Responders.Auth;
 
-public class UpdateUserInfo {
+public class UserActions {
 
 }

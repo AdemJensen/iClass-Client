@@ -3,6 +3,7 @@ package top.chorg.System;
 import top.chorg.Kernel.Cmd.CmdManager;
 import top.chorg.Kernel.Cmd.PublicResponders.NormalLoginResponder;
 import top.chorg.Kernel.Communication.Net.NetManager;
+import top.chorg.Kernel.Communication.Net.Responders.Auth.ContinueLogin;
 import top.chorg.Kernel.Flag.FlagManager;
 import top.chorg.Kernel.Flag.Responders.*;
 
@@ -99,12 +100,8 @@ public class Initializer {
 
     private static void registerNetResponders() {
         NetManager.register(
-                "continueLogin1",
-                top.chorg.Kernel.Communication.Net.Responders.Auth.ContinueLoginStep1.class
-        );
-        NetManager.register(
-                "continueLogin2",
-                top.chorg.Kernel.Communication.Net.Responders.Auth.ContinueLoginStep2.class
+                "continueLogin",
+                ContinueLogin.class
         );
     }
 
