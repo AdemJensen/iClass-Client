@@ -22,7 +22,7 @@ public class LoginResponder extends CmdResponder {
     @Override
     public int response() {
         if (Global.varExists("AUTH_TIMER")) {
-            Sys.err("Login", "Ongoing Authentication action in process, please retry later.");
+            Sys.err("Login", "Ongoing Authentication action in progress, please retry later.");
             return 208;
         }
         if (HostManager.isConnected("CmdHost") && HostManager.isConnected("FileHost")) {
