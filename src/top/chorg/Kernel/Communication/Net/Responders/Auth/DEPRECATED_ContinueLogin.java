@@ -13,9 +13,9 @@ import top.chorg.System.Sys;
 
 import java.io.Serializable;
 
-public class ContinueLogin extends NetResponder {
+public class DEPRECATED_ContinueLogin extends NetResponder {
 
-    public ContinueLogin(Serializable args) {
+    public DEPRECATED_ContinueLogin(Serializable args) {
         super(args);
     }
 

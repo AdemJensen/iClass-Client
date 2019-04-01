@@ -20,7 +20,8 @@ public class CmdLineAdapter {
             String cmd = sc.nextLine();
             if (cmd.equals("exit")) break;
             String[] args = cmd.split(" ");
-            if (!((CmdManager) Objects.requireNonNull(Global.getVar("CMD_MAN_PUBLIC"))).cmdExists(args[0])) {
+            if (args.length == 0 || args[0].length() == 0) continue;
+            if (!Global.cmdManPublic.cmdExists(args[0])) {
                 Sys.errF("CMD", "Command '%s' not found.", args[0]);
                 continue;
             }
@@ -31,7 +32,7 @@ public class CmdLineAdapter {
             System.arraycopy(args, 1, content, 0, args.length - 1);
             msg.content = content;
             CmdResponder responderObj =
-                    ((CmdManager) Objects.requireNonNull(Global.getVar("CMD_MAN_PUBLIC"))).execute(msg);
+                    Global.cmdManPublic.execute(msg);
 
             if (responderObj == null) {
                 Sys.err("Cmd Line", "Responder error: Unable to create responder instance.");

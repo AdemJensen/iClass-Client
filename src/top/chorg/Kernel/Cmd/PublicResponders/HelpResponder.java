@@ -31,7 +31,7 @@ public class HelpResponder extends CmdResponder {
     public int response() {
         Object[] vars = (Object[]) args;
         boolean outFirst = false;
-        CmdManager cmdMan = (CmdManager) Global.getVar("CMD_MAN_PUBLIC");
+        CmdManager cmdMan = Global.cmdManPublic;
         if (vars.length > 0) {
             for (Object var : vars) {
                 if (!outFirst) outFirst = true;

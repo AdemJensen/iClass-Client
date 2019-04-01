@@ -1,9 +1,7 @@
 package top.chorg.System;
 
-import top.chorg.Kernel.Cmd.CmdManager;
 import top.chorg.Kernel.Cmd.PublicResponders.NormalLoginResponder;
 import top.chorg.Kernel.Communication.Net.NetManager;
-import top.chorg.Kernel.Communication.Net.Responders.Auth.ContinueLogin;
 import top.chorg.Kernel.Communication.Net.Responders.GeneralCmdNetAdapter;
 import top.chorg.Kernel.Flag.FlagManager;
 import top.chorg.Kernel.Flag.Responders.*;
@@ -69,8 +67,6 @@ public class Initializer {
         Global.setVar("CONF_FILE", "config.conf");                      // Config file name.
         Global.setVar("DEFAULT_CONF_FILE", "config.default.conf");      // Default config file name.
 
-        Global.setVar("CMD_MAN_PUBLIC", new CmdManager());
-        Global.setVar("CMD_MAN_PRIVATE", new CmdManager());
     }
 
     /**
@@ -108,12 +104,10 @@ public class Initializer {
      * Register all the command responders.
      */
     private static void registerPrivateCommands() {
-        CmdManager privateMan = (CmdManager) Global.getVar("CMD_MAN_PRIVATE");
-        if (privateMan == null) Sys.exit(255);
-        assert privateMan != null;
-        privateMan.register("login", top.chorg.Kernel.Cmd.PrivateResponders.LoginResponder.class);
+
+        Global.cmdManPrivate.register("login", top.chorg.Kernel.Cmd.PrivateResponders.LoginResponder.class);
         GeneralCmdNetAdapter.register(
-                "continueLogin",
+                "login",
                 top.chorg.Kernel.Cmd.PrivateResponders.LoginResponder.class
         );
 
@@ -125,17 +119,14 @@ public class Initializer {
      */
     private static void registerCommands() {
 
-        CmdManager publicMan = (CmdManager) Global.getVar("CMD_MAN_PUBLIC");
-        if (publicMan == null) Sys.exit(255);
-        assert publicMan != null;
-        publicMan.register("exit", top.chorg.Kernel.Cmd.PublicResponders.ExitResponder.class);
-        publicMan.register("stop", top.chorg.Kernel.Cmd.PublicResponders.ExitResponder.class);
+        Global.cmdManPublic.register("exit", top.chorg.Kernel.Cmd.PublicResponders.ExitResponder.class);
+        Global.cmdManPublic.register("stop", top.chorg.Kernel.Cmd.PublicResponders.ExitResponder.class);
 
-        publicMan.register("help", top.chorg.Kernel.Cmd.PublicResponders.HelpResponder.class);
-        publicMan.register("man", top.chorg.Kernel.Cmd.PublicResponders.HelpResponder.class);
+        Global.cmdManPublic.register("help", top.chorg.Kernel.Cmd.PublicResponders.HelpResponder.class);
+        Global.cmdManPublic.register("man", top.chorg.Kernel.Cmd.PublicResponders.HelpResponder.class);
 
-        publicMan.register("login", NormalLoginResponder.class);
-        publicMan.register("logon", NormalLoginResponder.class);
+        Global.cmdManPublic.register("login", NormalLoginResponder.class);
+        Global.cmdManPublic.register("logon", NormalLoginResponder.class);
     }
 
 }

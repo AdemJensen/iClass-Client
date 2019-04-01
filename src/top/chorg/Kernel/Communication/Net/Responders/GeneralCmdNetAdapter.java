@@ -31,7 +31,7 @@ public class GeneralCmdNetAdapter extends NetResponder {
 
     public static CmdResponder execute(Message msg) {
         if (!records.containsKey(msg.msgType)) {
-            HostManager.onInvalidTransmission("");
+            HostManager.onInvalidTransmission("Invalid response (0).");
             return null;
         }
         Class<?> responderClass = records.get(msg.msgType);

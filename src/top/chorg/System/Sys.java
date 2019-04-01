@@ -105,7 +105,7 @@ public class Sys {
      * @param sender Message sender name.
      * @param msg Message content.
      */
-    public static void DevInfo(String sender, String msg) {
+    public static void devInfo(String sender, String msg) {
         String content = String.format("[%s] DEV: %s", sender, msg);
         if (isDevEnv() || isCmdEnv()) {
             System.out.println(content);
@@ -121,8 +121,8 @@ public class Sys {
      * @param format Message content format.
      * @param args Parameters to be filled into format blanks.
      */
-    public static void DevInfoF(String sender, String format, Object ... args) {
-        DevInfo(sender, new Formatter().format(format, args).toString());
+    public static void devInfoF(String sender, String format, Object ... args) {
+        devInfo(sender, new Formatter().format(format, args).toString());
     }
 
     /**

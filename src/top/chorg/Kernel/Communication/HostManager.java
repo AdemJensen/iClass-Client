@@ -1,6 +1,5 @@
 package top.chorg.Kernel.Communication;
 
-import top.chorg.System.Global;
 import top.chorg.System.Sys;
 
 import java.io.*;
@@ -28,43 +27,29 @@ public class HostManager {
             Sys.err("Net", "Identifier already exists.");
             return 2;
         }
-        int failure = 0;
-        while (failure < 3) {
-            try {
-                SocketObjs.put(identifier, new Socket(host, port));
-                pwObjs.put(
-                        identifier,
-                        new PrintWriter(new OutputStreamWriter(SocketObjs.get(identifier).getOutputStream()))
-                );
-                brObjs.put(
-                        identifier,
-                        new BufferedReader(new InputStreamReader(SocketObjs.get(identifier).getInputStream()))
-                );
-            } catch (IOException e) {
-                failure++;
-                Sys.warnF(
-                        "Net",
-                        "Connection failure, retrying (%d)",
-                        failure
-                );
-                remove(identifier);
-                continue;
-            }
-            break;
-        }
-        if (failure >= 3) {
+        try {
+            SocketObjs.put(identifier, new Socket(host, port));
+            pwObjs.put(
+                    identifier,
+                    new PrintWriter(new OutputStreamWriter(SocketObjs.get(identifier).getOutputStream()))
+            );
+            brObjs.put(
+                    identifier,
+                    new BufferedReader(new InputStreamReader(SocketObjs.get(identifier).getInputStream()))
+            );
+        } catch (IOException e) {
             Sys.err(
                     "Net",
-                    "Connection failure for too many times, host might offline or client offline."
+                    "Connection failure, host might offline or client offline."
             );
+            remove(identifier);
             return 1;
-        } else {
-            Sys.info(
-                    "Net",
-                    "Successfully handshake from remote host."
-            );
-            return 0;
         }
+        Sys.info(
+                "Net",
+                "Successfully handshake from remote host."
+        );
+        return 0;
     }
 
     public static void disconnect(String identifier) {

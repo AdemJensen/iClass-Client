@@ -1,5 +1,8 @@
 package top.chorg.System;
 
+import top.chorg.Kernel.Cmd.CmdManager;
+import top.chorg.Kernel.Communication.Net.NetReceiver;
+import top.chorg.Kernel.Communication.Net.NetSender;
 import top.chorg.Support.SerializableMap;
 
 import java.io.*;
@@ -21,6 +24,12 @@ import static top.chorg.System.Sys.*;
  * </ul>
  */
 public class Global {
+    public static CmdManager cmdManPublic = new CmdManager();
+    public static CmdManager cmdManPrivate = new CmdManager();
+
+    public static NetSender masterSender;
+    public static NetReceiver masterReceiver;
+
     private static HashMap<String, Object> variables = new HashMap<>();     // Contains global variables.
     private static SerializableMap configs;     // Contains configuration variables.
 
@@ -34,7 +43,7 @@ public class Global {
         if (variables.containsKey(key)) {
             String ori = variables.get(key).toString();
             variables.replace(key, value);
-            Sys.DevInfoF("Global","Global '%s' replaced ('%s' -> '%s').", key, ori, value.toString());
+            Sys.devInfoF("Global","Global '%s' replaced ('%s' -> '%s').", key, ori, value.toString());
         } else {
             variables.put(key, value);
         }
@@ -83,7 +92,7 @@ public class Global {
         if (!configs.containsKey(key)) {
             if (Sys.isDevEnv()) {
                 configs.put(key, value);
-                Sys.DevInfoF("Config", "Config '%s' have been added to the set.", key);
+                Sys.devInfoF("Config", "Config '%s' have been added to the set.", key);
             } else {
                 Sys.errF("Config", "Invalid config key '%s'.", key);
                 exit(2);
@@ -192,7 +201,7 @@ public class Global {
             out.writeObject(Global.getConfObj());
             out.close();
             fileOut.close();
-            DevInfoF("SerializableMap Saver", "Serialized data is saved in '%s'.", confFileName);
+            devInfoF("SerializableMap Saver", "Serialized data is saved in '%s'.", confFileName);
         } catch(IOException i) {
             errF("SerializableMap Saver", "Unable to open conf file for saving (%s)!", confFileName);
             return false;

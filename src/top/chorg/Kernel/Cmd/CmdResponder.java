@@ -13,8 +13,9 @@ import java.io.Serializable;
  *  - Methods must be inherited:
  *      response()                  Master response method (1#).
  *      onReceiveNetMsg()           Net response method (2#). If no need, just keep it void and return 0.
- *      getManual()                 To provide this command's usage manual.
  *                                  Will be used when invoking 'help' command.
+ *  - Methods suggested to be override:
+ *      getManual()                 To provide this command's usage manual.
  *  - Variables can be used in two major response methods:
  *      args                        Arguments passed through assignArgs(Serializable).
  */
@@ -56,7 +57,9 @@ public abstract class CmdResponder extends Thread {
      *
      * @return The usage manual of this command. Try to avoid using '\n' char to avoid new lines.
      */
-    public abstract String getManual();
+    public String getManual() {
+        return null;
+    }
 
     /**
      * Assign execution mode to decide which execution method to use.

@@ -28,7 +28,7 @@ public class NormalLoginResponder extends CmdResponder {
             Sys.info("Auth", "For more help, please type 'help login' for more help.");
             return 203;
         }
-        CmdManager privateMan = ((CmdManager) Global.getVar("CMD_MAN_PRIVATE"));
+        CmdManager privateMan = Global.cmdManPrivate;
         CmdResponder resp =  Objects.requireNonNull(privateMan).execute(new Message(
                 "login",
                 new SerializableMap(

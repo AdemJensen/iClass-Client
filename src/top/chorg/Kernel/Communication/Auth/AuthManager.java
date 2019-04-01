@@ -1,10 +1,7 @@
 package top.chorg.Kernel.Communication.Auth;
 
+import top.chorg.Kernel.Cmd.PrivateResponders.LoginResponder;
 import top.chorg.Kernel.Communication.HostManager;
-import top.chorg.Support.Timer;
-import top.chorg.System.Global;
-
-import java.util.Objects;
 
 public class AuthManager {
     private static User user = null;
@@ -15,14 +12,17 @@ public class AuthManager {
      * @param user The user information variable.
      */
     public static void completeAuth(User user) {
-        ((Timer) Objects.requireNonNull(Global.getVar("AUTH_TIMER"))).stop();
-        Global.dropVar("AUTH_TIMER");
+        LoginResponder.dropTimer();
         AuthManager.user = user;
     }
 
     public static boolean isOnline() {
         return !(user == null) &&
                 HostManager.isConnected("CmdHost") && HostManager.isConnected("FileHost");
+    }
+
+    public static void bringOffline() {
+
     }
 
     public static boolean updateUserInfo() {
