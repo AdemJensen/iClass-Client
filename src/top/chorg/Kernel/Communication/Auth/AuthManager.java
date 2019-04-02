@@ -7,7 +7,7 @@ public class AuthManager {
     private static User user = null;
 
     /**
-     * Complete the 3rd step of authentication and save the user information.
+     * Complete the authentication and save the user information.
      *
      * @param user The user information variable.
      */

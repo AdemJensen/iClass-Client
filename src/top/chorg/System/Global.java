@@ -43,7 +43,7 @@ public class Global {
         if (variables.containsKey(key)) {
             String ori = variables.get(key).toString();
             variables.replace(key, value);
-            Sys.devInfoF("Global","Global '%s' replaced ('%s' -> '%s').", key, ori, value.toString());
+            //Sys.devInfoF("Global","Global '%s' replaced ('%s' -> '%s').", key, ori, value.toString());
         } else {
             variables.put(key, value);
         }
