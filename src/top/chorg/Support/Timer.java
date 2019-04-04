@@ -20,17 +20,19 @@ public class Timer {
     private Object[] args;
     private TimerInterface func;
     private TimerThread thread;
+    private boolean isStopped = false;
     private class TimerThread extends Thread {
 
-        public int returnValue = -1;
+        public int returnValue = 0;
         @Override
         public void run() {
             try {
                 sleep(time);
             } catch (InterruptedException e) {
-                returnValue = -2;
+                returnValue = 0;
             }
-            returnValue = func.execution(args);
+            if (isStopped) returnValue = 0;
+            else returnValue = func.execution(args);
         }
     }
     int returnVal;
@@ -40,7 +42,6 @@ public class Timer {
         this.args = args;
         thread = new TimerThread();
         thread.start();
-        while (thread.isAlive());
         returnVal = thread.returnValue;
     }
 
@@ -50,6 +51,7 @@ public class Timer {
 
     public void stop() {
         if (thread.isAlive()) thread.interrupt();
+        isStopped = true;
     }
 
 }

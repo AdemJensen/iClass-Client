@@ -13,6 +13,7 @@ public class ExitResponder extends CmdResponder {
 
     @Override
     public int response() {
+        Sys.info("Cmd Line", "Command line is closing now.");
         Sys.exit(0);
         return 0;
     }

@@ -25,6 +25,7 @@ public class NetSender {
         try {
             if (HostManager.isConnected(identifier)) {
                 printWriter.println(SerializeUtils.serialize(msg));
+                printWriter.flush();
             }
         } catch (IOException e) {
             Sys.errF("Sender", "Error while sending data (%s).", identifier);

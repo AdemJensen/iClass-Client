@@ -3,6 +3,7 @@ package top.chorg.Kernel.Cmd.PublicResponders;
 import top.chorg.Kernel.Cmd.CmdManager;
 import top.chorg.Kernel.Cmd.CmdResponder;
 import top.chorg.Kernel.Communication.Message;
+import top.chorg.Support.MD5;
 import top.chorg.Support.SerializableMap;
 import top.chorg.System.Global;
 import top.chorg.System.Sys;
@@ -34,7 +35,7 @@ public class NormalLoginResponder extends CmdResponder {
                 new SerializableMap(
                         "method", "normal",
                         "u", var[0],
-                        "p", var[1]
+                        "p", MD5.encode(var[1])
                 )
         ));
         while (resp.isAlive());

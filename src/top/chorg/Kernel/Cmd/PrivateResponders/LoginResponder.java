@@ -48,12 +48,13 @@ public class LoginResponder extends CmdResponder {
         Global.masterSender = new NetSender("CmdHost");
         Global.masterReceiver = new NetReceiver("CmdHost");
         Global.masterReceiver.start();
-        if (!Global.masterSender.send(new Message("login", (SerializableMap) args))) {    // Send auth info
+        if (!Global.masterSender.send(new Message("login", args))) {    // Send auth info
             Sys.err("Login", "Unable to send authentication info (206).");
             HostManager.disconnect("CmdHost");
             dropTimer();
             return 206;
         }
+        while (Global.getVar("AUTH_TIMER") != null) { }
         return 0;
     }
 
@@ -67,8 +68,8 @@ public class LoginResponder extends CmdResponder {
     public static int clearTimer() {
         if (AuthManager.isOnline()) return 0;
         else {
-            Global.dropVar("AUTH_TIMER");
             HostManager.disconnect("CmdHost");
+            Global.dropVar("AUTH_TIMER");
             return 207;
         }
     }

@@ -10,7 +10,7 @@ public class Message implements Serializable {
 
     public Message() {}
 
-    public Message(String msgType, SerializableMap content) {
+    public Message(String msgType, Serializable content) {
         this.msgType = msgType;
         this.content = content;
     }

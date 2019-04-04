@@ -14,7 +14,7 @@ public class Initializer {
     private static void DEV_PRE_OPERATIONS() {  // Development operations
         Global.clearConfig();
         Global.setConfig("Cmd_Server_Host", "127.0.0.1");
-        Global.setConfig("Cmd_Server_Port", 9999);
+        Global.setConfig("Cmd_Server_Port", 9998);
         Global.saveFileConfig();
         Global.loadFileConfig();
     }

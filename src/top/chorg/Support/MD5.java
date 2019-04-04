@@ -22,7 +22,7 @@ public class MD5 {
             //获得加密后的数据
             secretBytes = md.digest();
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("没有md5这个算法！");
+            throw new RuntimeException("No MD5 algorithm");
         }
         //将加密后的数据转换为16进制数字
         StringBuilder md5code = new StringBuilder(new BigInteger(1, secretBytes).toString(16));// 16进制数字

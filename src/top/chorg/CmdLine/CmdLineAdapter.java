@@ -41,7 +41,7 @@ public class CmdLineAdapter {
                 while (responderObj.isAlive());
             }
         }
-        Sys.info("Cmd Line", "Command line is closing now.");
+        Global.cmdManPublic.execute(new Message("stop", null));
     }
 
     public static void outputDecoration() {

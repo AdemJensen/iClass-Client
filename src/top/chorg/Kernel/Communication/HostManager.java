@@ -23,6 +23,7 @@ public class HostManager {
      *  - If = 2: Identifier already exists.
      */
     public static int connect(String identifier, String host, int port) {
+        Sys.devInfo("Host Manager", "New connector action performing.");
         if (SocketObjs.containsKey(identifier)) {
             Sys.err("Net", "Identifier already exists.");
             return 2;
