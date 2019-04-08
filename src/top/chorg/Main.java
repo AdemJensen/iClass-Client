@@ -1,8 +1,8 @@
 package top.chorg;
 
-import top.chorg.CmdLine.CmdLineAdapter;
-import top.chorg.System.Initializer;
-import top.chorg.System.Sys;
+import top.chorg.cmdLine.CmdLineAdapter;
+import top.chorg.system.Initializer;
+import top.chorg.system.Sys;
 
 /**
  * Master execution class, all things start from here.
