@@ -9,15 +9,14 @@ import top.chorg.system.Sys;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 
 /**
  * To process the messages coming from server side.
  */
 public class NetReceiver extends Thread {
-    String identifier;
-    BufferedReader bufferedReader;
+    private String identifier;
+    private BufferedReader bufferedReader;
 
     public NetReceiver(String identifier) {
         this.identifier = identifier;

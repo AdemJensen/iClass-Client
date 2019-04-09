@@ -2,13 +2,11 @@ package top.chorg.kernel.communication.net;
 
 import top.chorg.system.Global;
 
-import java.io.Serializable;
-
 /**
  * Basement class, must be inherited.
  */
 public abstract class NetResponder extends Thread {
-    protected String obj;            // Arguments passed by NetManager.
+    private String obj;            // Arguments passed by NetManager.
     private int returnVal = (int) Global.getVar("PROCESS_RETURN");
     // Return code after response. If in process, the value will be the same as Global.getVar("PROCESS_RETURN")
 
@@ -30,6 +28,14 @@ public abstract class NetResponder extends Thread {
      * @return return value of this responder action.
      */
     public abstract int response();
+
+    protected String getArg() {
+        return obj;
+    }
+
+    protected <T> T getArg(Class<T> classOfT) {
+        return Global.gson.fromJson(obj, classOfT);
+    }
 
     /**
      * Master execution method for Thread standard.

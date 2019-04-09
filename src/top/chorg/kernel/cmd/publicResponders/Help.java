@@ -29,12 +29,12 @@ public class Help extends CmdResponder {
     public int response() {
         boolean outFirst = false;
         CmdManager cmdMan = Global.cmdManPublic;
-        if (args.length > 0) {
-            for (Object var : args) {
+        if (argAmount() > 0) {
+            while (hasNextArg()) {
+                String cmd = nextArg();
                 if (!outFirst) outFirst = true;
                 else System.out.println();
                 ArrayList<String> keyList = new ArrayList<>(Objects.requireNonNull(cmdMan).getKeySet());
-                String cmd = (String) var;
                 if (keyList.contains(cmd)) {
                     Class<?> cls = cmdMan.getResponder(cmd);
                     try {

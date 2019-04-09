@@ -8,8 +8,8 @@ import top.chorg.system.Sys;
 import java.io.PrintWriter;
 
 public class NetSender {
-    String identifier;
-    PrintWriter printWriter;
+    private String identifier;
+    private PrintWriter printWriter;
 
     public NetSender(String identifier) {
         this.identifier = identifier;

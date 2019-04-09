@@ -23,7 +23,7 @@ public class Login extends CmdResponder {
     }
 
     @Override
-    public int response() {
+    public int response() throws IndexOutOfBoundsException {
         if (Global.varExists("AUTH_TIMER")) {
             Sys.err("Login", "Ongoing Authentication action in progress, please retry later.");
             return 208;
@@ -50,10 +50,11 @@ public class Login extends CmdResponder {
         Global.masterReceiver = new NetReceiver("CmdHost");
         Global.masterReceiver.start();
         AuthInfo authInfo = null;
-        if (args[0].equals("Normal")) {
-            authInfo = new AuthInfo(args[1], args[2]);
-        } else if (args[0].equals("Token")) {
-            authInfo = new AuthInfo(args[1]);
+        String cmdName = nextArg();
+        if (cmdName.equals("Normal")) {
+            authInfo = new AuthInfo(nextArg(), nextArg());
+        } else if (cmdName.equals("Token")) {
+            authInfo = new AuthInfo(nextArg());
         } else {
             Sys.err("Login", "Invalid login info.");
             Sys.exit(21);
@@ -88,7 +89,7 @@ public class Login extends CmdResponder {
     public int onReceiveNetMsg() {
         AuthResult res;
         try {
-            res = Global.gson.fromJson(args[0], AuthResult.class);
+            res = nextArg(AuthResult.class);
         } catch(JsonSyntaxException e) {
             HostManager.onInvalidTransmission("Invalid message content (1)");
             return 1;

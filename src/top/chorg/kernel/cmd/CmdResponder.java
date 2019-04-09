@@ -1,6 +1,7 @@
 package top.chorg.kernel.cmd;
 
 import top.chorg.system.Global;
+import top.chorg.system.Sys;
 
 /**
  * Basement responder for CmdManager to expand functions.
@@ -17,8 +18,9 @@ import top.chorg.system.Global;
  *      args                        Arguments passed through assignArgs(Serializable).
  */
 public abstract class CmdResponder extends Thread {
-    protected String[] args;        // Arguments passed through assignArgs(Serializable).
-    protected boolean responseMode = true; // To judge if the run() method should use response() or onReceiveNetMsg().
+    private String[] args;        // Arguments passed through assignArgs(Serializable).
+    private int argIndex = 0;
+    private boolean responseMode = true; // To judge if the run() method should use response() or onReceiveNetMsg().
     private int returnVal = (int) Global.getVar("PROCESS_RETURN");
     // Return code after response. If in process, the value will be the same as Global.getVar("PROCESS_RETURN")
 
@@ -33,13 +35,38 @@ public abstract class CmdResponder extends Thread {
         this.args = args;
     }
 
+    protected int argAmount() {
+        return args.length;
+    }
+
+    protected boolean hasNextArg() {
+        return argIndex < args.length;
+    }
+
+    protected String nextArg() throws IndexOutOfBoundsException {
+        if (argIndex >= args.length) throw new IndexOutOfBoundsException();
+        return args[argIndex++];
+    }
+
+    protected <T> T nextArg(Class<T> classOfT) {
+        if (argIndex >= args.length) return null;
+        return Global.gson.fromJson(args[argIndex++], classOfT);
+    }
+
+    protected String[] remainArgs() {
+        if (argIndex >= args.length) throw new IndexOutOfBoundsException();
+        String[] temp = new String[args.length - argIndex];
+        System.arraycopy(args, argIndex, temp, 0, args.length - argIndex);
+        return temp;
+    }
+
     /**
      * Master response method (1#).
      * Will be invoked at CmdManager when assigned.
      *
      * @return return value of this responder action.
      */
-    public abstract int response();
+    public abstract int response() throws IndexOutOfBoundsException;
 
     /**
      * Net response method (2#). If no need, just keep it void and return 0.
@@ -70,10 +97,14 @@ public abstract class CmdResponder extends Thread {
      * Master execution method for Thread standard.
      */
     public final void run() {
-        if (responseMode) {
-            returnVal = this.response();
-        } else {
-            returnVal = this.onReceiveNetMsg();
+        try {
+            if (responseMode) {
+                returnVal = this.response();
+            } else {
+                returnVal = this.onReceiveNetMsg();
+            }
+        } catch (IndexOutOfBoundsException e) {
+            Sys.err("Cmd Res", "Not enough argument for cmd to execute.");
         }
     }
 

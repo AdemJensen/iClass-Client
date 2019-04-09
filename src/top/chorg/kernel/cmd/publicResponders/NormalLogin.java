@@ -16,20 +16,16 @@ public class NormalLogin extends CmdResponder {
 
     @Override
     public int response() {
-        if (args == null) {
-            Sys.err("Auth", "Arguments not assigned.");
-            return 204;
-        }
-        if (args.length < 2) {
+        if (argAmount() < 2) {
             Sys.warn("Auth", "Arguments for login are too few. Needed two parameters.");
             Sys.info("Auth", "For more help, please type 'help login' for more help.");
             return 203;
         }
         CmdManager privateMan = Global.cmdManPrivate;
         CmdResponder resp =  Objects.requireNonNull(privateMan).execute(new String[]{
-                "login", "Normal", args[0], MD5.encode(args[1])
+                "login", "Normal", nextArg(), MD5.encode(nextArg())
         });
-        while (resp.isAlive());
+        while (resp.isAlive()) { }
         return resp.getReturnVal();
     }
 
