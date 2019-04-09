@@ -42,7 +42,7 @@ public abstract class FlagResponder {
      *
      * @return The argument string.
      */
-    protected String getArg() {
+    protected final String getArg() {
         try {
             return FlagManager.provideArg();
         } catch (IllegalArgumentException e) {

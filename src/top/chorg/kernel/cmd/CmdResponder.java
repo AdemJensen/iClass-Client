@@ -35,25 +35,25 @@ public abstract class CmdResponder extends Thread {
         this.args = args;
     }
 
-    protected int argAmount() {
+    protected final int argAmount() {
         return args.length;
     }
 
-    protected boolean hasNextArg() {
+    protected final boolean hasNextArg() {
         return argIndex < args.length;
     }
 
-    protected String nextArg() throws IndexOutOfBoundsException {
+    protected final String nextArg() throws IndexOutOfBoundsException {
         if (argIndex >= args.length) throw new IndexOutOfBoundsException();
         return args[argIndex++];
     }
 
-    protected <T> T nextArg(Class<T> classOfT) {
+    protected final <T> T nextArg(Class<T> classOfT) {
         if (argIndex >= args.length) return null;
         return Global.gson.fromJson(args[argIndex++], classOfT);
     }
 
-    protected String[] remainArgs() {
+    protected final String[] remainArgs() {
         if (argIndex >= args.length) throw new IndexOutOfBoundsException();
         String[] temp = new String[args.length - argIndex];
         System.arraycopy(args, argIndex, temp, 0, args.length - argIndex);

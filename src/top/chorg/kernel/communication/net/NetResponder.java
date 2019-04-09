@@ -29,11 +29,11 @@ public abstract class NetResponder extends Thread {
      */
     public abstract int response();
 
-    protected String getArg() {
+    protected final String getArg() {
         return obj;
     }
 
-    protected <T> T getArg(Class<T> classOfT) {
+    protected final <T> T getArg(Class<T> classOfT) {
         return Global.gson.fromJson(obj, classOfT);
     }
 
