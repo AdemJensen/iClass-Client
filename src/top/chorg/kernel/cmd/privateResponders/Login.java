@@ -25,7 +25,7 @@ public class Login extends CmdResponder {
     @Override
     public int response() throws IndexOutOfBoundsException {
         if (Global.varExists("AUTH_TIMER")) {
-            Sys.err("Login", "Ongoing Authentication action in progress, please retry later.");
+            Sys.err("Login", "Ongoing auth-relevant action in progress, please retry later.");
             return 208;
         }
         if (HostManager.isConnected("CmdHost")) {
@@ -95,18 +95,23 @@ public class Login extends CmdResponder {
             return 1;
         }
         try {
-            switch (res.result) {
-                case "Granted":
-                    User content = Global.gson.fromJson(res.obj, User.class);
-                    AuthManager.completeAuth(content);
-                    return 0;
-                case "Denied":
-                    Sys.errF("Login", "Access denied : (%s)", res.obj);
-                    dropTimer();
-                    return 6;
-                default:
-                    HostManager.onInvalidTransmission("Invalid message content (2)");
-                    return 2;
+            if (res != null) {
+                switch (res.result) {
+                    case "Granted":
+                        User content = Global.gson.fromJson(res.obj, User.class);
+                        AuthManager.completeAuth(content);
+                        return 0;
+                    case "Denied":
+                        Sys.errF("Login", "Access denied : (%s)", res.obj);
+                        dropTimer();
+                        return 6;
+                    default:
+                        HostManager.onInvalidTransmission("Invalid message content (2)");
+                        return 2;
+                }
+            } else {
+                HostManager.onInvalidTransmission("Invalid message content (2)");
+                return 2;
             }
         } catch (ClassCastException | JsonSyntaxException e) {
             HostManager.onInvalidTransmission("Invalid message content (3)");

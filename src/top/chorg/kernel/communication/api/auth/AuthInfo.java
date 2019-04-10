@@ -6,6 +6,12 @@ public class AuthInfo {
     public String password;
     public String token;       // Only avail if method = "Token"
 
+    public AuthInfo(String username, String password, boolean registerMode) {
+        this.method = "Register";
+        this.username = username;
+        this.password = password;
+    }
+
     public AuthInfo(String username, String password) {
         this.method = "Normal";
         this.username = username;

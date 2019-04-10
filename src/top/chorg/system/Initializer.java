@@ -1,6 +1,5 @@
 package top.chorg.system;
 
-import top.chorg.kernel.communication.net.NetManager;
 import top.chorg.kernel.flag.FlagManager;
 
 /**
@@ -102,6 +101,7 @@ public class Initializer {
     private static void registerPrivateCommands() {
 
         Global.cmdManPrivate.register("login", top.chorg.kernel.cmd.privateResponders.Login.class);
+        Global.cmdManPrivate.register("register", top.chorg.kernel.cmd.privateResponders.Register.class);
 
     }
 
@@ -123,6 +123,9 @@ public class Initializer {
 
         Global.cmdManPublic.register("login", top.chorg.kernel.cmd.publicResponders.NormalLogin.class);
         Global.cmdManPublic.register("logon", top.chorg.kernel.cmd.publicResponders.NormalLogin.class);
+
+        Global.cmdManPublic.register("register", top.chorg.kernel.cmd.publicResponders.Register.class);
+        Global.cmdManPublic.register("reg", top.chorg.kernel.cmd.publicResponders.Register.class);
 
     }
 
