@@ -53,7 +53,7 @@ public class Initializer {
      * Register all the initial global variables.
      */
     private static void registerGlobalVariables() {
-        Global.setVar("VERSION", "0.0.2");    // Master system version.
+        Global.setVar("VERSION", "0.0.3");    // Master system version.
 
         Global.setVar("DEV_MODE_KEY", "Theresa Apocalypse");    // Development mode key.
         Global.setVar("PROCESS_RETURN", -1);  // When a thread is in process, here is its default return value.
@@ -102,6 +102,7 @@ public class Initializer {
 
         Global.cmdManPrivate.register("login", top.chorg.kernel.cmd.privateResponders.Login.class);
         Global.cmdManPrivate.register("register", top.chorg.kernel.cmd.privateResponders.Register.class);
+        Global.cmdManPrivate.register("logoff", top.chorg.kernel.cmd.privateResponders.Logoff.class);
 
     }
 
@@ -126,6 +127,9 @@ public class Initializer {
 
         Global.cmdManPublic.register("register", top.chorg.kernel.cmd.publicResponders.Register.class);
         Global.cmdManPublic.register("reg", top.chorg.kernel.cmd.publicResponders.Register.class);
+
+        Global.cmdManPublic.register("logoff", top.chorg.kernel.cmd.publicResponders.Logoff.class);
+        Global.cmdManPublic.register("offline", top.chorg.kernel.cmd.publicResponders.Logoff.class);
 
     }
 

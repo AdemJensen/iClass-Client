@@ -27,4 +27,8 @@ public class NetSender {
             return false;
         }
     }
+
+    public void close() {
+        printWriter.close();
+    }
 }

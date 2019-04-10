@@ -3,6 +3,7 @@ package top.chorg.kernel.communication.auth;
 import top.chorg.kernel.cmd.privateResponders.Login;
 import top.chorg.kernel.communication.HostManager;
 import top.chorg.kernel.communication.api.auth.User;
+import top.chorg.system.Global;
 import top.chorg.system.Sys;
 
 public class AuthManager {
@@ -24,7 +25,12 @@ public class AuthManager {
     }
 
     public static void bringOffline() {
-
+        synchronized (HostManager.class) { // TODO: Might cause unexpected error.
+            AuthManager.user = null;
+            Global.masterSender.close();
+            Global.masterReceiver.close();
+            HostManager.disconnect("CmdHost");
+        }
     }
 
     public static boolean updateUserInfo() {

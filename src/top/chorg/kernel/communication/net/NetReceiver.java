@@ -62,4 +62,13 @@ public class NetReceiver extends Thread {
             }
         } catch (IOException ignored) { }
     }
+
+    public void close() {
+        this.interrupt();
+        try {
+            bufferedReader.close();
+        } catch (IOException e) {
+            Sys.err("Net", "Something occurred while closing receiver.");
+        }
+    }
 }

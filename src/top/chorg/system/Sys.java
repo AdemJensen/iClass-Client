@@ -17,7 +17,7 @@ public class Sys {
      * @param msg Message content.
      */
     public static void warn(String sender, String msg) {
-        String content = String.format("[%s] Warning: %s", sender, msg);
+        String content = String.format("[ WARN ] %s: %s", sender, msg);
         if (isDevEnv() || isCmdEnv()) {
             System.out.println(content);
         } else {
@@ -47,7 +47,7 @@ public class Sys {
      * @param msg Message content.
      */
     public static void err(String sender, String msg) {
-        String content = String.format("[%s] Error: %s", sender, msg);
+        String content = String.format("[ ERROR ] %s: %s", sender, msg);
         if (isDevEnv() || isCmdEnv()) {
             System.out.println(content);
         } else {
@@ -77,7 +77,7 @@ public class Sys {
      * @param msg Message content.
      */
     public static void info(String sender, String msg) {
-        String content = String.format("[%s] Info: %s", sender, msg);
+        String content = String.format("[ NOTE ] %s: %s", sender, msg);
         if (isDevEnv() || isCmdEnv()) {
             System.out.println(content);
         }
@@ -106,7 +106,7 @@ public class Sys {
      * @param msg Message content.
      */
     public static void devInfo(String sender, String msg) {
-        String content = String.format("[%s] DEV: %s", sender, msg);
+        String content = String.format("[-DEV-] %s: %s", sender, msg);
         if (isDevEnv() || isCmdEnv()) {
             System.out.println(content);
         }
