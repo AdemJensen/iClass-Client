@@ -16,25 +16,27 @@ public class Config {
     }
 
     public boolean load() {
-        return loadFromFile((String) Global.getVar("CONF_FILE"));
+        return loadFromFile(Global.getVarCon("CONF_FILE", String.class));
     }
 
     public boolean loadDefault() {
-        return loadFromFile((String) Global.getVar("DEFAULT_CONF_FILE"));
+        return loadFromFile(Global.getVarCon("DEFAULT_CONF_FILE", String.class));
     }
 
     public boolean save() {
-        return saveToFile((String) Global.getVar("CONF_FILE"));
+        return saveToFile(Global.getVarCon("CONF_FILE", String.class));
     }
 
     public boolean saveDefault() {
-        return saveToFile((String) Global.getVar("DEFAULT_CONF_FILE"));
+        return saveToFile(Global.getVarCon("DEFAULT_CONF_FILE", String.class));
     }
 
     public boolean loadFromFile(String fileName) {
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(
-                    new FileInputStream(Global.getVar("CONF_ROUTE") + "/" + fileName),"GBK"));
+                    new FileInputStream(Global.getVarCon("CONF_ROUTE", String.class) + "/" + fileName),
+                    "GBK"
+            ));
             String s = in.readLine();
             assign(Global.gson.fromJson(s, Config.class));
             in.close();
@@ -49,7 +51,7 @@ public class Config {
     public boolean saveToFile(String fileName) {
         try {
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(Global.getVar("CONF_ROUTE") + "/" + fileName)));
+                    new FileOutputStream(Global.getVarCon("CONF_ROUTE", String.class) + "/" + fileName)));
             out.write(Global.gson.toJson(this));
             out.flush();
             out.close();

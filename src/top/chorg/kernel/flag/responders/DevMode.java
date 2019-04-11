@@ -15,15 +15,23 @@ public class DevMode extends FlagResponder {
                     "The dev mode have been set once! New tag ignored!"
             );
         }
-        if (getArg().equals(Global.getVar("DEV_MODE_KEY"))) {
-            System.out.println("The system has enabled development mode.");
-            Global.setVar("DEV_MODE", true);
-            Global.setVar("DEV_MODE_MODIFIED", true);
-        } else {
+        String code = getArg();
+        if (code == null) {
             Sys.warn(
                     "Flags",
-                    "The flag '" + FlagManager.getCurFlag() + "' have been ignored!"
+                    "The flag '" + FlagManager.getCurFlag() + "' has invalid usage! Use flag '-h' for more help."
             );
+        } else {
+            if (code.equals(Global.getVarCon("DEV_MODE_KEY", String.class))) {
+                System.out.println("The system has enabled development mode.");
+                Global.setVar("DEV_MODE", true);
+                Global.setVar("DEV_MODE_MODIFIED", true);
+            } else {
+                Sys.warn(
+                        "Flags",
+                        "The flag '" + FlagManager.getCurFlag() + "' have been ignored!"
+                );
+            }
         }
         return 0;
     }

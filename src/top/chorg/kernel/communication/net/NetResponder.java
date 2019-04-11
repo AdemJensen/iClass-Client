@@ -7,7 +7,7 @@ import top.chorg.system.Global;
  */
 public abstract class NetResponder extends Thread {
     private String obj;            // Arguments passed by NetManager.
-    private int returnVal = (int) Global.getVar("PROCESS_RETURN");
+    private int returnVal = Global.getVarCon("PROCESS_RETURN", int.class);
     // Return code after response. If in process, the value will be the same as Global.getVar("PROCESS_RETURN")
 
     /**

@@ -21,7 +21,7 @@ public abstract class CmdResponder extends Thread {
     private String[] args;        // Arguments passed through assignArgs(Serializable).
     private int argIndex = 0;
     private boolean responseMode = true; // To judge if the run() method should use response() or onReceiveNetMsg().
-    private int returnVal = (int) Global.getVar("PROCESS_RETURN");
+    private int returnVal = Global.getVarCon("PROCESS_RETURN", int.class);
     // Return code after response. If in process, the value will be the same as Global.getVar("PROCESS_RETURN")
 
     /**

@@ -71,7 +71,7 @@ public class Login extends CmdResponder {
 
     public static void dropTimer() {
         if (Global.varExists("AUTH_TIMER")) {
-            ((Timer) Objects.requireNonNull(Global.getVar("AUTH_TIMER"))).stop();
+            Global.getVarCon("AUTH_TIMER", Timer.class).stop();
             clearTimer();
         }
     }

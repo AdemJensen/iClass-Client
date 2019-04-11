@@ -1,6 +1,13 @@
 package top.chorg.system;
 
 import top.chorg.kernel.flag.FlagManager;
+import top.chorg.support.JarLoader;
+
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Master initializer, register all the global variables and responders.
@@ -8,13 +15,26 @@ import top.chorg.kernel.flag.FlagManager;
  */
 public class Initializer {
     private static void DEV_PRE_OPERATIONS() {  // Development operations
-        Global.conf.Cmd_Server_Host = "127.0.0.1";
-        Global.conf.Cmd_Server_Port = 9998;
-        Global.conf.File_Server_Host = "127.0.0.1";
-        Global.conf.File_Server_Port = 9999;
-        Global.conf.save();
-        Global.conf.saveDefault();
-        Global.conf.load();
+//        Global.conf.Cmd_Server_Host = "127.0.0.1";
+//        Global.conf.Cmd_Server_Port = 9998;
+//        Global.conf.File_Server_Host = "127.0.0.1";
+//        Global.conf.File_Server_Port = 9999;
+//        Global.conf.save();
+//        Global.conf.saveDefault();
+//        Global.conf.load();
+        try {
+            JarLoader a = new JarLoader(new URL[]{new URL("file://" + new File("extensions/iClass GUI.jar").getAbsolutePath())});
+            Class<?> cl = a.loadClass("top.chorg.ForeGuiAdapter");
+            System.out.println(cl.toString());
+            Method testMethod = cl.getMethod("init");
+            testMethod.invoke(
+                    cl.getDeclaredConstructor().newInstance()
+            );
+            System.out.println(Global.getVar("Okamio"));
+        } catch (MalformedURLException | ClassNotFoundException | NoSuchMethodException
+                | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -44,7 +64,7 @@ public class Initializer {
 
         FlagManager.execute(flagList);  // Start flag option processor.
 
-        //DEV_PRE_OPERATIONS();
+        DEV_PRE_OPERATIONS();
 
     }
 

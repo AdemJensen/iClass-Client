@@ -11,7 +11,10 @@ public class CmdLineAdapter {
     public static void start() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to iClass Server.");
-        System.out.printf("System running under command line mode (Ver %s).\n", Global.getVar("VERSION"));
+        System.out.printf(
+                "System running under command line mode (Ver %s).\n",
+                Global.getVarCon("VERSION", String.class)
+        );
         while (true) {
             outputDecoration();
             String cmd = sc.nextLine();

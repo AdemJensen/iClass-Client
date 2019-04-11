@@ -132,7 +132,7 @@ public class Sys {
      * @return True if current environment is development env.
      */
     public static boolean isDevEnv() {
-        return Global.varExists("DEV_MODE") && ((boolean) Global.getVar("DEV_MODE"));
+        return Global.varExists("DEV_MODE") && Global.getVarCon("DEV_MODE", boolean.class);
     }
 
     /**
@@ -142,7 +142,7 @@ public class Sys {
      * @return True if current environment is Command Line env.
      */
     public static boolean isCmdEnv() {
-        if (Global.varExists("GUI_MODE")) return !((boolean) Global.getVar("GUI_MODE"));
+        if (Global.varExists("GUI_MODE")) return !Global.getVarCon("GUI_MODE", boolean.class);
         else return false;
     }
 
@@ -153,7 +153,7 @@ public class Sys {
      * @return True if current environment is GUI env.
      */
     public static boolean isGuiEnv() {
-        if (Global.varExists("GUI_MODE")) return ((boolean) Global.getVar("GUI_MODE"));
+        if (Global.varExists("GUI_MODE")) return Global.getVarCon("GUI_MODE", boolean.class);
         else return true;
     }
 
