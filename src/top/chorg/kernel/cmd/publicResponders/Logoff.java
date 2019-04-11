@@ -7,7 +7,7 @@ import top.chorg.system.Sys;
 
 public class Logoff extends CmdResponder {
 
-    public Logoff(String[] args) {
+    public Logoff(String...args) {
         super(args);
     }
 
@@ -17,7 +17,7 @@ public class Logoff extends CmdResponder {
             Sys.err("Auth", "User not online, cannot log off!");
             return 1;
         }
-        CmdResponder resp =  Global.cmdManPrivate.execute(new String[]{"logoff"});
+        CmdResponder resp =  Global.cmdManPrivate.execute("logoff");
         while (resp.isAlive()) { }
         Sys.info("Auth", "User successfully logged off.");
         return 0;

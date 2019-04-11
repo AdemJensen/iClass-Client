@@ -31,7 +31,7 @@ public abstract class CmdResponder extends Thread {
      *
      * @param args Arguments to be provided.
      */
-    public CmdResponder(String[] args) {
+    public CmdResponder(String...args) {
         this.args = args;
     }
 

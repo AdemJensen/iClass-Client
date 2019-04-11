@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class Register extends CmdResponder {
 
-    public Register(String[] args) {
+    public Register(String...args) {
         super(args);
     }
 
@@ -22,9 +22,7 @@ public class Register extends CmdResponder {
             return 206;
         }
         CmdManager privateMan = Global.cmdManPrivate;
-        CmdResponder resp =  Objects.requireNonNull(privateMan).execute(new String[]{
-                "register", nextArg(), nextArg()
-        });
+        CmdResponder resp =  Objects.requireNonNull(privateMan).execute("register", nextArg(), nextArg());
         while (resp.isAlive()) { }
         return resp.getReturnVal();
     }

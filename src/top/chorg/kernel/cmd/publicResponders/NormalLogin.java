@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class NormalLogin extends CmdResponder {
 
-    public NormalLogin(String[] args) {
+    public NormalLogin(String...args) {
         super(args);
     }
 
@@ -22,9 +22,9 @@ public class NormalLogin extends CmdResponder {
             return 203;
         }
         CmdManager privateMan = Global.cmdManPrivate;
-        CmdResponder resp =  Objects.requireNonNull(privateMan).execute(new String[]{
+        CmdResponder resp =  Objects.requireNonNull(privateMan).execute(
                 "login", "Normal", nextArg(), MD5.encode(nextArg())
-        });
+        );
         while (resp.isAlive()) { }
         return resp.getReturnVal();
     }

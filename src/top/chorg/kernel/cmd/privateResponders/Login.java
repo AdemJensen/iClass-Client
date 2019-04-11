@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class Login extends CmdResponder {
 
-    public Login(String[] args) {
+    public Login(String...args) {
         super(args);
     }
 

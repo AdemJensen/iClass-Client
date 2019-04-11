@@ -21,7 +21,7 @@ import java.util.Objects;
  */
 public class Help extends CmdResponder {
 
-    public Help(String[] args) {
+    public Help(String...args) {
         super(args);
     }
 

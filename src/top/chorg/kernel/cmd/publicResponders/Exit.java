@@ -5,7 +5,7 @@ import top.chorg.system.Sys;
 
 public class Exit extends CmdResponder {
 
-    public Exit(String[] args) {
+    public Exit(String...args) {
         super(args);
     }
 

@@ -12,7 +12,7 @@ import java.util.Set;
 public class CmdManager {
     private HashMap<String, Class<?>> records = new HashMap<>();
 
-    public CmdResponder execute(String[] args) {
+    public CmdResponder execute(String...args) {
         if (!records.containsKey(args[0])) {
             Sys.warnF(
                     "CMD",
