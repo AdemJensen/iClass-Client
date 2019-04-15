@@ -14,8 +14,6 @@ import top.chorg.support.Timer;
 import top.chorg.system.Global;
 import top.chorg.system.Sys;
 
-import java.util.Objects;
-
 public class Login extends CmdResponder {
 
     public Login(String...args) {

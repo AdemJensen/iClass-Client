@@ -157,6 +157,18 @@ public class Sys {
         else return true;
     }
 
+    public static void cmdLinePrint(String str) {
+        if (isCmdEnv() || isDevEnv()) System.out.print(str);
+    }
+
+    public static void cmdLinePrintln(String str) {
+        if (isCmdEnv() || isDevEnv()) System.out.println(str);
+    }
+
+    public static void cmdLinePrintF(String format, Object...args) {
+        if (isCmdEnv() || isDevEnv()) System.out.printf(format, args);
+    }
+
     /**
      * Exit the system with a return value.
      * If in Command Line mode, this method will exit the program directly with a value.

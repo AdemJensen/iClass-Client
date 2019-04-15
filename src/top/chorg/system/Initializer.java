@@ -124,6 +124,11 @@ public class Initializer {
         Global.cmdManPrivate.register("register", top.chorg.kernel.cmd.privateResponders.Register.class);
         Global.cmdManPrivate.register("logoff", top.chorg.kernel.cmd.privateResponders.Logoff.class);
 
+        Global.cmdManPrivate.register(
+                "fetchAnnounceList",
+                top.chorg.kernel.cmd.privateResponders.FetchAnnounceList.class
+        );
+
     }
 
     private static void registerNetResponders() {
@@ -150,6 +155,16 @@ public class Initializer {
 
         Global.cmdManPublic.register("logoff", top.chorg.kernel.cmd.publicResponders.Logoff.class);
         Global.cmdManPublic.register("offline", top.chorg.kernel.cmd.publicResponders.Logoff.class);
+
+        Global.cmdManPublic.register(
+                "announcements",
+                top.chorg.kernel.cmd.publicResponders.FetchAnnounceList.class
+        );
+
+        Global.cmdManPublic.register(
+                "announcements",
+                top.chorg.kernel.cmd.publicResponders.FetchAnnounceList.class
+        );
 
     }
 
