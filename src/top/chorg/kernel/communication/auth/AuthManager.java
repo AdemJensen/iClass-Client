@@ -1,6 +1,6 @@
 package top.chorg.kernel.communication.auth;
 
-import top.chorg.kernel.cmd.privateResponders.Login;
+import top.chorg.kernel.cmd.privateResponders.Auth.Login;
 import top.chorg.kernel.communication.HostManager;
 import top.chorg.kernel.communication.api.auth.User;
 import top.chorg.system.Global;

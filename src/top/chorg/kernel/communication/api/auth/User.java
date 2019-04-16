@@ -5,18 +5,19 @@ import top.chorg.support.DateTime;
 
 public class User {
 
-    private int id, classId, sex, grade;
+    private int id, sex, grade;
+    private int[] classId;
     private String username, realName, nickname, email, phone;
     private Date birthday;
     private DateTime regTime;
     private char userGroup;
 
-    public User(int id, int classId, int sex, int grade, String username, String realName,
+    public User(int id, int[] classId, int sex, int grade, String username, String realName,
                 String nickname, String email, String phone, Date birthday, DateTime regTime, char userGroup) {
         this.assign(id, classId, sex, grade, username, realName, nickname, email, phone, birthday, regTime, userGroup);
     }
 
-    public void assign(int id, int classId, int sex, int grade, String username, String realName,
+    public void assign(int id, int[] classId, int sex, int grade, String username, String realName,
                        String nickname, String email, String phone, Date birthday, DateTime regTime, char userGroup) {
         this.id = id;
         this.classId = classId;
@@ -53,8 +54,15 @@ public class User {
         return id;
     }
 
-    public int getClassId() {
+    public int[] getClassId() {
         return classId;
+    }
+
+    public boolean isInClass(int classId) {
+        for (int id : this.classId) {
+            if (id == classId) return true;
+        }
+        return false;
     }
 
     public int getSex() {

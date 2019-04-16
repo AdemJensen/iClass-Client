@@ -1,26 +1,22 @@
-package top.chorg.kernel.cmd.privateResponders;
+package top.chorg.kernel.cmd.privateResponders.Announce;
 
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.kernel.communication.HostManager;
 import top.chorg.kernel.communication.Message;
-import top.chorg.kernel.communication.api.announcements.FetchListRequest;
 import top.chorg.kernel.communication.api.announcements.FetchListResult;
 import top.chorg.kernel.communication.auth.AuthManager;
 import top.chorg.system.Global;
 import top.chorg.system.Sys;
 
-import java.util.Objects;
+public class FetchList extends CmdResponder {
 
-public class FetchAnnounceList extends CmdResponder {
-
-    public FetchAnnounceList(String... args) {
+    public FetchList(String... args) {
         super(args);
     }
 
     /**
      * The args are:
      * - class id
-     * - level
      * - publisher id
      *
      * @return The status
@@ -28,18 +24,19 @@ public class FetchAnnounceList extends CmdResponder {
      */
     @Override
     public int response() throws IndexOutOfBoundsException {
+        if (!hasNextArg()) {
+            Sys.err("Fetch Announce", "Fatal error while invoking private methods: not enough args.");
+            Sys.exit(30);
+        }
         if (AuthManager.isOnline()) {
             if (!Global.masterSender.send(new Message(
                     "fetchAnnounceList",
-                    Global.gson.toJson(new FetchListRequest(
-                            Objects.requireNonNull(nextArg(int.class)),
-                            Objects.requireNonNull(nextArg(int.class)),
-                            Objects.requireNonNull(nextArg(int.class))
-                    ))
+                    nextArg()
             ))) {
                 Sys.err("Announce Fetch", "Unable to send request.");
             }
         } else {
+            Sys.err("Fetch Announce", "User is not online, please login first.");
             return 1;
         }
         return 0;
@@ -54,14 +51,14 @@ public class FetchAnnounceList extends CmdResponder {
         }
         Sys.info("Announce Fetch", "Got following info:");
         Sys.cmdLinePrintF(
-                "%5s|%20s|%70s|%20s|%20s|%10s|%10s|%10s\n",
-                "id", "title", "content", "date", "validity", "class", "level", "publisher"
+                "%5s|%20s|%70s|%20s|%20s|%10s|%10s|%10s|%10s\n",
+                "id", "title", "content", "date", "validity", "class", "level", "publisher", "status"
         );
         for (FetchListResult result : results) {
             Sys.cmdLinePrintF(
-                    "%5d|%70s|%50s|%20s|%20s|%10d|%10d|%10d\n",
+                    "%5d|%20s|%70s|%20s|%20s|%10d|%10d|%10d|%10d\n",
                     result.id, result.title, result.content, result.date, result.validity, result.classId,
-                    result.level, result.publisher
+                    result.level, result.publisher, result.status
             );
         }
         // TODO: GUI process

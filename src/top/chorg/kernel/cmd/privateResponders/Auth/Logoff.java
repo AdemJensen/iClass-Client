@@ -1,4 +1,4 @@
-package top.chorg.kernel.cmd.privateResponders;
+package top.chorg.kernel.cmd.privateResponders.Auth;
 
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.kernel.communication.Message;

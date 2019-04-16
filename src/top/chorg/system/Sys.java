@@ -1,5 +1,7 @@
 package top.chorg.system;
 
+import top.chorg.cmdLine.CmdLineAdapter;
+
 import java.util.Formatter;
 
 /**
@@ -19,7 +21,7 @@ public class Sys {
     public static void warn(String sender, String msg) {
         String content = String.format("[ WARN ] %s: %s", sender, msg);
         if (isDevEnv() || isCmdEnv()) {
-            System.out.println(content);
+            cmdLineOutput(content);
         } else {
             log(content);
         }
@@ -49,10 +51,24 @@ public class Sys {
     public static void err(String sender, String msg) {
         String content = String.format("[ ERROR ] %s: %s", sender, msg);
         if (isDevEnv() || isCmdEnv()) {
-            System.out.println(content);
+            cmdLineOutput(content);
         } else {
             log(content);
         }
+    }
+
+    private static void cmdLineOutput(String content) {
+        clearLine();
+        System.out.println(content);
+        CmdLineAdapter.outputDecoration();
+    }
+
+    public static void clearLine() {
+        System.out.print("\r");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("          ");
+        }
+        System.out.print("\r");
     }
 
     /**
@@ -79,7 +95,7 @@ public class Sys {
     public static void info(String sender, String msg) {
         String content = String.format("[ NOTE ] %s: %s", sender, msg);
         if (isDevEnv() || isCmdEnv()) {
-            System.out.println(content);
+            cmdLineOutput(content);
         }
     }
 
@@ -108,7 +124,7 @@ public class Sys {
     public static void devInfo(String sender, String msg) {
         String content = String.format("[-DEV-] %s: %s", sender, msg);
         if (isDevEnv() || isCmdEnv()) {
-            System.out.println(content);
+            cmdLineOutput(content);
         }
     }
 

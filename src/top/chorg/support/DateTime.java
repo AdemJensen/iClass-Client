@@ -170,6 +170,7 @@ public class DateTime {
 
     @Override
     public String toString() {
-        return String.format("%d-%d-%d %d:%d:%d", this.getYear(), this.getMonth(), this.getDay(), hour, minute, second);
+        return String.format("%d-%02d-%02d %02d:%02d:%02d",
+                this.getYear(), this.getMonth(), this.getDay(), hour, minute, second);
     }
 }

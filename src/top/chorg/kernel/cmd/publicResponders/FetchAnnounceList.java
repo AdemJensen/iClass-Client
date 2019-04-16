@@ -17,29 +17,14 @@ public class FetchAnnounceList extends CmdResponder {
                 if (nextArg().equals("published")) {
                     var resp = Global.cmdManPrivate.execute(
                             "fetchAnnounceList",
-                            "0",
-                            "0",
-                            String.valueOf(AuthManager.getUser().getId())
+                            "published"
                     );
                     while (resp.isAlive());
                 }
             } else {
-                int level;
-                switch (AuthManager.getUser().getUserGroup()) {
-                    case 'A':
-                        level = 1;
-                        break;
-                    case 'S':
-                        level = 2;
-                        break;
-                    default:
-                        level = 0;
-                }
                 var resp = Global.cmdManPrivate.execute(
                         "fetchAnnounceList",
-                        String.valueOf(AuthManager.getUser().getClassId()),
-                        String.valueOf(level),
-                        "0"
+                        "all"
                 );
                 while (resp.isAlive());
             }
@@ -49,7 +34,7 @@ public class FetchAnnounceList extends CmdResponder {
 
     @Override
     public String getManual() {
-        return "Fetch the announcement list. Use 'announcements published' to show all the announcements published " +
+        return "Fetch the announcement list. Use 'announce published' to show all the announcements published " +
                 "by your self.";
     }
 }

@@ -1,5 +1,6 @@
 package top.chorg.system;
 
+import top.chorg.kernel.cmd.privateResponders.Announce.FetchList;
 import top.chorg.kernel.flag.FlagManager;
 import top.chorg.support.JarLoader;
 
@@ -30,7 +31,7 @@ public class Initializer {
             testMethod.invoke(
                     cl.getDeclaredConstructor().newInstance()
             );
-            System.out.println(Global.getVar("Okamio"));
+            //System.out.println(Global.getVar("Okay"));
         } catch (MalformedURLException | ClassNotFoundException | NoSuchMethodException
                 | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
@@ -120,13 +121,13 @@ public class Initializer {
      */
     private static void registerPrivateCommands() {
 
-        Global.cmdManPrivate.register("login", top.chorg.kernel.cmd.privateResponders.Login.class);
-        Global.cmdManPrivate.register("register", top.chorg.kernel.cmd.privateResponders.Register.class);
-        Global.cmdManPrivate.register("logoff", top.chorg.kernel.cmd.privateResponders.Logoff.class);
+        Global.cmdManPrivate.register("login", top.chorg.kernel.cmd.privateResponders.Auth.Login.class);
+        Global.cmdManPrivate.register("register", top.chorg.kernel.cmd.privateResponders.Auth.Register.class);
+        Global.cmdManPrivate.register("logoff", top.chorg.kernel.cmd.privateResponders.Auth.Logoff.class);
 
         Global.cmdManPrivate.register(
                 "fetchAnnounceList",
-                top.chorg.kernel.cmd.privateResponders.FetchAnnounceList.class
+                FetchList.class
         );
 
     }
@@ -157,12 +158,7 @@ public class Initializer {
         Global.cmdManPublic.register("offline", top.chorg.kernel.cmd.publicResponders.Logoff.class);
 
         Global.cmdManPublic.register(
-                "announcements",
-                top.chorg.kernel.cmd.publicResponders.FetchAnnounceList.class
-        );
-
-        Global.cmdManPublic.register(
-                "announcements",
+                "announce",
                 top.chorg.kernel.cmd.publicResponders.FetchAnnounceList.class
         );
 
