@@ -1,9 +1,7 @@
 package top.chorg.kernel.cmd.privateResponders.Auth;
 
 import top.chorg.kernel.cmd.CmdResponder;
-import top.chorg.kernel.communication.Message;
 import top.chorg.kernel.communication.auth.AuthManager;
-import top.chorg.system.Global;
 
 public class Logoff extends CmdResponder {
 
@@ -13,7 +11,6 @@ public class Logoff extends CmdResponder {
 
     @Override
     public int response() throws IndexOutOfBoundsException {
-        Global.masterSender.send(new Message("logoff", ""));
         AuthManager.bringOffline();
         return 0;
     }

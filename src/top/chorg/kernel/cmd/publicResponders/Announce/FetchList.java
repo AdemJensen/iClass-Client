@@ -1,12 +1,12 @@
-package top.chorg.kernel.cmd.publicResponders;
+package top.chorg.kernel.cmd.publicResponders.Announce;
 
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.kernel.communication.auth.AuthManager;
 import top.chorg.system.Global;
 
-public class FetchAnnounceList extends CmdResponder {
+public class FetchList extends CmdResponder {
 
-    public FetchAnnounceList(String... args) {
+    public FetchList(String... args) {
         super(args);
     }
 

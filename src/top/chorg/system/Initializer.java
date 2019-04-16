@@ -1,6 +1,5 @@
 package top.chorg.system;
 
-import top.chorg.kernel.cmd.privateResponders.Announce.FetchList;
 import top.chorg.kernel.flag.FlagManager;
 import top.chorg.support.JarLoader;
 
@@ -127,7 +126,7 @@ public class Initializer {
 
         Global.cmdManPrivate.register(
                 "fetchAnnounceList",
-                FetchList.class
+                top.chorg.kernel.cmd.privateResponders.Announce.FetchList.class
         );
 
     }
@@ -142,24 +141,24 @@ public class Initializer {
      */
     private static void registerCommands() {
 
-        Global.cmdManPublic.register("exit", top.chorg.kernel.cmd.publicResponders.Exit.class);
-        Global.cmdManPublic.register("stop", top.chorg.kernel.cmd.publicResponders.Exit.class);
+        Global.cmdManPublic.register("exit", top.chorg.kernel.cmd.publicResponders.Sys.Exit.class);
+        Global.cmdManPublic.register("stop", top.chorg.kernel.cmd.publicResponders.Sys.Exit.class);
 
-        Global.cmdManPublic.register("help", top.chorg.kernel.cmd.publicResponders.Help.class);
-        Global.cmdManPublic.register("man", top.chorg.kernel.cmd.publicResponders.Help.class);
+        Global.cmdManPublic.register("help", top.chorg.kernel.cmd.publicResponders.Sys.Help.class);
+        Global.cmdManPublic.register("man", top.chorg.kernel.cmd.publicResponders.Sys.Help.class);
 
-        Global.cmdManPublic.register("login", top.chorg.kernel.cmd.publicResponders.NormalLogin.class);
-        Global.cmdManPublic.register("logon", top.chorg.kernel.cmd.publicResponders.NormalLogin.class);
+        Global.cmdManPublic.register("login", top.chorg.kernel.cmd.publicResponders.Auth.NormalLogin.class);
+        Global.cmdManPublic.register("logon", top.chorg.kernel.cmd.publicResponders.Auth.NormalLogin.class);
 
-        Global.cmdManPublic.register("register", top.chorg.kernel.cmd.publicResponders.Register.class);
-        Global.cmdManPublic.register("reg", top.chorg.kernel.cmd.publicResponders.Register.class);
+        Global.cmdManPublic.register("register", top.chorg.kernel.cmd.publicResponders.Auth.Register.class);
+        Global.cmdManPublic.register("reg", top.chorg.kernel.cmd.publicResponders.Auth.Register.class);
 
-        Global.cmdManPublic.register("logoff", top.chorg.kernel.cmd.publicResponders.Logoff.class);
-        Global.cmdManPublic.register("offline", top.chorg.kernel.cmd.publicResponders.Logoff.class);
+        Global.cmdManPublic.register("logoff", top.chorg.kernel.cmd.publicResponders.Auth.Logoff.class);
+        Global.cmdManPublic.register("offline", top.chorg.kernel.cmd.publicResponders.Auth.Logoff.class);
 
         Global.cmdManPublic.register(
                 "announce",
-                top.chorg.kernel.cmd.publicResponders.FetchAnnounceList.class
+                top.chorg.kernel.cmd.publicResponders.Announce.FetchList.class
         );
 
     }

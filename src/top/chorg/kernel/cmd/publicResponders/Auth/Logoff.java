@@ -1,4 +1,4 @@
-package top.chorg.kernel.cmd.publicResponders;
+package top.chorg.kernel.cmd.publicResponders.Auth;
 
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.kernel.communication.auth.AuthManager;

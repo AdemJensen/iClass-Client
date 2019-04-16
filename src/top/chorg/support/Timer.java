@@ -54,4 +54,12 @@ public class Timer {
         isStopped = true;
     }
 
+    public void restart() {
+        stop();
+        isStopped = false;
+        thread = new TimerThread();
+        thread.start();
+        returnVal = thread.returnValue;
+    }
+
 }
