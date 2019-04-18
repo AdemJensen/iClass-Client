@@ -1,5 +1,6 @@
 package top.chorg.kernel.cmd.privateResponders.Announce;
 
+import top.chorg.cmdLine.CmdLineAdapter;
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.kernel.communication.HostManager;
 import top.chorg.kernel.communication.Message;
@@ -33,7 +34,7 @@ public class FetchList extends CmdResponder {
                     "fetchAnnounceList",
                     nextArg()
             ))) {
-                Sys.err("Announce Fetch", "Unable to send request.");
+                Sys.err("Fetch Announce", "Unable to send request.");
             }
         } else {
             Sys.err("Fetch Announce", "User is not online, please login first.");
@@ -49,7 +50,7 @@ public class FetchList extends CmdResponder {
             HostManager.onInvalidTransmission("Announce fetch: on invalid result.");
             return 1;
         }
-        Sys.info("Announce Fetch", "Got following info:");
+        Sys.clearLine();
         Sys.cmdLinePrintF(
                 "%5s|%20s|%70s|%20s|%20s|%10s|%10s|%10s|%10s\n",
                 "id", "title", "content", "date", "validity", "class", "level", "publisher", "status"
@@ -61,6 +62,7 @@ public class FetchList extends CmdResponder {
                     result.level, result.publisher, result.status
             );
         }
+        CmdLineAdapter.outputDecoration();
         // TODO: GUI process
         return 0;
     }

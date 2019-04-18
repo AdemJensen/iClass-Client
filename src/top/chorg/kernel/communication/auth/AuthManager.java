@@ -18,6 +18,7 @@ public class AuthManager {
         AuthManager.user = user;
         Sys.infoF("Login", "Login successful. Welcome, %s.", user.getUsername());
         Login.dropTimer();
+        // TODO: GUI
     }
 
     public static boolean isOnline() {

@@ -37,6 +37,7 @@ public class NetReceiver extends Thread {
                             identifier
                     );
                     break;
+                    // TODO: GUI
                 }
                 try {
                     Message decMsg = Global.gson.fromJson(msg, Message.class);
