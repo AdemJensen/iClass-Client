@@ -2,7 +2,6 @@ package top.chorg.kernel.cmd.publicResponders.Auth;
 
 import top.chorg.kernel.cmd.CmdManager;
 import top.chorg.kernel.cmd.CmdResponder;
-import top.chorg.support.MD5;
 import top.chorg.system.Global;
 import top.chorg.system.Sys;
 
