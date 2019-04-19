@@ -8,8 +8,9 @@ import top.chorg.system.Sys;
 import java.util.Scanner;
 
 public class CmdLineAdapter {
+    public static Scanner sc = new Scanner(System.in);
+
     public static void start() {
-        Scanner sc = new Scanner(System.in);
         Sys.clearLine();
         System.out.println("Welcome to iClass Server.");
         System.out.printf(

@@ -38,6 +38,11 @@ public class FetchTemplate extends CmdResponder {
             HostManager.onInvalidTransmission("Template fetch: on invalid result.");
             return 1;
         }
+        if (Global.varExists("TEMPLATE_LIST_INTERNAL")) {
+            Global.setVar("TEMPLATE_LIST_CACHE", results);
+            Global.dropVar("TEMPLATE_LIST_INTERNAL");
+            return 0;
+        }
         Sys.clearLine();
         Sys.cmdLinePrintF(
                 "%5s|%20s|%20s|%70s\n",

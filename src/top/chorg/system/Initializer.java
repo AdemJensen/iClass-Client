@@ -132,6 +132,30 @@ public class Initializer {
                 "fetchAnnounceTemplate",
                 top.chorg.kernel.cmd.privateResponders.Announce.FetchTemplate.class
         );
+        Global.cmdManPrivate.register(
+                "addAnnounce",
+                top.chorg.kernel.cmd.privateResponders.Announce.Add.class
+        );
+        Global.cmdManPrivate.register(
+                "addAnnounceTemplate",
+                top.chorg.kernel.cmd.privateResponders.Announce.AddTemplate.class
+        );
+        Global.cmdManPrivate.register(
+                "alterAnnounce",
+                top.chorg.kernel.cmd.privateResponders.Announce.Alter.class
+        );
+        Global.cmdManPrivate.register(
+                "alterAnnounceTemplate",
+                top.chorg.kernel.cmd.privateResponders.Announce.AlterTemplate.class
+        );
+        Global.cmdManPrivate.register(
+                "delAnnounce",
+                top.chorg.kernel.cmd.privateResponders.Announce.Del.class
+        );
+        Global.cmdManPrivate.register(
+                "delAnnounceTemplate",
+                top.chorg.kernel.cmd.privateResponders.Announce.DelTemplate.class
+        );
 
     }
 
@@ -158,15 +182,15 @@ public class Initializer {
         Global.cmdManPublic.register("reg", top.chorg.kernel.cmd.publicResponders.Auth.Register.class);
 
         Global.cmdManPublic.register("logoff", top.chorg.kernel.cmd.publicResponders.Auth.Logoff.class);
-        Global.cmdManPublic.register("offline", top.chorg.kernel.cmd.publicResponders.Auth.Logoff.class);
+        Global.cmdManPublic.register("logout", top.chorg.kernel.cmd.publicResponders.Auth.Logoff.class);
 
         Global.cmdManPublic.register(
                 "announce",
-                top.chorg.kernel.cmd.publicResponders.Announce.FetchList.class
+                top.chorg.kernel.cmd.publicResponders.Announce.Announce.class
         );
         Global.cmdManPublic.register(
-                "templates",
-                top.chorg.kernel.cmd.publicResponders.Announce.FetchTemplate.class
+                "template",
+                top.chorg.kernel.cmd.publicResponders.Announce.Template.class
         );
 
     }

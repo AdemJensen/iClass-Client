@@ -17,8 +17,7 @@ public class FetchList extends CmdResponder {
 
     /**
      * The args are:
-     * - class id
-     * - publisher id
+     * String, "published" / "all"
      *
      * @return The status
      * @throws IndexOutOfBoundsException When not enough args.
@@ -49,6 +48,11 @@ public class FetchList extends CmdResponder {
         if (results == null) {
             HostManager.onInvalidTransmission("Announce fetch: on invalid result.");
             return 1;
+        }
+        if (Global.varExists("ANNOUNCE_LIST_INTERNAL")) {
+            Global.setVar("ANNOUNCE_LIST_CACHE", results);
+            Global.dropVar("ANNOUNCE_LIST_INTERNAL");
+            return 0;
         }
         Sys.clearLine();
         Sys.cmdLinePrintF(

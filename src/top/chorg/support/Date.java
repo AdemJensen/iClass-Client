@@ -1,7 +1,5 @@
 package top.chorg.support;
 
-import top.chorg.system.Sys;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -56,13 +54,13 @@ public class Date {
         }
     }
 
-    public void assign(String string) {
+    public void assign(String string) throws IllegalArgumentException {
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd"); //创建要显示的日期格式
-        java.util.Date date = null;      //将从数据库读出来的 timestamp 类型的时间转换为java的Date类型
+        java.util.Date date;      //将从数据库读出来的 timestamp 类型的时间转换为java的Date类型
         try {
             date = fmt.parse(string);
         } catch (ParseException e) {
-            Sys.errF("DATETIME", "INVALID PARSE (%s).", string);
+            throw new IllegalArgumentException();
         }
         string = fmt.format(date);
         var result1 = string.split("-");
@@ -147,7 +145,7 @@ public class Date {
         if (this.year < alter.year) return true;
         if (this.month > alter.month) return false;
         if (this.month < alter.month) return true;
-        return this.day <= alter.day;
+        return this.day < alter.day;
     }
 
     public int compareTo(Date alter) {
