@@ -1,4 +1,4 @@
-package top.chorg.kernel.cmd.privateResponders.Announce;
+package top.chorg.kernel.cmd.privateResponders.announce;
 
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.kernel.communication.HostManager;

@@ -120,41 +120,41 @@ public class Initializer {
      */
     private static void registerPrivateCommands() {
 
-        Global.cmdManPrivate.register("login", top.chorg.kernel.cmd.privateResponders.Auth.Login.class);
-        Global.cmdManPrivate.register("register", top.chorg.kernel.cmd.privateResponders.Auth.Register.class);
-        Global.cmdManPrivate.register("logoff", top.chorg.kernel.cmd.privateResponders.Auth.Logoff.class);
+        Global.cmdManPrivate.register("login", top.chorg.kernel.cmd.privateResponders.auth.Login.class);
+        Global.cmdManPrivate.register("register", top.chorg.kernel.cmd.privateResponders.auth.Register.class);
+        Global.cmdManPrivate.register("logoff", top.chorg.kernel.cmd.privateResponders.auth.Logoff.class);
 
         Global.cmdManPrivate.register(
                 "fetchAnnounceList",
-                top.chorg.kernel.cmd.privateResponders.Announce.FetchList.class
+                top.chorg.kernel.cmd.privateResponders.announce.FetchList.class
         );
         Global.cmdManPrivate.register(
                 "fetchAnnounceTemplate",
-                top.chorg.kernel.cmd.privateResponders.Announce.FetchTemplate.class
+                top.chorg.kernel.cmd.privateResponders.announce.FetchTemplate.class
         );
         Global.cmdManPrivate.register(
                 "addAnnounce",
-                top.chorg.kernel.cmd.privateResponders.Announce.Add.class
+                top.chorg.kernel.cmd.privateResponders.announce.Add.class
         );
         Global.cmdManPrivate.register(
                 "addAnnounceTemplate",
-                top.chorg.kernel.cmd.privateResponders.Announce.AddTemplate.class
+                top.chorg.kernel.cmd.privateResponders.announce.AddTemplate.class
         );
         Global.cmdManPrivate.register(
                 "alterAnnounce",
-                top.chorg.kernel.cmd.privateResponders.Announce.Alter.class
+                top.chorg.kernel.cmd.privateResponders.announce.Alter.class
         );
         Global.cmdManPrivate.register(
                 "alterAnnounceTemplate",
-                top.chorg.kernel.cmd.privateResponders.Announce.AlterTemplate.class
+                top.chorg.kernel.cmd.privateResponders.announce.AlterTemplate.class
         );
         Global.cmdManPrivate.register(
                 "delAnnounce",
-                top.chorg.kernel.cmd.privateResponders.Announce.Del.class
+                top.chorg.kernel.cmd.privateResponders.announce.Del.class
         );
         Global.cmdManPrivate.register(
                 "delAnnounceTemplate",
-                top.chorg.kernel.cmd.privateResponders.Announce.DelTemplate.class
+                top.chorg.kernel.cmd.privateResponders.announce.DelTemplate.class
         );
 
     }
@@ -169,28 +169,28 @@ public class Initializer {
      */
     private static void registerCommands() {
 
-        Global.cmdManPublic.register("exit", top.chorg.kernel.cmd.publicResponders.Sys.Exit.class);
-        Global.cmdManPublic.register("stop", top.chorg.kernel.cmd.publicResponders.Sys.Exit.class);
+        Global.cmdManPublic.register("exit", top.chorg.kernel.cmd.publicResponders.sys.Exit.class);
+        Global.cmdManPublic.register("stop", top.chorg.kernel.cmd.publicResponders.sys.Exit.class);
 
-        Global.cmdManPublic.register("help", top.chorg.kernel.cmd.publicResponders.Sys.Help.class);
-        Global.cmdManPublic.register("man", top.chorg.kernel.cmd.publicResponders.Sys.Help.class);
+        Global.cmdManPublic.register("help", top.chorg.kernel.cmd.publicResponders.sys.Help.class);
+        Global.cmdManPublic.register("man", top.chorg.kernel.cmd.publicResponders.sys.Help.class);
 
-        Global.cmdManPublic.register("login", top.chorg.kernel.cmd.publicResponders.Auth.NormalLogin.class);
-        Global.cmdManPublic.register("logon", top.chorg.kernel.cmd.publicResponders.Auth.NormalLogin.class);
+        Global.cmdManPublic.register("login", top.chorg.kernel.cmd.publicResponders.auth.NormalLogin.class);
+        Global.cmdManPublic.register("logon", top.chorg.kernel.cmd.publicResponders.auth.NormalLogin.class);
 
-        Global.cmdManPublic.register("register", top.chorg.kernel.cmd.publicResponders.Auth.Register.class);
-        Global.cmdManPublic.register("reg", top.chorg.kernel.cmd.publicResponders.Auth.Register.class);
+        Global.cmdManPublic.register("register", top.chorg.kernel.cmd.publicResponders.auth.Register.class);
+        Global.cmdManPublic.register("reg", top.chorg.kernel.cmd.publicResponders.auth.Register.class);
 
-        Global.cmdManPublic.register("logoff", top.chorg.kernel.cmd.publicResponders.Auth.Logoff.class);
-        Global.cmdManPublic.register("logout", top.chorg.kernel.cmd.publicResponders.Auth.Logoff.class);
+        Global.cmdManPublic.register("logoff", top.chorg.kernel.cmd.publicResponders.auth.Logoff.class);
+        Global.cmdManPublic.register("logout", top.chorg.kernel.cmd.publicResponders.auth.Logoff.class);
 
         Global.cmdManPublic.register(
                 "announce",
-                top.chorg.kernel.cmd.publicResponders.Announce.Announce.class
+                top.chorg.kernel.cmd.publicResponders.announce.Announce.class
         );
         Global.cmdManPublic.register(
                 "template",
-                top.chorg.kernel.cmd.publicResponders.Announce.Template.class
+                top.chorg.kernel.cmd.publicResponders.announce.Template.class
         );
 
     }

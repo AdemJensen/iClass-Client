@@ -1,4 +1,4 @@
-package top.chorg.kernel.cmd.publicResponders.Announce;
+package top.chorg.kernel.cmd.publicResponders.announce;
 
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.kernel.communication.auth.AuthManager;

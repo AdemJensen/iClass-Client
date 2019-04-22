@@ -1,4 +1,4 @@
-package top.chorg.kernel.cmd.publicResponders.Sys;
+package top.chorg.kernel.cmd.publicResponders.sys;
 
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.system.Sys;

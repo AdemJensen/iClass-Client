@@ -1,4 +1,4 @@
-package top.chorg.kernel.cmd.privateResponders.Announce;
+package top.chorg.kernel.cmd.privateResponders.announce;
 
 import top.chorg.cmdLine.CmdLineAdapter;
 import top.chorg.kernel.cmd.CmdResponder;

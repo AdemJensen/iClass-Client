@@ -1,4 +1,4 @@
-package top.chorg.kernel.cmd.publicResponders.Announce;
+package top.chorg.kernel.cmd.publicResponders.announce;
 
 import top.chorg.cmdLine.CmdLineAdapter;
 import top.chorg.kernel.cmd.CmdResponder;
