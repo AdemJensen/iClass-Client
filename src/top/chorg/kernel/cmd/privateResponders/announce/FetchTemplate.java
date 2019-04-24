@@ -1,5 +1,6 @@
 package top.chorg.kernel.cmd.privateResponders.announce;
 
+import com.google.gson.JsonSyntaxException;
 import top.chorg.cmdLine.CmdLineAdapter;
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.kernel.communication.HostManager;
@@ -33,7 +34,14 @@ public class FetchTemplate extends CmdResponder {
 
     @Override
     public int onReceiveNetMsg() {
-        FetchTemplateResult[] results = nextArg(FetchTemplateResult[].class);
+        FetchTemplateResult[] results;
+        String arg = nextArg();
+        try {
+            results = Global.gson.fromJson(arg, FetchTemplateResult[].class);
+        } catch (JsonSyntaxException e) {
+            Sys.errF("Fetch Announce List", "Error: %s.", arg);
+            return 8;
+        }
         if (results == null) {
             HostManager.onInvalidTransmission("Template fetch: on invalid result.");
             return 1;

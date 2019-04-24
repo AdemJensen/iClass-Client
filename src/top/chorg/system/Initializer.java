@@ -157,6 +157,35 @@ public class Initializer {
                 top.chorg.kernel.cmd.privateResponders.announce.DelTemplate.class
         );
 
+        Global.cmdManPrivate.register(
+                "fetchVoteList",
+                top.chorg.kernel.cmd.privateResponders.vote.FetchList.class
+        );
+        Global.cmdManPrivate.register(
+                "fetchVoteInfo",
+                top.chorg.kernel.cmd.privateResponders.vote.FetchInfo.class
+        );
+        Global.cmdManPrivate.register(
+                "addVote",
+                top.chorg.kernel.cmd.privateResponders.vote.Add.class
+        );
+        Global.cmdManPrivate.register(
+                "alterVote",
+                top.chorg.kernel.cmd.privateResponders.vote.Alter.class
+        );
+        Global.cmdManPrivate.register(
+                "delVote",
+                top.chorg.kernel.cmd.privateResponders.vote.Del.class
+        );
+        Global.cmdManPrivate.register(
+                "makeVote",
+                top.chorg.kernel.cmd.privateResponders.vote.Make.class
+        );
+        Global.cmdManPrivate.register(
+                "fetchVoteResult",
+                top.chorg.kernel.cmd.privateResponders.vote.FetchResult.class
+        );
+
     }
 
     private static void registerNetResponders() {
@@ -193,6 +222,10 @@ public class Initializer {
                 top.chorg.kernel.cmd.publicResponders.announce.Template.class
         );
 
+        Global.cmdManPublic.register(
+                "vote",
+                top.chorg.kernel.cmd.publicResponders.vote.Vote.class
+        );
     }
 
 }

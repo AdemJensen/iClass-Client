@@ -49,7 +49,7 @@ public class Announce extends CmdResponder {
         return 0;
     }
 
-    public CmdResponder fetchList() {
+    private CmdResponder fetchList() throws IndexOutOfBoundsException {
         if (hasNextArg()) {
             if (nextArg().equals("published")) {
                 return Global.cmdManPrivate.execute(
@@ -64,7 +64,7 @@ public class Announce extends CmdResponder {
         );
     }
 
-    public CmdResponder addAnnounce() {
+    private CmdResponder addAnnounce() throws IndexOutOfBoundsException {
         Scanner sc = CmdLineAdapter.sc;
         Sys.clearLine();
         Sys.cmdLinePrint("Please input title: "); String title = sc.nextLine();
@@ -99,7 +99,7 @@ public class Announce extends CmdResponder {
         );
     }
 
-    public CmdResponder alterAnnounce() {
+    private CmdResponder alterAnnounce() throws IndexOutOfBoundsException {
         Scanner sc = CmdLineAdapter.sc;
         Sys.clearLine();
         Sys.cmdLinePrint("Please input announcement id: "); int id = Integer.parseInt(sc.nextLine());
@@ -171,7 +171,7 @@ public class Announce extends CmdResponder {
         );
     }
 
-    public CmdResponder delAnnounce() {
+    private CmdResponder delAnnounce() throws IndexOutOfBoundsException {
         if (hasNextArg()) {
             try {
                 String arg = nextArg();

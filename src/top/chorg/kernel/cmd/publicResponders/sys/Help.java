@@ -1,5 +1,6 @@
 package top.chorg.kernel.cmd.publicResponders.sys;
 
+import top.chorg.cmdLine.CmdLineAdapter;
 import top.chorg.kernel.cmd.CmdManager;
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.system.Global;
@@ -104,6 +105,8 @@ public class Help extends CmdResponder {
                 }
             }
         }
+        Sys.clearLine();
+        CmdLineAdapter.outputDecoration();
         return 0;
     }
 

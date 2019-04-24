@@ -48,14 +48,14 @@ public class Template extends CmdResponder {
         return 0;
     }
 
-    public CmdResponder fetchTemplateList() {
+    private CmdResponder fetchTemplateList() throws IndexOutOfBoundsException {
         return Global.cmdManPrivate.execute(
                 "fetchAnnounceTemplate",
                 ""
         );
     }
 
-    public CmdResponder addTemplate() {
+    private CmdResponder addTemplate() throws IndexOutOfBoundsException {
         Scanner sc = CmdLineAdapter.sc;
         Sys.clearLine();
         Sys.cmdLinePrint("Please input name: "); String name = sc.nextLine();
@@ -78,7 +78,7 @@ public class Template extends CmdResponder {
         );
     }
 
-    public CmdResponder alterTemplate() {
+    private CmdResponder alterTemplate() throws IndexOutOfBoundsException {
         Scanner sc = CmdLineAdapter.sc;
         Sys.clearLine();
         Sys.cmdLinePrint("Please input template id: "); int id = Integer.parseInt(sc.nextLine());
@@ -125,7 +125,7 @@ public class Template extends CmdResponder {
         );
     }
 
-    public CmdResponder delTemplate() {
+    private CmdResponder delTemplate() throws IndexOutOfBoundsException {
         if (hasNextArg()) {
             try {
                 String arg = nextArg();
