@@ -51,8 +51,9 @@ public class Vote extends CmdResponder {
             if (resp == null) {
                 Sys.err("Vote", "Something went wrong when executing commands.");
                 return 2;
+            } else {
+                while (resp.isAlive()) {}
             }
-            while (resp.isAlive()) {}
         } else {
             Sys.err("Vote", "User is not online, please login first.");
         }

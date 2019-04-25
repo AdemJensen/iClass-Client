@@ -53,10 +53,12 @@ public class FetchInfo extends CmdResponder {
             result = Global.gson.fromJson(arg, FetchInfoResult.class);
         } catch (JsonSyntaxException e) {
             Sys.errF("Fetch Vote Info", "Error: %s.", arg);
+            Global.dropVar("VOTE_INFO_INTERNAL");
             return 8;
         }
         if (result == null) {
             HostManager.onInvalidTransmission("Fetch Vote Info: on invalid result.");
+            Global.dropVar("VOTE_INFO_INTERNAL");
             return 1;
         }
         if (Global.varExists("VOTE_INFO_INTERNAL")) {

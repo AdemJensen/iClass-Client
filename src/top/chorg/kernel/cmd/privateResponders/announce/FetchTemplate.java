@@ -40,10 +40,12 @@ public class FetchTemplate extends CmdResponder {
             results = Global.gson.fromJson(arg, FetchTemplateResult[].class);
         } catch (JsonSyntaxException e) {
             Sys.errF("Fetch Announce List", "Error: %s.", arg);
+            Global.dropVar("TEMPLATE_LIST_INTERNAL");
             return 8;
         }
         if (results == null) {
             HostManager.onInvalidTransmission("Template fetch: on invalid result.");
+            Global.dropVar("TEMPLATE_LIST_INTERNAL");
             return 1;
         }
         if (Global.varExists("TEMPLATE_LIST_INTERNAL")) {

@@ -51,10 +51,12 @@ public class FetchList extends CmdResponder {
             results = Global.gson.fromJson(arg, FetchListResult[].class);
         } catch (JsonSyntaxException e) {
             Sys.errF("Fetch Announce List", "Error: %s.", arg);
+            Global.dropVar("ANNOUNCE_LIST_INTERNAL");
             return 8;
         }
         if (results == null) {
             HostManager.onInvalidTransmission("Announce fetch: on invalid result.");
+            Global.dropVar("ANNOUNCE_LIST_INTERNAL");
             return 1;
         }
         if (Global.varExists("ANNOUNCE_LIST_INTERNAL")) {
