@@ -146,7 +146,11 @@ public class Template extends CmdResponder {
 
     @Override
     public String getManual() {
-        return "";
+        return "To make actions that relevant to template system. \n " +
+                "\t\t- ls\t\tList all the templates that relevant to you.\n" +
+                "\t\t- add\t\tAdd a new template. There will be a guidance system guiding you create a template.\n" +
+                "\t\t- alter\t\tAlter an template. There will be a guidance system guiding you create a template.\n" +
+                "\t\t- del [templateId]\t\tDelete an template. Warning: this action is irreversible.";
     }
 
 

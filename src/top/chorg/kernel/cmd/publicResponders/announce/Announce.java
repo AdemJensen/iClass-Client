@@ -192,7 +192,13 @@ public class Announce extends CmdResponder {
 
     @Override
     public String getManual() {
-        return "";
+        return "To make actions that relevant to announcement system. \n " +
+                "\t\t- ls\t\tList all the announcements that relevant to you.\n" +
+                "\t\t- add\t\tCreate a new announcement. " +
+                "There will be a guidance system guiding you create an announcement.\n" +
+                "\t\t- alter\t\tAlter announcement. " +
+                "There will be a guidance system guiding you create an announcement.\n" +
+                "\t\t- del [announceId]\t\tDelete an announcement. Warning: this action is irreversible.";
     }
 
 }

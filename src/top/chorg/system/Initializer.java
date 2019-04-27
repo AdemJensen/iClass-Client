@@ -1,5 +1,6 @@
 package top.chorg.system;
 
+import top.chorg.kernel.communication.net.NetManager;
 import top.chorg.kernel.flag.FlagManager;
 import top.chorg.support.JarLoader;
 
@@ -186,10 +187,16 @@ public class Initializer {
                 top.chorg.kernel.cmd.privateResponders.vote.FetchResult.class
         );
 
+        Global.cmdManPrivate.register("sendChat", top.chorg.kernel.cmd.privateResponders.chat.Send.class);
+        Global.cmdManPrivate.register(
+                "fetchChatHistory",
+                top.chorg.kernel.cmd.privateResponders.chat.FetchHistory.class
+        );
+
     }
 
     private static void registerNetResponders() {
-
+        NetManager.register("onChat", top.chorg.kernel.communication.net.responders.chat.Receive.class);
     }
 
     /**
@@ -213,6 +220,11 @@ public class Initializer {
         Global.cmdManPublic.register("logoff", top.chorg.kernel.cmd.publicResponders.auth.Logoff.class);
         Global.cmdManPublic.register("logout", top.chorg.kernel.cmd.publicResponders.auth.Logoff.class);
 
+        Global.cmdManPublic.register("self", top.chorg.kernel.cmd.publicResponders.auth.Self.class);
+        Global.cmdManPublic.register("me", top.chorg.kernel.cmd.publicResponders.auth.Self.class);
+        Global.cmdManPublic.register("i", top.chorg.kernel.cmd.publicResponders.auth.Self.class);
+        Global.cmdManPublic.register("I", top.chorg.kernel.cmd.publicResponders.auth.Self.class);
+
         Global.cmdManPublic.register(
                 "announce",
                 top.chorg.kernel.cmd.publicResponders.announce.Announce.class
@@ -226,6 +238,8 @@ public class Initializer {
                 "vote",
                 top.chorg.kernel.cmd.publicResponders.vote.Vote.class
         );
+
+        Global.cmdManPublic.register("chat", top.chorg.kernel.cmd.publicResponders.chat.Chat.class);
     }
 
 }

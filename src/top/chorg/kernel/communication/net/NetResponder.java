@@ -1,5 +1,6 @@
 package top.chorg.kernel.communication.net;
 
+import com.google.gson.JsonParseException;
 import top.chorg.system.Global;
 
 /**
@@ -34,7 +35,11 @@ public abstract class NetResponder extends Thread {
     }
 
     protected final <T> T getArg(Class<T> classOfT) {
-        return Global.gson.fromJson(obj, classOfT);
+        try {
+            return Global.gson.fromJson(obj, classOfT);
+        } catch (JsonParseException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**

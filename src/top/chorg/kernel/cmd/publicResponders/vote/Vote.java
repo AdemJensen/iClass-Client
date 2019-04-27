@@ -255,7 +255,15 @@ public class Vote extends CmdResponder {
 
     @Override
     public String getManual() {
-        return "";
+        return "To make actions that relevant to voting system. \n " +
+                "\t\t- ls\t\tList all the votes that relevant to you.\n" +
+                "\t\t- get [voteId]\t\tGet the vote information by id.\n" +
+                "\t\t- make [voteId] [select 1] [select 2] ...\t\t Make your vote. " +
+                "If is single vote, there is only 1 selection allowed.\n" +
+                "\t\t- result [voteId]\t\tGet the results of a vote.\n" +
+                "\t\t- add\t\tAdd a new vote. There will be a guidance system guiding you create a vote.\n" +
+                "\t\t- alter\t\tAlter a vote. There will be a guidance system guiding you create a vote.\n" +
+                "\t\t- del [voteId]\t\tDelete a vote. Warning: this action is irreversible.";
     }
 
 }
