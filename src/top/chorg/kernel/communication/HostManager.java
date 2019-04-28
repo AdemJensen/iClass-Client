@@ -104,6 +104,17 @@ public class HostManager {
         return null;
     }
 
+    public static Socket getSocket(String identifier) {
+        if (isConnected(identifier)) {
+            return SocketObjs.get(identifier);
+        }
+        Sys.err(
+                "Net",
+                "Designated connection not established."
+        );
+        return null;
+    }
+
     public static void onInvalidTransmission(String identifier) {
         Sys.warnF(
                 "Net",

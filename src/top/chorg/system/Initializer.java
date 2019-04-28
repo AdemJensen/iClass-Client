@@ -193,6 +193,9 @@ public class Initializer {
                 top.chorg.kernel.cmd.privateResponders.chat.FetchHistory.class
         );
 
+        Global.cmdManPrivate.register("uploadFile", top.chorg.kernel.cmd.privateResponders.file.Upload.class);
+        Global.cmdManPrivate.register("downloadFile", top.chorg.kernel.cmd.privateResponders.file.Download.class);
+
     }
 
     private static void registerNetResponders() {
@@ -240,6 +243,7 @@ public class Initializer {
         );
 
         Global.cmdManPublic.register("chat", top.chorg.kernel.cmd.publicResponders.chat.Chat.class);
+        Global.cmdManPublic.register("file", top.chorg.kernel.cmd.publicResponders.file.File.class);
     }
 
 }
