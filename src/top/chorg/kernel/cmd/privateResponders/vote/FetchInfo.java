@@ -80,6 +80,7 @@ public class FetchInfo extends CmdResponder {
                         "%12s | %d\n" +
                         "%12s | %d\n" +
                         "%12s | %s\n" +
+                        "%12s | %s\n" +
                         "%12s | %s\n",
                 "id", result.id,
                 "title", result.title,
@@ -93,7 +94,8 @@ public class FetchInfo extends CmdResponder {
                 "publisher", result.publisher,
                 "status(self)", result.status,
                 "isVoted", result.isVoted,
-                "Operation", Arrays.toString(result.ops)
+                "Operation", Arrays.toString(result.ops),
+                "Addition", result.addition
         );
         CmdLineAdapter.outputDecoration();
         // TODO: GUI process

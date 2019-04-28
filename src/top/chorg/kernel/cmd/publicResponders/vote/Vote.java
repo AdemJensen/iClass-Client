@@ -8,6 +8,7 @@ import top.chorg.support.DateTime;
 import top.chorg.system.Global;
 import top.chorg.system.Sys;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -85,9 +86,22 @@ public class Vote extends CmdResponder {
     private CmdResponder makeVote() throws IndexOutOfBoundsException {
         try {
             String voteId = nextArg();
+            String addition = "";
+            ArrayList<Integer> arr = new ArrayList<>();
+            boolean hasAddition = false;
+            while (hasNextArg()) {
+                addition = nextArg();
+                try {
+                    arr.add(Integer.parseInt(addition));
+                } catch (NumberFormatException e) {
+                    hasAddition = true;
+                    break;
+                }
+            }
+            if (!hasAddition) addition = "";
             return Global.cmdManPrivate.execute(
                     "makeVote",
-                    voteId, Global.gson.toJson(Arrays.stream(remainArgs()).mapToInt(Integer::parseInt).toArray())
+                    voteId, Global.gson.toJson(arr.stream().mapToInt(Integer::intValue).toArray()), addition
             );
         } catch (NullPointerException e) {
             Sys.err("Vote", "Missing parameters. Type 'help' for more information.");

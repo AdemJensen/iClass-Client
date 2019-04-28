@@ -23,7 +23,8 @@ public class Make extends CmdResponder {
                     "makeVote",
                     Global.gson.toJson(new MakeRequest(
                             Objects.requireNonNull(nextArg(int.class)),
-                            Objects.requireNonNull(nextArg(int[].class))
+                            Objects.requireNonNull(nextArg(int[].class)),
+                            hasNextArg() ? nextArg() : ""
                     ))
             ))) {
                 Sys.err("Make Vote", "Unable to send request.");

@@ -9,9 +9,11 @@ public class FetchInfoResult {
     public int method, classId, level, status, publisher;
     public boolean isVoted;
     public int[] ops;
+    public String addition;
 
     public FetchInfoResult(int id, String title, String content, String selections, DateTime date, DateTime validity,
-                           int method, int classId, int level, int status, int publisher, boolean isVoted, int[] ops) {
+                           int method, int classId, int level, int status, int publisher, boolean isVoted, int[] ops,
+                           String addition) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -25,5 +27,6 @@ public class FetchInfoResult {
         this.publisher = publisher;
         this.isVoted = isVoted;
         this.ops = ops;
+        this.addition = addition;
     }
 }
