@@ -22,6 +22,9 @@ public class File extends CmdResponder {
                 case "upload":
                     resp = uploadFile();
                     break;
+                case "ls":
+                    resp = listFile();
+                    break;
                 case "inspect":
                     resp = inspectFile();
                     break;
@@ -65,7 +68,31 @@ public class File extends CmdResponder {
     }
 
     private CmdResponder inspectFile() {
-        return null;
+        try {
+            int fileId = Objects.requireNonNull(nextArg(int.class));
+            return Global.cmdManPrivate.execute(
+                    "fetchFileInfo",
+                    String.valueOf(fileId)
+            );
+        } catch (NullPointerException e) {
+            Sys.err("Inspect File Info", "Too few arguments, type 'help' for more info.");
+            return null;
+        }
+    }
+
+    private CmdResponder listFile() {
+        String operation = nextArg();
+        if (operation.equals("self")) operation = "-1";
+        try {
+            int classId = Integer.parseInt(operation);
+            return Global.cmdManPrivate.execute(
+                    "fetchFileList",
+                    String.valueOf(classId)
+            );
+        } catch (NullPointerException | NumberFormatException e) {
+            Sys.err("Fetch File List", "Invalid arguments, type 'help' for more info.");
+            return null;
+        }
     }
 
     private CmdResponder downloadFile() {
@@ -84,11 +111,12 @@ public class File extends CmdResponder {
     @Override
     public String getManual() {
         return "To make actions that relevant to file system. \n " +
-                "\t\t- send [type] [targetId] [content]\t\tSend message to specific target.\n\t\t\t" +
-                "If type = 1, then targetId is the classId. If type = 2, then targetId is the userId.\n" +
-                "\t\t- history [type] [targetId]\t\tQuery chatting history.\n\t\t\t" +
-                "If type = 1, then targetId is the classId. If type = 2, then targetId is the userId.\n" +
-                "\t\t- alter\t\tAlter an template. There will be a guidance system guiding you create a template.\n" +
-                "\t\t- del [templateId]\t\tDelete an template. Warning: this action is irreversible.";
+                "\t\t- ls [classId]\t\tList all the files in class that you can access.\n\t\t\t" +
+                "If you want to list all your uploaded files, just type 'ls self\n" +
+                "\t\t- upload [path] [classId] (level)\t\tUpload specific file.\n\t\t\t" +
+                "If you want to upload them to a public area, just make classId = 0.\n\t\t\t" +
+                "If level leave blank, it will fill '0' for you." +
+                "\t\t- download [fileId]\t\tDownload targeted file.\n" +
+                "\t\t- inspect [fileId]\t\tShow the information of a targeted file.\n";
     }
 }

@@ -195,6 +195,14 @@ public class Initializer {
 
         Global.cmdManPrivate.register("uploadFile", top.chorg.kernel.cmd.privateResponders.file.Upload.class);
         Global.cmdManPrivate.register("downloadFile", top.chorg.kernel.cmd.privateResponders.file.Download.class);
+        Global.cmdManPrivate.register(
+                "fetchFileList",
+                top.chorg.kernel.cmd.privateResponders.file.FetchList.class
+        );
+        Global.cmdManPrivate.register(
+                "fetchFileInfo",
+                top.chorg.kernel.cmd.privateResponders.file.FetchInfo.class
+        );
 
     }
 
