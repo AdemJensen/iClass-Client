@@ -16,26 +16,15 @@ import java.net.URL;
  */
 public class Initializer {
     private static void DEV_PRE_OPERATIONS() {  // Development operations
-//        Global.conf.Cmd_Server_Host = "127.0.0.1";
-//        Global.conf.Cmd_Server_Port = 9998;
-//        Global.conf.File_Server_Host = "127.0.0.1";
-//        Global.conf.File_Server_Port = 9999;
-//        Global.conf.save();
-//        Global.conf.saveDefault();
-//        Global.conf.load();
-        try {
-            JarLoader a = new JarLoader(new URL[]{new URL("file://" + new File("extensions/iClass GUI.jar").getAbsolutePath())});
-            Class<?> cl = a.loadClass("top.chorg.ForeGuiAdapter");
-            System.out.println(cl.toString());
-            Method testMethod = cl.getMethod("init");
-            testMethod.invoke(
-                    cl.getDeclaredConstructor().newInstance()
-            );
-            //System.out.println(Global.getVar("Okay"));
-        } catch (MalformedURLException | ClassNotFoundException | NoSuchMethodException
-                | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        Global.conf.Cmd_Server_Host = "127.0.0.1";
+        Global.conf.Cmd_Server_Port = 9998;
+        Global.conf.File_Server_Host = "127.0.0.1";
+        Global.conf.File_Server_Port = 9999;
+        Global.conf.modList = new String[0];
+        Global.conf.saveDefault();
+        Global.conf.modList = new String[]{"iClass GUI.jar"};
+        Global.conf.save();
+        Global.conf.load();
     }
 
     /**
@@ -65,8 +54,26 @@ public class Initializer {
 
         FlagManager.execute(flagList);  // Start flag option processor.
 
-        DEV_PRE_OPERATIONS();
+        loadMods();
 
+    }
+
+    private static void loadMods() {
+        for (String mod : Global.conf.modList) {
+            try {
+                JarLoader a = new JarLoader(new URL[]{new URL("file://" + new File("extensions/iClass GUI.jar").getAbsolutePath())});
+                Class<?> cl = a.loadClass("top.chorg.ForeGuiAdapter");
+                //System.out.println(cl.toString());
+                Method testMethod = cl.getMethod("init");
+                testMethod.invoke(
+                        cl.getDeclaredConstructor().newInstance()
+                );
+                Sys.devInfoF("Mod loader", "Loaded mod: %s", mod);
+            } catch (MalformedURLException | ClassNotFoundException | NoSuchMethodException
+                    | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                Sys.errF("Mod loader", "Error while loading mod '%s': %s", mod, e.getMessage());
+            }
+        }
     }
 
     /**

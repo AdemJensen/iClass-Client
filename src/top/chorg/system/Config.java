@@ -8,12 +8,14 @@ public class Config {
     public int Cmd_Server_Port;
     public String File_Server_Host;
     public int File_Server_Port;
+    public String[] modList;
 
     public void assign(Config c) {
         Cmd_Server_Host = c.Cmd_Server_Host;
         Cmd_Server_Port = c.Cmd_Server_Port;
         File_Server_Host = c.File_Server_Host;
         File_Server_Port = c.File_Server_Port;
+        modList = c.modList;
     }
 
     public boolean load() {
