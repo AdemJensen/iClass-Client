@@ -1,6 +1,7 @@
 package top.chorg.system;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class Config {
     public String Cmd_Server_Host;
@@ -35,13 +36,18 @@ public class Config {
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     new FileInputStream(Global.getVarCon("CONF_ROUTE", String.class) + "/" + fileName),
-                    "GBK"
+                    StandardCharsets.UTF_8
             ));
-            String s = in.readLine();
-            assign(Global.gson.fromJson(s, Config.class));
+            StringBuilder s = new StringBuilder();
+            String temp = in.readLine();
+            while (temp != null) {
+                s.append(temp);
+                temp = in.readLine();
+            }
+            assign(Global.gson.fromJson(s.toString(), Config.class));
             in.close();
             Sys.devInfoF("Config Loader", "Data read from '%s'.", fileName);
-        } catch(IOException i) {
+        } catch(Exception i) {
             Sys.errF("Config Loader", "Unable to open conf file for loading (%s)!", fileName);
             return false;
         }
