@@ -22,9 +22,11 @@ public class GetRealName extends CmdResponder {
                     nextArg()   // An int array, contains at least one user.
             ))) {
                 Sys.err("Get Real Name", "Unable to send request.");
+                Global.guiAdapter.makeEvent("getRealName", "Unable to send request");
             }
         } else {
             Sys.err("Get Real Name", "You are not online, please login first.");
+            Global.guiAdapter.makeEvent("getRealName", "User is not online");
             return 1;
         }
         return 0;
@@ -39,8 +41,10 @@ public class GetRealName extends CmdResponder {
             if (info == null) throw new JsonParseException("e");
         } catch (JsonParseException e) {
             Sys.errF("Get Real Name", "Error: %s", results);
+            Global.guiAdapter.makeEvent("getRealName", results);
             return 1;
         }
+        Global.guiAdapter.makeEvent("getRealName", results);
         Sys.clearLine();
         Sys.cmdLinePrintF("Got RealName: %s\n", results);
         CmdLineAdapter.outputDecoration();

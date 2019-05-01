@@ -21,9 +21,11 @@ public class IsUserOnline extends CmdResponder {
                     nextArg()   // An int array, contains at least one user.
             ))) {
                 Sys.err("Judge Online", "Unable to send request.");
+                Global.guiAdapter.makeEvent("judgeOnline", "Unable to send request");
             }
         } else {
             Sys.err("Judge Online", "You are not online, please login first.");
+            Global.guiAdapter.makeEvent("judgeOnline", "User is not online");
             return 1;
         }
         return 0;
@@ -38,8 +40,10 @@ public class IsUserOnline extends CmdResponder {
             if (info == null) throw new JsonParseException("e");
         } catch (JsonParseException e) {
             Sys.errF("Judge Online", "Error: %s", results);
+            Global.guiAdapter.makeEvent("judgeOnline", results);
             return 1;
         }
+        Global.guiAdapter.makeEvent("judgeOnline", results);
         Sys.clearLine();
         Sys.cmdLinePrintF("User online status: %s\n", results);
         CmdLineAdapter.outputDecoration();

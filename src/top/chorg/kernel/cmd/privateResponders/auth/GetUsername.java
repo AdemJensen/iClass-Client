@@ -22,9 +22,11 @@ public class GetUsername extends CmdResponder {
                     nextArg()   // An int array, contains at least one user.
             ))) {
                 Sys.err("Get User Name", "Unable to send request.");
+                Global.guiAdapter.makeEvent("getUserName", "Unable to send request");
             }
         } else {
             Sys.err("Get User Name", "You are not online, please login first.");
+            Global.guiAdapter.makeEvent("getUserName", "User is not online");
             return 1;
         }
         return 0;
@@ -39,8 +41,10 @@ public class GetUsername extends CmdResponder {
             if (info == null) throw new JsonParseException("e");
         } catch (JsonParseException e) {
             Sys.errF("Get User Name", "Error: %s", results);
+            Global.guiAdapter.makeEvent("getUserName", results);
             return 1;
         }
+        Global.guiAdapter.makeEvent("getUserName", results);
         Sys.clearLine();
         Sys.cmdLinePrintF("Got username: %s\n", results);
         CmdLineAdapter.outputDecoration();

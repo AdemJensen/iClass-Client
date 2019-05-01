@@ -3,7 +3,6 @@ package top.chorg.kernel.cmd.privateResponders.auth;
 import com.google.gson.JsonParseException;
 import top.chorg.cmdLine.CmdLineAdapter;
 import top.chorg.kernel.cmd.CmdResponder;
-import top.chorg.kernel.communication.HostManager;
 import top.chorg.kernel.communication.Message;
 import top.chorg.kernel.communication.api.auth.User;
 import top.chorg.kernel.communication.auth.AuthManager;
@@ -23,9 +22,11 @@ public class FetchUserInfo extends CmdResponder {
                     nextArg()       // Only 1 user.
             ))) {
                 Sys.err("Fetch User Info", "Unable to send request.");
+                Global.guiAdapter.makeEvent("fetchUserInfo", "Unable to send request");
             }
         } else {
             Sys.err("Fetch User Info", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("fetchUserInfo", "User is not online");
             return 1;
         }
         return 0;
@@ -40,6 +41,7 @@ public class FetchUserInfo extends CmdResponder {
             if (info == null) throw new JsonParseException("e");
         } catch (JsonParseException e) {
             Sys.errF("Fetch User Info", "Error: %s", results);
+            Global.guiAdapter.makeEvent("fetchUserInfo", results);
             Global.dropVar("USER_INFO_INTERNAL");
             return 1;
         }
@@ -48,6 +50,7 @@ public class FetchUserInfo extends CmdResponder {
             Global.dropVar("USER_INFO_INTERNAL");
             return 0;
         }
+        Global.guiAdapter.makeEvent("fetchUserInfo", Global.gson.toJson(info));
         Sys.clearLine();
         Sys.cmdLinePrintF("Got user %d's info:\n", info.getId());
         Sys.cmdLinePrintF("username: %s\n", info.getUsername());

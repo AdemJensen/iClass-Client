@@ -22,9 +22,11 @@ public class GetNickName extends CmdResponder {
                     nextArg()   // An int array, contains at least one user.
             ))) {
                 Sys.err("Get Nick Name", "Unable to send request.");
+                Global.guiAdapter.makeEvent("getNickName", "Unable to send request");
             }
         } else {
             Sys.err("Get Nick Name", "You are not online, please login first.");
+            Global.guiAdapter.makeEvent("getNickName", "User is not online");
             return 1;
         }
         return 0;
@@ -39,8 +41,10 @@ public class GetNickName extends CmdResponder {
             if (info == null) throw new JsonParseException("e");
         } catch (JsonParseException e) {
             Sys.errF("Get Nick Name", "Error: %s", results);
+            Global.guiAdapter.makeEvent("getNickName", results);
             return 1;
         }
+        Global.guiAdapter.makeEvent("getNickName", results);
         Sys.clearLine();
         Sys.cmdLinePrintF("Got NickName: %s\n", results);
         CmdLineAdapter.outputDecoration();

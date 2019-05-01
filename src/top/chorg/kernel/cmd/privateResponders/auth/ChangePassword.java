@@ -23,9 +23,11 @@ public class ChangePassword extends CmdResponder {
                     )
             ))) {
                 Sys.err("Change Password", "Unable to send request.");
+                Global.guiAdapter.makeEvent("changePassword", "Unable to send request");
             }
         } else {
             Sys.err("Change Password", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("changePassword", "User is not online");
             return 1;
         }
         return 0;
@@ -36,14 +38,17 @@ public class ChangePassword extends CmdResponder {
         String results = nextArg();
         if (results == null) {
             HostManager.onInvalidTransmission("Change Password: on invalid result.");
+            Global.guiAdapter.makeEvent("changePassword", "Unknown error");
             return 1;
         }
         if (results.equals("OK")) {
             Sys.info("Change Password", "Successful operation.");
+            Global.guiAdapter.makeEvent("changePassword", "OK");
             Sys.info("Change Password", "you need to login again.");
             AuthManager.bringOffline();
         } else {
             Sys.errF("Change Password", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("changePassword", results);
         }
         // TODO: GUI process
         return 0;
