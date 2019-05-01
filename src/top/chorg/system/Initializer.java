@@ -55,14 +55,18 @@ public class Initializer {
         FlagManager.execute(flagList);  // Start flag option processor.
 
         loadMods();
-
     }
 
     private static void loadMods() {
         for (String mod : Global.conf.modList) {
             try {
-                JarLoader a = new JarLoader(new URL[]{new URL("file://" + new File("extensions/iClass GUI.jar").getAbsolutePath())});
-                Class<?> cl = a.loadClass("top.chorg.ForeGuiAdapter");
+                JarLoader a = new JarLoader(
+                        new URL[]{
+                                new URL("file://" + new File("extensions" + File.separator + mod)
+                                        .getAbsolutePath())
+                        }
+                );
+                Class<?> cl = a.loadClass("top.chorg.ModAdapter");
                 //System.out.println(cl.toString());
                 Method testMethod = cl.getMethod("init");
                 testMethod.invoke(
@@ -89,7 +93,7 @@ public class Initializer {
         Global.setVar("GUI_MODE", true);        // To determine current display mode.
         Global.setVar("DEV_MODE", false);       // To determine whether this is development mode or not.
 
-        Global.setVar("LOG_ROUTE", "./logs");   // Route of log files.
+        Global.setVar("LOG_ROUTE", "." + File.separator + "logs");   // Route of log files.
         Global.setVar("CONF_ROUTE", ".");       // Route of route files.
         Global.setVar("CONF_FILE", "config.json");                      // Config file name.
         Global.setVar("DEFAULT_CONF_FILE", "config.default.json");      // Default config file name.
@@ -131,6 +135,26 @@ public class Initializer {
         Global.cmdManPrivate.register("login", top.chorg.kernel.cmd.privateResponders.auth.Login.class);
         Global.cmdManPrivate.register("register", top.chorg.kernel.cmd.privateResponders.auth.Register.class);
         Global.cmdManPrivate.register("logoff", top.chorg.kernel.cmd.privateResponders.auth.Logoff.class);
+        Global.cmdManPrivate.register("alterUser", top.chorg.kernel.cmd.privateResponders.auth.AlterUser.class);
+        Global.cmdManPrivate.register("changePassword",
+                top.chorg.kernel.cmd.privateResponders.auth.ChangePassword.class);
+        Global.cmdManPrivate.register("fetchUserInfo",
+                top.chorg.kernel.cmd.privateResponders.auth.FetchUserInfo.class);
+        Global.cmdManPrivate.register("getNickName",
+                top.chorg.kernel.cmd.privateResponders.auth.GetNickName.class);
+        Global.cmdManPrivate.register("getRealName",
+                top.chorg.kernel.cmd.privateResponders.auth.GetRealName.class);
+        Global.cmdManPrivate.register("getUserName",
+                top.chorg.kernel.cmd.privateResponders.auth.GetUsername.class);
+        Global.cmdManPrivate.register("judgeOnline",
+                top.chorg.kernel.cmd.privateResponders.auth.IsUserOnline.class);
+
+        Global.cmdManPrivate.register("joinClass", top.chorg.kernel.cmd.privateResponders.classes.JoinClass.class);
+        Global.cmdManPrivate.register("exitClass", top.chorg.kernel.cmd.privateResponders.classes.ExitClass.class);
+        Global.cmdManPrivate.register("fetchClassInfo",
+                top.chorg.kernel.cmd.privateResponders.classes.FetchClassInfo.class);
+        Global.cmdManPrivate.register("fetchOnline",
+                top.chorg.kernel.cmd.privateResponders.classes.FetchClassOnline.class);
 
         Global.cmdManPrivate.register(
                 "fetchAnnounceList",
@@ -242,6 +266,9 @@ public class Initializer {
         Global.cmdManPublic.register("me", top.chorg.kernel.cmd.publicResponders.auth.Self.class);
         Global.cmdManPublic.register("i", top.chorg.kernel.cmd.publicResponders.auth.Self.class);
         Global.cmdManPublic.register("I", top.chorg.kernel.cmd.publicResponders.auth.Self.class);
+
+        Global.cmdManPublic.register("user", top.chorg.kernel.cmd.publicResponders.auth.Users.class);
+        Global.cmdManPublic.register("class", top.chorg.kernel.cmd.publicResponders.auth.Classes.class);
 
         Global.cmdManPublic.register(
                 "announce",

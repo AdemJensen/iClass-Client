@@ -23,12 +23,14 @@ public class Register extends CmdResponder {
     public int response() throws IndexOutOfBoundsException {
         if (Global.varExists("AUTH_TIMER")) {
             Sys.err("Register", "Ongoing auth-relevant action in progress, please retry later.");
+            Global.guiAdapter.makeEvent("regResult", "Ongoing auth-relevant action in progress.");
             return 208;
         }
         Sys.info("Register", "Attempting to register.");
         Global.setVar("AUTH_TIMER", new Timer(10000, (Object[] args) -> {
             clearTimer();
             Sys.err("Register", "Timed out while sending reg info (207).");
+            Global.guiAdapter.makeEvent("regResult", "Timed out while sending reg info (207).");
             return 0;
         }));
         if (HostManager.connect(
@@ -45,6 +47,7 @@ public class Register extends CmdResponder {
         AuthInfo authInfo = new AuthInfo(nextArg(), MD5.encode(nextArg()), true);
         if (!Global.masterSender.send(new Message("login", Global.gson.toJson(authInfo)))) {
             Sys.err("register", "Unable to send reg info (211).");
+            Global.guiAdapter.makeEvent("regResult", "Unable to send reg info (211).");
             return 211;
         }
         while (Global.getVar("AUTH_TIMER") != null) { }
@@ -78,10 +81,12 @@ public class Register extends CmdResponder {
                 switch (res.result) {
                     case "Granted":
                         Sys.info("Register", "Successfully registered a user.");
+                        Global.guiAdapter.makeEvent("regResult", "OK");
                         dropTimer();
                         return 0;
                     case "Denied":
                         Sys.errF("Register", "Register denied : (%s)", res.obj);
+                        Global.guiAdapter.makeEvent("regResult", res.obj);
                         dropTimer();
                         return 6;
                     default:
@@ -98,6 +103,7 @@ public class Register extends CmdResponder {
             return 3;
         } catch (Exception e) {
             HostManager.onInvalidTransmission("Unknown error (254)");
+            Global.guiAdapter.makeEvent("regResult", "Unknown error (254)");
             dropTimer();
             return 254;
         }

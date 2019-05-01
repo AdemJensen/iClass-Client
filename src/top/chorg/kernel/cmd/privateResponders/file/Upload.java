@@ -10,10 +10,7 @@ import top.chorg.kernel.communication.auth.AuthManager;
 import top.chorg.system.Global;
 import top.chorg.system.Sys;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.Objects;
 
@@ -72,11 +69,7 @@ public class Upload extends CmdResponder {
             return 122;
         }
         String[] fileNameTemp;
-        if (ret.path.contains("/")) {
-            fileNameTemp = ret.path.split("/");
-        } else {
-            fileNameTemp = ret.path.split("\\\\");
-        }
+        fileNameTemp = ret.path.split(File.separator);
         pw.println("upload");
         pw.println(fileNameTemp[fileNameTemp.length - 1]);
         pw.println(ret.id);

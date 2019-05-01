@@ -2,6 +2,7 @@ package top.chorg.system;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.Primitives;
+import top.chorg.gui.GuiAdapter;
 import top.chorg.kernel.cmd.CmdManager;
 import top.chorg.kernel.communication.net.NetReceiver;
 import top.chorg.kernel.communication.net.NetSender;
@@ -31,6 +32,8 @@ public class Global {
 
     public static Gson gson = new Gson();    // Json utils.
     public static Config conf = new Config();     // Contains configuration variables.
+
+    public static GuiAdapter guiAdapter;
 
     private static HashMap<Object, Object> variables = new HashMap<>();     // Contains global variables.
 

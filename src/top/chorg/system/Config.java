@@ -37,7 +37,7 @@ public class Config {
     public boolean loadFromFile(String fileName) {
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(
-                    new FileInputStream(Global.getVarCon("CONF_ROUTE", String.class) + "/" + fileName),
+                    new FileInputStream(Global.getVarCon("CONF_ROUTE", String.class) + File.separator + fileName),
                     StandardCharsets.UTF_8
             ));
             StringBuilder s = new StringBuilder();
@@ -59,7 +59,7 @@ public class Config {
     public boolean saveToFile(String fileName) {
         try {
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(Global.getVarCon("CONF_ROUTE", String.class) + "/" + fileName)));
+                    new FileOutputStream(Global.getVarCon("CONF_ROUTE", String.class) + File.separator + fileName)));
             out.write(Global.gson.toJson(this));
             out.flush();
             out.close();

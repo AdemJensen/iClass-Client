@@ -34,6 +34,7 @@ public class Login extends CmdResponder {
         Global.setVar("AUTH_TIMER", new Timer(10000, (Object[] args) -> {
             int res = clearTimer();
             if (res != 0) Sys.err("Login", "Timed out while sending authentication info (207).");
+            Global.guiAdapter.makeEvent("loginResult", "Timed out while sending information (207).");
             return res;
         }));
         if (HostManager.connect(
@@ -59,6 +60,7 @@ public class Login extends CmdResponder {
         }
         if (!Global.masterSender.send(new Message("login", Global.gson.toJson(authInfo)))) {
             Sys.err("Login", "Unable to send authentication info (206).");
+            Global.guiAdapter.makeEvent("loginResult", "Unable to send authentication info (206).");
             HostManager.disconnect("CmdHost");
             dropTimer();
             return 206;
@@ -98,9 +100,11 @@ public class Login extends CmdResponder {
                     case "Granted":
                         User content = Global.gson.fromJson(res.obj, User.class);
                         AuthManager.completeAuth(content);
+                        Global.guiAdapter.makeEvent("loginResult", "OK");
                         return 0;
                     case "Denied":
                         Sys.errF("Login", "Access denied : (%s)", res.obj);
+                        Global.guiAdapter.makeEvent("loginResult", res.obj);
                         dropTimer();
                         return 6;
                     default:
@@ -117,6 +121,7 @@ public class Login extends CmdResponder {
             return 3;
         } catch (Exception e) {
             HostManager.onInvalidTransmission("Unknown error (254)");
+            Global.guiAdapter.makeEvent("loginResult", "Unknown error (254)");
             dropTimer();
             return 254;
         }

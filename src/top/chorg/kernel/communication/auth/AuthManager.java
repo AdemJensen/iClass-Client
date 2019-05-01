@@ -32,10 +32,16 @@ public class AuthManager {
             Global.masterReceiver.close();
             HostManager.disconnect("CmdHost");
         }
+        Global.guiAdapter.makeEvent("bringOffline");
     }
 
     public static boolean updateUserInfo() {
-        return false;
+        Global.setVar("USER_INFO_INTERNAL", true);
+        Global.cmdManPrivate.execute("fetchUserInfo", String.valueOf(AuthManager.getUser().getId()));
+        while (Global.varExists("USER_INFO_INTERNAL")) { }
+        user = Global.getVar("USER_INFO_CACHE", User.class);
+        Global.dropVar("USER_INFO_CACHE");
+        return user != null;
     }
 
     public static User getUser() {

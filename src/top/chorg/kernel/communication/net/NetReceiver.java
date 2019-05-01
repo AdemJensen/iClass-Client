@@ -36,8 +36,8 @@ public class NetReceiver extends Thread {
                             "Host (%s) connection lost.",
                             identifier
                     );
+                    Global.guiAdapter.makeEvent("connectionLost");
                     break;
-                    // TODO: GUI
                 }
                 try {
                     Message decMsg = Global.gson.fromJson(msg, Message.class);
