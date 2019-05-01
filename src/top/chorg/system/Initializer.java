@@ -41,8 +41,10 @@ public class Initializer {
 
         if (!Global.conf.load()) {
             Sys.warn("Init", "Unable to load config file, using default config file instead.");
+            Global.guiAdapter.makeEvent("configLoadError", "Unable to load config file");
             if (!Global.conf.loadDefault()) {
                 Sys.err("Init", "Unable to load default config file.");
+                Global.guiAdapter.makeEvent("configLoadError", "Unable to load default config file");
                 Sys.exit(10);
             }
         }
@@ -76,6 +78,7 @@ public class Initializer {
             } catch (MalformedURLException | ClassNotFoundException | NoSuchMethodException
                     | IllegalAccessException | InstantiationException | InvocationTargetException e) {
                 Sys.errF("Mod loader", "Error while loading mod '%s': %s", mod, e.getMessage());
+                Global.guiAdapter.makeEvent("modLoadError", "Unable to load mod " + mod);
             }
         }
     }

@@ -32,9 +32,11 @@ public class Add extends CmdResponder {
                     ))
             ))) {
                 Sys.err("Add Announce", "Unable to send request.");
+                Global.guiAdapter.makeEvent("addAnnounce", "Unable to send request");
             }
         } else {
             Sys.err("Add Announce", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("addAnnounce", "User is not online");
             return 1;
         }
         return 0;
@@ -49,8 +51,10 @@ public class Add extends CmdResponder {
         }
         if (results.equals("OK")) {
             Sys.info("Add Announce", "Successful operation.");
+            Global.guiAdapter.makeEvent("addAnnounce", "OK");
         } else {
             Sys.errF("Add Announce", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("addAnnounce", results);
         }
         // TODO: GUI process
         return 0;

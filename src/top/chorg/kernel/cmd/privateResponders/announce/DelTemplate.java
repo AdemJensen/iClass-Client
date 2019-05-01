@@ -21,9 +21,11 @@ public class DelTemplate extends CmdResponder {
                     nextArg()
             ))) {
                 Sys.err("Delete Template", "Unable to send request.");
+                Global.guiAdapter.makeEvent("delTemplate", "Unable to send request");
             }
         } else {
             Sys.err("Delete Template", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("delTemplate", "User is not online");
             return 1;
         }
         return 0;
@@ -38,8 +40,10 @@ public class DelTemplate extends CmdResponder {
         }
         if (results.equals("OK")) {
             Sys.info("Delete Template", "Successful operation.");
+            Global.guiAdapter.makeEvent("delTemplate", "OK");
         } else {
             Sys.errF("Delete Template", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("delTemplate", results);
         }
         // TODO: GUI process
         return 0;

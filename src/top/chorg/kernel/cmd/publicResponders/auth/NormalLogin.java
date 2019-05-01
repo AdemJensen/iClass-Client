@@ -23,7 +23,7 @@ public class NormalLogin extends CmdResponder {
         }
         CmdManager privateMan = Global.cmdManPrivate;
         CmdResponder resp =  Objects.requireNonNull(privateMan).execute(
-                "login", "Normal", nextArg(), MD5.encode(nextArg())
+                "login", "Normal", nextArg(), nextArg()
         );
         while (resp.isAlive()) { }
         return resp.getReturnVal();

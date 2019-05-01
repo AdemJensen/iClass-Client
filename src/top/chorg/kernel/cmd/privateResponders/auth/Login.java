@@ -10,6 +10,7 @@ import top.chorg.kernel.communication.api.auth.User;
 import top.chorg.kernel.communication.auth.AuthManager;
 import top.chorg.kernel.communication.net.NetReceiver;
 import top.chorg.kernel.communication.net.NetSender;
+import top.chorg.support.MD5;
 import top.chorg.support.Timer;
 import top.chorg.system.Global;
 import top.chorg.system.Sys;
@@ -51,7 +52,7 @@ public class Login extends CmdResponder {
         AuthInfo authInfo = null;
         String cmdName = nextArg();
         if (cmdName.equals("Normal")) {
-            authInfo = new AuthInfo(nextArg(), nextArg());
+            authInfo = new AuthInfo(nextArg(), MD5.encode(nextArg()));
         } else if (cmdName.equals("Token")) {
             authInfo = new AuthInfo(nextArg());
         } else {

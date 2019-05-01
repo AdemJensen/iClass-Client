@@ -173,6 +173,16 @@ public class Sys {
         else return true;
     }
 
+    /**
+     * To judge if current environment is development env or not.
+     * Default value is false.
+     *
+     * @return True if current environment is development env.
+     */
+    public static boolean isGuiDevEnv() {
+        return false;
+    }
+
     public static void cmdLinePrint(String str) {
         if (isCmdEnv() || isDevEnv()) System.out.print(str);
     }
@@ -196,7 +206,7 @@ public class Sys {
         if (isCmdEnv()) {
             System.exit(returnValue);
         } else {
-            // TODO: Add exit window display method.
+            Global.guiAdapter.makeEvent("exit", Integer.toString(returnValue));
             System.out.printf("EXIT ERROR!(%d)\n", returnValue);
         }
     }

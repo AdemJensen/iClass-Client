@@ -21,9 +21,11 @@ public class Del extends CmdResponder {
                     nextArg()
             ))) {
                 Sys.err("Delete Announce", "Unable to send request.");
+                Global.guiAdapter.makeEvent("delAnnounce", "Unable to send request");
             }
         } else {
             Sys.err("Delete Announce", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("delAnnounce", "User is not online");
             return 1;
         }
         return 0;
@@ -38,8 +40,10 @@ public class Del extends CmdResponder {
         }
         if (results.equals("OK")) {
             Sys.info("Delete Announce", "Successful operation.");
+            Global.guiAdapter.makeEvent("delAnnounce", "OK");
         } else {
             Sys.errF("Delete Announce", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("delAnnounce", results);
         }
         // TODO: GUI process
         return 0;

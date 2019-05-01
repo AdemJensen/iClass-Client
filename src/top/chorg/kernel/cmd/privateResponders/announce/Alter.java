@@ -33,9 +33,11 @@ public class Alter extends CmdResponder {
                     ))
             ))) {
                 Sys.err("Alter Announce", "Unable to send request.");
+                Global.guiAdapter.makeEvent("alterAnnounce", "Unable to send request");
             }
         } else {
             Sys.err("Alter Announce", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("alterAnnounce", "User is not online");
             return 1;
         }
         return 0;
@@ -50,8 +52,10 @@ public class Alter extends CmdResponder {
         }
         if (results.equals("OK")) {
             Sys.info("Alter Announce", "Successful operation.");
+            Global.guiAdapter.makeEvent("alterAnnounce", "OK");
         } else {
             Sys.errF("Alter Announce", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("alterAnnounce", results);
         }
         // TODO: GUI process
         return 0;

@@ -29,9 +29,11 @@ public class AlterTemplate extends CmdResponder {
                     ))
             ))) {
                 Sys.err("Alter Template", "Unable to send request.");
+                Global.guiAdapter.makeEvent("alterTemplate", "Unable to send request");
             }
         } else {
             Sys.err("Alter Template", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("alterTemplate", "User is not online");
             return 1;
         }
         return 0;
@@ -46,8 +48,10 @@ public class AlterTemplate extends CmdResponder {
         }
         if (results.equals("OK")) {
             Sys.info("Alter Template", "Successful operation.");
+            Global.guiAdapter.makeEvent("alterTemplate", "OK");
         } else {
             Sys.errF("Alter Template", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("alterTemplate", results);
         }
         // TODO: GUI process
         return 0;

@@ -24,9 +24,11 @@ public class FetchTemplate extends CmdResponder {
                     ""
             ))) {
                 Sys.err("Fetch Template", "Unable to send request.");
+                Global.guiAdapter.makeEvent("fetchTemplateList", "Unable to send request");
             }
         } else {
             Sys.err("Fetch Template", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("fetchTemplateList", "User is not online");
             return 1;
         }
         return 0;
@@ -40,11 +42,13 @@ public class FetchTemplate extends CmdResponder {
             results = Global.gson.fromJson(arg, FetchTemplateResult[].class);
         } catch (JsonSyntaxException e) {
             Sys.errF("Fetch Announce List", "Error: %s.", arg);
+            Global.guiAdapter.makeEvent("fetchTemplateList", arg);
             Global.dropVar("TEMPLATE_LIST_INTERNAL");
             return 8;
         }
         if (results == null) {
             HostManager.onInvalidTransmission("Template fetch: on invalid result.");
+            Global.guiAdapter.makeEvent("fetchTemplateList", "Unknown error");
             Global.dropVar("TEMPLATE_LIST_INTERNAL");
             return 1;
         }
@@ -53,6 +57,7 @@ public class FetchTemplate extends CmdResponder {
             Global.dropVar("TEMPLATE_LIST_INTERNAL");
             return 0;
         }
+        Global.guiAdapter.makeEvent("fetchTemplateList", Global.gson.toJson(results));
         Sys.clearLine();
         Sys.cmdLinePrintF(
                 "%5s|%20s|%20s|%70s\n",

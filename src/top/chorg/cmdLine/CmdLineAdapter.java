@@ -12,7 +12,7 @@ public class CmdLineAdapter {
 
     public static void start() {
         Sys.clearLine();
-        System.out.println("Welcome to iClass Server.");
+        System.out.println("Welcome to iClass.");
         System.out.printf(
                 "System running under command line mode (Ver %s).\n",
                 Global.getVarCon("VERSION", String.class)

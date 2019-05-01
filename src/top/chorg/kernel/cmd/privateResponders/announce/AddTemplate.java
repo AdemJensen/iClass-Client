@@ -26,9 +26,11 @@ public class AddTemplate extends CmdResponder {
                     ))
             ))) {
                 Sys.err("Add Template", "Unable to send request.");
+                Global.guiAdapter.makeEvent("addTemplate", "Unable to send request");
             }
         } else {
             Sys.err("Add Template", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("addTemplate", "User is not online");
             return 1;
         }
         return 0;
@@ -43,8 +45,10 @@ public class AddTemplate extends CmdResponder {
         }
         if (results.equals("OK")) {
             Sys.info("Add Template", "Successful operation.");
+            Global.guiAdapter.makeEvent("addTemplate", "OK");
         } else {
             Sys.errF("Add Template", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("addTemplate", results);
         }
         // TODO: GUI process
         return 0;

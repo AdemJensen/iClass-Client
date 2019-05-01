@@ -35,9 +35,11 @@ public class FetchList extends CmdResponder {
                     nextArg()
             ))) {
                 Sys.err("Fetch Announce", "Unable to send request.");
+                Global.guiAdapter.makeEvent("fetchAnnounceList", "Unable to send request");
             }
         } else {
             Sys.err("Fetch Announce", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("fetchAnnounceList", "User is not online");
             return 1;
         }
         return 0;
@@ -51,11 +53,13 @@ public class FetchList extends CmdResponder {
             results = Global.gson.fromJson(arg, FetchListResult[].class);
         } catch (JsonSyntaxException e) {
             Sys.errF("Fetch Announce List", "Error: %s.", arg);
+            Global.guiAdapter.makeEvent("fetchAnnounceList", arg);
             Global.dropVar("ANNOUNCE_LIST_INTERNAL");
             return 8;
         }
         if (results == null) {
             HostManager.onInvalidTransmission("Announce fetch: on invalid result.");
+            Global.guiAdapter.makeEvent("fetchAnnounceList", "Unknown error");
             Global.dropVar("ANNOUNCE_LIST_INTERNAL");
             return 1;
         }
@@ -64,6 +68,7 @@ public class FetchList extends CmdResponder {
             Global.dropVar("ANNOUNCE_LIST_INTERNAL");
             return 0;
         }
+        Global.guiAdapter.makeEvent("fetchAnnounceList", Global.gson.toJson(results));
         Sys.clearLine();
         Sys.cmdLinePrintF(
                 "%5s|%20s|%70s|%20s|%20s|%10s|%10s|%10s|%10s\n",
