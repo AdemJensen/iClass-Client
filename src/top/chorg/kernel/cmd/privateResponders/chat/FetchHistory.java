@@ -5,7 +5,6 @@ import top.chorg.cmdLine.CmdLineAdapter;
 import top.chorg.kernel.cmd.CmdResponder;
 import top.chorg.kernel.communication.HostManager;
 import top.chorg.kernel.communication.Message;
-import top.chorg.kernel.communication.api.announcements.FetchListResult;
 import top.chorg.kernel.communication.api.chat.FetchHistoryRequest;
 import top.chorg.kernel.communication.api.chat.History;
 import top.chorg.kernel.communication.auth.AuthManager;
@@ -38,9 +37,11 @@ public class FetchHistory extends CmdResponder {
                     ))
             ))) {
                 Sys.err("Fetch Chat History", "Unable to send request.");
+                Global.guiAdapter.makeEvent("fetchChatHistory", "Unable to send request");
             }
         } else {
             Sys.err("Fetch Chat History", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("fetchChatHistory", "User is not online");
             return 1;
         }
         return 0;
@@ -54,11 +55,13 @@ public class FetchHistory extends CmdResponder {
             results = Global.gson.fromJson(arg, History[].class);
         } catch (JsonSyntaxException e) {
             Sys.errF("Fetch Chat History", "Error: %s.", arg);
+            Global.guiAdapter.makeEvent("fetchChatHistory", arg);
             Global.dropVar("CHAT_HISTORY_LIST_INTERNAL");
             return 8;
         }
         if (results == null) {
             HostManager.onInvalidTransmission("Fetch Chat History: on invalid result.");
+            Global.guiAdapter.makeEvent("fetchChatHistory", "Unknown error");
             Global.dropVar("CHAT_HISTORY_LIST_INTERNAL");
             return 1;
         }
@@ -67,6 +70,7 @@ public class FetchHistory extends CmdResponder {
             Global.dropVar("CHAT_HISTORY_LIST_INTERNAL");
             return 0;
         }
+        Global.guiAdapter.makeEvent("fetchChatHistory", arg);
         Sys.clearLine();
         Sys.cmdLinePrintF(
                 "%5s|%20s|%6s| %s\n",

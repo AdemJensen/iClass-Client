@@ -26,6 +26,9 @@ public class Classes extends CmdResponder {
                 case "inspect":
                     resp = inspectClass();
                     break;
+                case "kick":
+                    resp = kickMember();
+                    break;
                 case "online":
                     resp = getOnline();
                     break;
@@ -112,6 +115,25 @@ public class Classes extends CmdResponder {
             return null;
         }
         return Global.cmdManPrivate.execute("fetchOnline", String.valueOf(uu));
+    }
+
+    public CmdResponder kickMember() {
+        if (argAmount() < 2) {
+            Sys.warn("Kick member", "Arguments for register are too few. Needed two parameters.");
+            Sys.info("Kick member", "For more help, please type 'help join' for more help.");
+            return null;
+        }
+        String classId = nextArg();
+        String userId = nextArg();
+        int uu1, uu2;
+        try {
+            uu1 = Integer.parseInt(classId);
+            uu2 = Integer.parseInt(userId);
+        } catch (NumberFormatException e) {
+            Sys.err("Kick member", "Invalid argument, Digit required.");
+            return null;
+        }
+        return Global.cmdManPrivate.execute("kickMember", String.valueOf(uu1), String.valueOf(uu2));
     }
 
     @Override

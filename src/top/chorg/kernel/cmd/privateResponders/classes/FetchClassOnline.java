@@ -23,9 +23,11 @@ public class FetchClassOnline extends CmdResponder {
                     nextArg()
             ))) {
                 Sys.err("Fetch Class Online", "Unable to send request.");
+                Global .guiAdapter.makeEvent("fetchClassOnline", "Unable to send request");
             }
         } else {
             Sys.err("Fetch Class Online", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("fetchClassOnline", "User is not online");
             return 1;
         }
         return 0;
@@ -40,8 +42,10 @@ public class FetchClassOnline extends CmdResponder {
             if (info == null) throw new JsonParseException("e");
         } catch (JsonParseException e) {
             Sys.errF("Fetch Class Online", "Error: %s", results);
+            Global.guiAdapter.makeEvent("fetchClassOnline", results);
             return 1;
         }
+        Global.guiAdapter.makeEvent("fetchClassOnline", results);
         Sys.clearLine();
         Sys.cmdLinePrintF("Online user: %s\n", Arrays.toString(info));
         CmdLineAdapter.outputDecoration();

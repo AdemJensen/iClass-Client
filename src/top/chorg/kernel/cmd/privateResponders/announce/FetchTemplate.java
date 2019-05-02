@@ -20,7 +20,7 @@ public class FetchTemplate extends CmdResponder {
     public int response() throws IndexOutOfBoundsException {
         if (AuthManager.isOnline()) {
             if (!Global.masterSender.send(new Message(
-                    "fetchAnnounceTemplate",
+                    "fetchTemplateList",
                     ""
             ))) {
                 Sys.err("Fetch Template", "Unable to send request.");

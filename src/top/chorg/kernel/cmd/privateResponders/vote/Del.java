@@ -21,9 +21,11 @@ public class Del extends CmdResponder {
                     nextArg()
             ))) {
                 Sys.err("Delete Vote", "Unable to send request.");
+                Global.guiAdapter.makeEvent("delVote", "Unable to send request");
             }
         } else {
             Sys.err("Delete Vote", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("delVote", "User is not online");
             return 1;
         }
         return 0;
@@ -34,12 +36,15 @@ public class Del extends CmdResponder {
         String results = nextArg();
         if (results == null) {
             HostManager.onInvalidTransmission("Delete Vote: on invalid result.");
+            Global.guiAdapter.makeEvent("delVote", "Unknown error");
             return 1;
         }
         if (results.equals("OK")) {
             Sys.info("Delete Vote", "Successful operation.");
+            Global.guiAdapter.makeEvent("delVote", "OK");
         } else {
             Sys.errF("Delete Vote", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("delVote", results);
         }
         // TODO: GUI process
         return 0;

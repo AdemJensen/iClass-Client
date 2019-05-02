@@ -35,9 +35,11 @@ public class Alter extends CmdResponder {
                     ))
             ))) {
                 Sys.err("Alter Vote", "Unable to send request.");
+                Global.guiAdapter.makeEvent("judgeOnline", "Unable to send request");
             }
         } else {
             Sys.err("Alter Vote", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("judgeOnline", "User is not online");
             return 1;
         }
         return 0;
@@ -48,12 +50,15 @@ public class Alter extends CmdResponder {
         String results = nextArg();
         if (results == null) {
             HostManager.onInvalidTransmission("Alter Vote: on invalid result.");
+            Global.guiAdapter.makeEvent("judgeOnline", "Unknown error");
             return 1;
         }
         if (results.equals("OK")) {
             Sys.info("Alter Vote", "Successful operation.");
+            Global.guiAdapter.makeEvent("judgeOnline", "OK");
         } else {
             Sys.errF("Alter Vote", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("judgeOnline", results);
         }
         // TODO: GUI process
         return 0;

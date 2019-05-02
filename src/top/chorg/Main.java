@@ -20,17 +20,24 @@ public class Main {
 
         Initializer.execute(args);      // Start initialization.
 
+        boolean cmdLineIsStarted = false;
         if (Sys.isCmdEnv()) {
             Global.guiAdapter = new EmptyGuiAdapter();
             CmdLineAdapter.start();     // Start Command Line mode.
+            cmdLineIsStarted = true;
         } else {
             if (Global.guiAdapter == null) {
                 Global.setVar("GUI_MODE", false);
+                CmdLineAdapter.start();
+                cmdLineIsStarted = true;
                 Sys.warn("Init", "GUI module not found, Cmd mode enabled.");
                 Global.guiAdapter = new EmptyGuiAdapter();
             } else {
                 Global.guiAdapter.makeEvent("startup");
             }
+        }
+        if (Sys.isDevEnv() && !cmdLineIsStarted) {
+            CmdLineAdapter.start();
         }
 
     }

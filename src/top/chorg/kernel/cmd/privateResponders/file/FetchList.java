@@ -40,9 +40,11 @@ public class FetchList extends CmdResponder {
                     nextArg()
             ))) {
                 Sys.err("Fetch File List", "Unable to send request.");
+                Global.guiAdapter.makeEvent("fetchFileList", "Unable to send request");
             }
         } else {
             Sys.err("Fetch File List", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("fetchFileList", "User is not online");
             return 1;
         }
         return 0;
@@ -57,6 +59,7 @@ public class FetchList extends CmdResponder {
             if (results == null) throw new JsonSyntaxException("E");
         } catch (JsonSyntaxException e) {
             Sys.errF("Fetch File List List", "Error: %s.", arg);
+            Global.guiAdapter.makeEvent("fetchFileList", arg);
             Global.dropVar("FILE_LIST_INTERNAL");
             return 8;
         }
@@ -65,15 +68,17 @@ public class FetchList extends CmdResponder {
             Global.dropVar("FILE_LIST_INTERNAL");
             return 0;
         }
+        Global.guiAdapter.makeEvent("fetchFileList", arg);
         Sys.clearLine();
         Sys.cmdLinePrintF(
-                "%5s|%20s|%10s|%20s|%10s|%10s\n",
-                "id", "name", "uploader", "date", "class", "level"
+                "%5s|%20s|%10s|%20s|%10s|%10s|%15s\n",
+                "id", "name", "uploader", "date", "class", "level", "size"
         );
         for (FileInfo result : results) {
             Sys.cmdLinePrintF(
-                    "%5s|%20s|%10s|%20s|%10s|%10s\n",
-                    result.id, result.name, result.uploader, result.date, result.classId, result.level
+                    "%5s|%20s|%10s|%20s|%10s|%10s|%15s\n",
+                    result.id, result.name, result.uploader,
+                    result.date, result.classId, result.level, result.size.toString()
             );
         }
         CmdLineAdapter.outputDecoration();

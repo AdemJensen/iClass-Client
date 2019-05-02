@@ -28,10 +28,12 @@ public class Send extends CmdResponder {
                     ))
             ))) {
                 Sys.errF("Send Chat", "Unable to send chat message.");
+                Global.guiAdapter.makeEvent("sendChat", "Unable to send request");
                 return 2;
             }
         } else {
             Sys.err("Send Chat", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("sendChat", "User is not online");
             return 1;
         }
         return 0;
@@ -45,8 +47,10 @@ public class Send extends CmdResponder {
             msg = Global.gson.fromJson(str, ChatMsg.class);
         } catch (JsonParseException e) {
             Sys.errF("Send Chat", "Error: %s", str);
+            Global.guiAdapter.makeEvent("sendChat", str);
             return 1;
         }
+        Global.guiAdapter.makeEvent("sendChat", "OK");
         Sys.infoF("Send Chat", "Successful: --> [%s %d) ", msg.type == 1 ? "class" : "user", msg.toId);
         // TODO: GUI Action.
         return 0;

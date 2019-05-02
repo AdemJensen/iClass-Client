@@ -34,9 +34,11 @@ public class FetchList extends CmdResponder {
                     nextArg()
             ))) {
                 Sys.err("Fetch Vote List", "Unable to send request.");
+                Global.guiAdapter.makeEvent("fetchVoteList", "Unable to send request");
             }
         } else {
             Sys.err("Fetch Vote List", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("fetchVoteList", "User is not online");
             return 1;
         }
         return 0;
@@ -50,11 +52,13 @@ public class FetchList extends CmdResponder {
             results = Global.gson.fromJson(arg, FetchListResult[].class);
         } catch (JsonSyntaxException e) {
             Sys.errF("Fetch Vote List", "Error: %s.", arg);
+            Global.guiAdapter.makeEvent("fetchVoteList", arg);
             Global.dropVar("VOTE_LIST_INTERNAL");
             return 8;
         }
         if (results == null) {
             HostManager.onInvalidTransmission("Fetch Vote List: on invalid result.");
+            Global.guiAdapter.makeEvent("fetchVoteList", "Unknown error");
             Global.dropVar("VOTE_LIST_INTERNAL");
             return 1;
         }
@@ -63,6 +67,7 @@ public class FetchList extends CmdResponder {
             Global.dropVar("VOTE_LIST_INTERNAL");
             return 0;
         }
+        Global.guiAdapter.makeEvent("fetchVoteList", arg);
         Sys.clearLine();
         Sys.cmdLinePrintF(
                 "%5s|%20s|%20s|%20s|%10s|%10s|%10s|%10s|%10s|%10s\n",

@@ -17,7 +17,7 @@ public class DelTemplate extends CmdResponder {
     public int response() throws IndexOutOfBoundsException {
         if (AuthManager.isOnline()) {
             if (!Global.masterSender.send(new Message(
-                    "delAnnounceTemplate",
+                    "delTemplate",
                     nextArg()
             ))) {
                 Sys.err("Delete Template", "Unable to send request.");

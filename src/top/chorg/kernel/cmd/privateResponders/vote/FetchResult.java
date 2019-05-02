@@ -38,9 +38,11 @@ public class FetchResult extends CmdResponder {
                     nextArg()
             ))) {
                 Sys.err("Fetch Vote Result", "Unable to send request.");
+                Global.guiAdapter.makeEvent("fetchVoteResult", "Unable to send request");
             }
         } else {
             Sys.err("Fetch Vote Result", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("fetchVoteResult", "User is not online");
             return 1;
         }
         return 0;
@@ -54,11 +56,13 @@ public class FetchResult extends CmdResponder {
             results = Global.gson.fromJson(arg, int[][].class);
         } catch (JsonSyntaxException e) {
             Sys.errF("Fetch Vote Result", "Error: %s.", arg);
+            Global.guiAdapter.makeEvent("fetchVoteResult", arg);
             Global.dropVar("VOTE_RESULT_INTERNAL");
             return 8;
         }
         if (results == null) {
             HostManager.onInvalidTransmission("Fetch Vote Result: on invalid result.");
+            Global.guiAdapter.makeEvent("fetchVoteResult", "Unknown error");
             Global.dropVar("VOTE_RESULT_INTERNAL");
             return 1;
         }
@@ -67,6 +71,7 @@ public class FetchResult extends CmdResponder {
             Global.dropVar("VOTE_RESULT_INTERNAL");
             return 0;
         }
+        Global.guiAdapter.makeEvent("fetchVoteResult", arg);
         Sys.clearLine();
         for (int i = 0; i < results.length; i++) {
             Sys.cmdLinePrintF("Selection %3d | %s\n", i, Arrays.toString(results[i]));

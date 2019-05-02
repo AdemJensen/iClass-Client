@@ -34,9 +34,11 @@ public class Add extends CmdResponder {
                     ))
             ))) {
                 Sys.err("Add Vote", "Unable to send request.");
+                Global.guiAdapter.makeEvent("addVote", "Unable to send request");
             }
         } else {
             Sys.err("Add Vote", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("addVote", "User is not online");
             return 1;
         }
         return 0;
@@ -47,12 +49,15 @@ public class Add extends CmdResponder {
         String results = nextArg();
         if (results == null) {
             HostManager.onInvalidTransmission("Add Vote: on invalid result.");
+            Global.guiAdapter.makeEvent("addVote", "Unknown error");
             return 1;
         }
         if (results.equals("OK")) {
             Sys.info("Add Vote", "Successful operation.");
+            Global.guiAdapter.makeEvent("addVote", "OK");
         } else {
             Sys.errF("Add Vote", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("addVote", results);
         }
         // TODO: GUI process
         return 0;

@@ -36,9 +36,11 @@ public class Upload extends CmdResponder {
                     ))
             ))) {
                 Sys.err("Upload File", "Unable to send request.");
+                Global.guiAdapter.makeEvent("uploadFile", "Unable to send request");
             }
         } else {
             Sys.err("Upload File", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("uploadFile", "User is not online");
             return 1;
         }
         return 0;
@@ -52,6 +54,7 @@ public class Upload extends CmdResponder {
             ret = Global.gson.fromJson(arg, UploadRequestReturn.class);
         } catch (JsonParseException e) {
             Sys.errF("Upload File", "Error: %s", arg);
+            Global.guiAdapter.makeEvent("uploadFile", arg);
             return 1;
         }
         int con = HostManager.connect(
@@ -61,11 +64,13 @@ public class Upload extends CmdResponder {
         );
         if (con != 0) {
             Sys.errF("File Upload", "Error while connecting to file uploader (value %d).", con);
+            Global.guiAdapter.makeEvent("uploadFile", "Error while connecting to uploader: value " + con);
             return con;
         }
         PrintWriter pw = HostManager.getPrintWriter(String.format("fileUploader-%d", ret.id));
         if (pw == null) {
             Sys.err("File Upload", "Error while getting uploader PrintWriter.");
+            Global.guiAdapter.makeEvent("uploadFile", "Error while getting uploader PrintWriter");
             return 122;
         }
         String[] fileNameTemp;
@@ -77,6 +82,7 @@ public class Upload extends CmdResponder {
         BufferedReader br = HostManager.getBufferedReader(String.format("fileUploader-%d", ret.id));
         if (br == null) {
             Sys.err("File Upload", "Error while getting uploader BufferedReader.");
+            Global.guiAdapter.makeEvent("uploadFile", "Error while getting uploader BufferedReader");
             return 122;
         }
         String res;
@@ -87,11 +93,14 @@ public class Upload extends CmdResponder {
             }
         } catch (IOException e) {
             Sys.errF("File Upload", "Error while communicating with file host (%s).", e.getMessage());
+            Global.guiAdapter.makeEvent("uploadFile",
+                    "Error while communicating with file host: value " + e.getMessage());
             return 123;
         }
         Socket socket = HostManager.getSocket(String.format("fileUploader-%d", ret.id));
         if (socket == null) {
             Sys.err("File Upload", "Error while getting uploader socket.");
+            Global.guiAdapter.makeEvent("uploadFile", "Error while getting uploader socket");
             return 122;
         }
         try {
@@ -105,10 +114,13 @@ public class Upload extends CmdResponder {
             fin.close();
         } catch (Exception e) {
             Sys.errF("File Upload", "Error while sending file content (%s).", e.getMessage());
+            Global.guiAdapter.makeEvent("uploadFile",
+                    "Error while sending file content: value " + e.getMessage());
             return 124;
         }
         HostManager.disconnect(String.format("fileUploader-%d", ret.id));
         Sys.infoF("File Upload", "File (%s) upload success.", ret.path);
+        Global.guiAdapter.makeEvent("uploadFile", "OK");
         // TODO: GUI Actions
         return 0;
     }

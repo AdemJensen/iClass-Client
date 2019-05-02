@@ -27,9 +27,11 @@ public class Download extends CmdResponder {
                     nextArg()       // file id
             ))) {
                 Sys.err("Download File", "Unable to send request.");
+                Global .guiAdapter.makeEvent("downloadFile", "Unable to send request");
             }
         } else {
             Sys.err("Download File", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("downloadFile", "User is not online");
             return 1;
         }
         return 0;
@@ -43,6 +45,7 @@ public class Download extends CmdResponder {
             ret = Global.gson.fromJson(arg, DownloadRequestReturn.class);
         } catch (JsonParseException e) {
             Sys.errF("Download File", "Error: %s", arg);
+            Global.guiAdapter.makeEvent("downloadFile", arg);
             return 1;
         }
         int con = HostManager.connect(
@@ -52,11 +55,13 @@ public class Download extends CmdResponder {
         );
         if (con != 0) {
             Sys.errF("File Download", "Error while connecting to file Downloader (value %d).", con);
+            Global.guiAdapter.makeEvent("downloadFile", "Error while connecting to downloader: value " + con);
             return con;
         }
         PrintWriter pw = HostManager.getPrintWriter(String.format("fileDownloader-%d", ret.id));
         if (pw == null) {
-            Sys.err("File Download", "Error while getting uploader PrintWriter.");
+            Sys.err("File Download", "Error while getting downloader PrintWriter.");
+            Global.guiAdapter.makeEvent("downloadFile", "Error while getting uploader PrintWriter");
             return 122;
         }
         pw.println("download");
@@ -67,6 +72,7 @@ public class Download extends CmdResponder {
         BufferedReader br = HostManager.getBufferedReader(String.format("fileDownloader-%d", ret.id));
         if (br == null) {
             Sys.err("File Download", "Error while getting downloader BufferedReader.");
+            Global.guiAdapter.makeEvent("downloadFile", "Error while getting downloader BufferedReader");
             return 122;
         }
         String res;
@@ -79,11 +85,14 @@ public class Download extends CmdResponder {
             name = br.readLine();
         } catch (IOException e) {
             Sys.errF("File Download", "Error while communicating with file host (%s).", e.getMessage());
+            Global.guiAdapter.makeEvent("downloadFile",
+                    "Error while communicating with file host: value " + e.getMessage());
             return 123;
         }
         Socket socket = HostManager.getSocket(String.format("fileDownloader-%d", ret.id));
         if (socket == null) {
             Sys.err("File Download", "Error while getting downloader socket.");
+            Global.guiAdapter.makeEvent("downloadFile", "Error while getting downloader socket");
             return 122;
         }
         try {
@@ -96,10 +105,13 @@ public class Download extends CmdResponder {
             socket.close();
         } catch (Exception e) {
             Sys.errF("File Download", "Error while downloading file content (%s).", e.getMessage());
+            Global.guiAdapter.makeEvent("downloadFile",
+                    "Error while downloading file content: value " + e.getMessage());
             return 124;
         }
         HostManager.disconnect(String.format("fileDownloader-%d", ret.id));
         Sys.infoF("File Download", "File (%s) download success.", name);
+        Global.guiAdapter.makeEvent("downloadFile", "OK");
         // TODO: GUI Actions
         return 0;
     }

@@ -50,7 +50,7 @@ public class Template extends CmdResponder {
 
     private CmdResponder fetchTemplateList() throws IndexOutOfBoundsException {
         return Global.cmdManPrivate.execute(
-                "fetchAnnounceTemplate",
+                "fetchTemplateList",
                 ""
         );
     }
@@ -73,7 +73,7 @@ public class Template extends CmdResponder {
         Sys.clearLine();
         Sys.cmdLinePrint("Data pre-check ok, sending to master server...");
         return Global.cmdManPrivate.execute(
-                "addAnnounceTemplate",
+                "addTemplate",
                 name, title, content
         );
     }
@@ -84,7 +84,7 @@ public class Template extends CmdResponder {
         Sys.cmdLinePrint("Please input template id: "); int id = Integer.parseInt(sc.nextLine());
         Sys.cmdLinePrint("Now fetching the templates...");
         Global.setVar("TEMPLATE_LIST_INTERNAL", true);
-        Global.cmdManPrivate.execute("fetchAnnounceTemplate", "");
+        Global.cmdManPrivate.execute("fetchTemplateList", "");
         while (Global.varExists("TEMPLATE_LIST_INTERNAL")) { }
         FetchTemplateResult[] temp = Global.getVar("TEMPLATE_LIST_CACHE", FetchTemplateResult[].class);
         Global.dropVar("TEMPLATE_LIST_CACHE");
@@ -120,7 +120,7 @@ public class Template extends CmdResponder {
         Sys.clearLine();
         Sys.cmdLinePrint("Data pre-check ok, sending to master server...");
         return Global.cmdManPrivate.execute(
-                "alterAnnounceTemplate",
+                "alterTemplate",
                 String.valueOf(id), name, title, content
         );
     }
@@ -131,7 +131,7 @@ public class Template extends CmdResponder {
                 String arg = nextArg();
                 Integer.parseInt(arg);
                 return Global.cmdManPrivate.execute(
-                        "delAnnounceTemplate",
+                        "delTemplate",
                         arg
                 );
             } catch (Exception e) {

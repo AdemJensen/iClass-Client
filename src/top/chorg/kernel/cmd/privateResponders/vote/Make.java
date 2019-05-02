@@ -28,9 +28,11 @@ public class Make extends CmdResponder {
                     ))
             ))) {
                 Sys.err("Make Vote", "Unable to send request.");
+                Global.guiAdapter.makeEvent("makeVote", "Unable to send request");
             }
         } else {
             Sys.err("Make Vote", "User is not online, please login first.");
+            Global.guiAdapter.makeEvent("makeVote", "User is not online");
             return 1;
         }
         return 0;
@@ -41,12 +43,15 @@ public class Make extends CmdResponder {
         String results = nextArg();
         if (results == null) {
             HostManager.onInvalidTransmission("Make Vote: on invalid result.");
+            Global.guiAdapter.makeEvent("makeVote", "Unknown error");
             return 1;
         }
         if (results.equals("OK")) {
             Sys.info("Make Vote", "Successful operation.");
+            Global.guiAdapter.makeEvent("makeVote", "OK");
         } else {
             Sys.errF("Make Vote", "Error: %s.", results);
+            Global.guiAdapter.makeEvent("makeVote", results);
         }
         // TODO: GUI process
         return 0;

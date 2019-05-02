@@ -20,7 +20,7 @@ public class AlterTemplate extends CmdResponder {
     public int response() throws IndexOutOfBoundsException {
         if (AuthManager.isOnline()) {
             if (!Global.masterSender.send(new Message(
-                    "alterAnnounceTemplate",
+                    "alterTemplate",
                     Global.gson.toJson(new AlterTemplateRequest(
                             Objects.requireNonNull(nextArg(int.class)),
                             nextArg(),
