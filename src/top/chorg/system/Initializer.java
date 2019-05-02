@@ -243,6 +243,9 @@ public class Initializer {
 
     private static void registerNetResponders() {
         NetManager.register("onChat", top.chorg.kernel.communication.net.responders.chat.Receive.class);
+        NetManager.register("onKicked", top.chorg.kernel.communication.net.responders.auth.Kicked.class);
+        NetManager.register("onNewAnnounce",
+                top.chorg.kernel.communication.net.responders.announce.NewAnnounce.class);
     }
 
     /**

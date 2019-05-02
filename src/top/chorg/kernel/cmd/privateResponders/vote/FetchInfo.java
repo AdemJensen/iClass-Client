@@ -12,6 +12,8 @@ import top.chorg.system.Sys;
 
 import java.util.Arrays;
 
+import static top.chorg.kernel.communication.net.responders.vote.NewVote.displayVoteInfo;
+
 public class FetchInfo extends CmdResponder {
 
     public FetchInfo(String... args) {
@@ -71,40 +73,7 @@ public class FetchInfo extends CmdResponder {
             return 0;
         }
         Global.guiAdapter.makeEvent("fetchVoteInfo", arg);
-        Sys.clearLine();
-        Sys.cmdLinePrintF(
-                "%12s | %d\n" +
-                        "%12s | %s\n" +
-                        "%12s | %s\n" +
-                        "%12s | %s\n" +
-                        "%12s | %s\n" +
-                        "%12s | %s\n" +
-                        "%12s | %d\n" +
-                        "%12s | %d\n" +
-                        "%12s | %d\n" +
-                        "%12s | %d\n" +
-                        "%12s | %d\n" +
-                        "%12s | %s\n" +
-                        "%12s | %s\n" +
-                        "%12s | %s\n",
-                "id", result.id,
-                "title", result.title,
-                "content", result.content,
-                "selections", result.selections,
-                "date", result.date.toString(),
-                "validity", result.validity.toString(),
-                "method", result.method,
-                "class", result.classId,
-                "level", result.level,
-                "publisher", result.publisher,
-                "status(self)", result.status,
-                "isVoted", result.isVoted,
-                "Operation", Arrays.toString(result.ops),
-                "Addition", result.addition
-        );
-        CmdLineAdapter.outputDecoration();
-        // TODO: GUI process
-        return 0;
+        return displayVoteInfo(result);
     }
 
 }
