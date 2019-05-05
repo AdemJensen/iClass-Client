@@ -203,12 +203,7 @@ public class Sys {
      * @param returnValue The exit value.
      */
     public static void exit(int returnValue) {
-        if (isCmdEnv()) {
-            System.exit(returnValue);
-        } else {
-            Global.guiAdapter.makeEvent("exit", Integer.toString(returnValue));
-            System.out.printf("EXIT ERROR!(%d)\n", returnValue);
-        }
+        System.exit(returnValue);
     }
 
     /**

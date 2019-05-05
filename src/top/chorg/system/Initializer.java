@@ -151,9 +151,12 @@ public class Initializer {
                 top.chorg.kernel.cmd.privateResponders.auth.GetUsername.class);
         Global.cmdManPrivate.register("judgeOnline",
                 top.chorg.kernel.cmd.privateResponders.auth.IsUserOnline.class);
+        Global.cmdManPrivate.register("getLevel",
+                top.chorg.kernel.cmd.privateResponders.auth.GetLevel.class);
 
         Global.cmdManPrivate.register("joinClass", top.chorg.kernel.cmd.privateResponders.classes.JoinClass.class);
         Global.cmdManPrivate.register("exitClass", top.chorg.kernel.cmd.privateResponders.classes.ExitClass.class);
+        Global.cmdManPrivate.register("getLog", top.chorg.kernel.cmd.privateResponders.classes.GetLogs.class);
         Global.cmdManPrivate.register("kickMember", top.chorg.kernel.cmd.privateResponders.classes.Kick.class);
         Global.cmdManPrivate.register("fetchClassInfo",
                 top.chorg.kernel.cmd.privateResponders.classes.FetchClassInfo.class);
@@ -246,6 +249,8 @@ public class Initializer {
         NetManager.register("onKicked", top.chorg.kernel.communication.net.responders.auth.Kicked.class);
         NetManager.register("onNewAnnounce",
                 top.chorg.kernel.communication.net.responders.announce.NewAnnounce.class);
+        NetManager.register("onNewVote",
+                top.chorg.kernel.communication.net.responders.vote.NewVote.class);
     }
 
     /**

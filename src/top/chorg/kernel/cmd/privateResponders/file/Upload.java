@@ -27,10 +27,12 @@ public class Upload extends CmdResponder {
     @Override
     public int response() throws IndexOutOfBoundsException {
         if (AuthManager.isOnline()) {
+            String finePath = nextArg();
+            finePath = finePath.replace("\n", "");
             if (!Global.masterSender.send(new Message(
                     "uploadFile",
                     Global.gson.toJson(new UploadRequest(
-                            nextArg(),
+                            finePath,
                             Objects.requireNonNull(nextArg(int.class)),
                             Objects.requireNonNull(nextArg(int.class))
                     ))
@@ -120,7 +122,7 @@ public class Upload extends CmdResponder {
         }
         HostManager.disconnect(String.format("fileUploader-%d", ret.id));
         Sys.infoF("File Upload", "File (%s) upload success.", ret.path);
-        Global.guiAdapter.makeEvent("uploadFile", "OK");
+        Global.guiAdapter.makeEvent("uploadFile", String.valueOf(ret.id));
         // TODO: GUI Actions
         return 0;
     }

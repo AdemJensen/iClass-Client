@@ -25,10 +25,12 @@ public class Login extends CmdResponder {
     public int response() throws IndexOutOfBoundsException {
         if (Global.varExists("AUTH_TIMER")) {
             Sys.err("Login", "Ongoing auth-relevant action in progress, please retry later.");
+            Global.guiAdapter.makeEvent("loginResult", "Ongoing auth-relevant action");
             return 208;
         }
         if (HostManager.isConnected("CmdHost")) {
             Sys.err("Login", "User already online, please log off first.");
+            Global.guiAdapter.makeEvent("loginResult", "User already online");
             return 205;
         }
         Sys.info("Login", "Attempting to login.");
@@ -44,6 +46,7 @@ public class Login extends CmdResponder {
                 Global.conf.Cmd_Server_Port
         ) != 0) {
             dropTimer();
+            Global.guiAdapter.makeEvent("loginResult", "Host not online");
             return 209;
         }
         Global.masterSender = new NetSender("CmdHost");

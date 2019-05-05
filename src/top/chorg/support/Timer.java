@@ -50,8 +50,8 @@ public class Timer {
     }
 
     public void stop() {
-        if (thread.isAlive()) thread.interrupt();
         isStopped = true;
+        if (thread.isAlive()) thread.interrupt();
     }
 
     public void restart() {

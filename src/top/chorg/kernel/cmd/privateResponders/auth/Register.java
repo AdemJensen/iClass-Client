@@ -28,9 +28,9 @@ public class Register extends CmdResponder {
         }
         Sys.info("Register", "Attempting to register.");
         Global.setVar("AUTH_TIMER", new Timer(10000, (Object[] args) -> {
-            clearTimer();
             Sys.err("Register", "Timed out while sending reg info (207).");
             Global.guiAdapter.makeEvent("regResult", "Timed out while sending reg info (207).");
+            dropTimer();
             return 0;
         }));
         if (HostManager.connect(
@@ -48,6 +48,7 @@ public class Register extends CmdResponder {
         if (!Global.masterSender.send(new Message("login", Global.gson.toJson(authInfo)))) {
             Sys.err("register", "Unable to send reg info (211).");
             Global.guiAdapter.makeEvent("regResult", "Unable to send reg info (211).");
+            dropTimer();
             return 211;
         }
         while (Global.getVar("AUTH_TIMER") != null) { }
@@ -81,13 +82,13 @@ public class Register extends CmdResponder {
                 switch (res.result) {
                     case "Granted":
                         Sys.info("Register", "Successfully registered a user.");
-                        Global.guiAdapter.makeEvent("regResult", "OK");
                         dropTimer();
+                        Global.guiAdapter.makeEvent("regResult", "OK");
                         return 0;
                     case "Denied":
                         Sys.errF("Register", "Register denied : (%s)", res.obj);
-                        Global.guiAdapter.makeEvent("regResult", res.obj);
                         dropTimer();
+                        Global.guiAdapter.makeEvent("regResult", res.obj);
                         return 6;
                     default:
                         HostManager.onInvalidTransmission("Invalid message content (2)");
