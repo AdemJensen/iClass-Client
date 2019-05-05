@@ -1,0 +1,7 @@
+{
+  "Cmd_Server_Host":"127.0.0.1",
+  "Cmd_Server_Port":9998,
+  "File_Server_Host":"127.0.0.1",
+  "File_Server_Port":9999,
+  "modList":["MyWork.jar"]
+}
